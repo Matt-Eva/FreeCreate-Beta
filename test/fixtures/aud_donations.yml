@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  audio: one
+  user: one
+  creator: one
+  amount: 1.5
+
+two:
+  audio: two
+  user: two
+  creator: two
+  amount: 1.5
