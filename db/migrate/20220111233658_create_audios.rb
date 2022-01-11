@@ -1,10 +1,10 @@
-class CreateWritings < ActiveRecord::Migration[7.0]
+class CreateAudios < ActiveRecord::Migration[7.0]
   def change
-    create_table :writings do |t|
+    create_table :audios do |t|
       t.belongs_to :creator, null: false, foreign_key: true
       t.string :title
       t.string :thumbnail
-      t.text :content
+      t.string :content
       t.string :category
       t.integer :length
 
