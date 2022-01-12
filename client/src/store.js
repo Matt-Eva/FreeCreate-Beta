@@ -1,5 +1,8 @@
-// import { configureStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
+import userAuthModalReducer from "./components/userauth/userAuthModalSlice"
 
-// const store = configureStore({})
+const store = configureStore({
+    reducer: {userAuthModal: userAuthModalReducer}
+})
 
-// export default store
+export default store
