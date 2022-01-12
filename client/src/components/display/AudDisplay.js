@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Homepage() {
+function AudDisplay() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Homepage() {
     )
 }
 
-export default Homepage
+export default AudDisplay

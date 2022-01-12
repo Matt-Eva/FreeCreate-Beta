@@ -1,11 +1,9 @@
 import React from 'react'
 
-function Homepage() {
+export default function EditVideoForm() {
     return (
         <div>
             
         </div>
     )
 }
-
-export default Homepage

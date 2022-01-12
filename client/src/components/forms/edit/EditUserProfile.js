@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Homepage() {
+function EditUserProfile() {
     return (
         <div>
             
@@ -8,4 +8,5 @@ function Homepage() {
     )
 }
 
-export default Homepage
+export default EditUserProfile
+
