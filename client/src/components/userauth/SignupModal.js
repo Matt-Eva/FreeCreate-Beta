@@ -29,6 +29,7 @@ const formik = useFormik({
     validationSchema: Yup.object({
         username: Yup.string().required("Required"),
         password: Yup.string().required("Required"),
+        password_confirmation: Yup.string().required("Required")
     }),
     onSubmit: (values) =>{
         // e.preventDefault()
@@ -67,6 +68,7 @@ const formik = useFormik({
     }
 
     function toggleModal(){
+        formik.handleReset()
         dispatch(hideSignup())
         dispatch(showLogin())
     }
@@ -108,6 +110,7 @@ const formik = useFormik({
                         <Button type="submit">Sign up</Button>
                     </Form.Group>
                 </Form>
+                <br />
                 {errors? displayErrors : null}
         </Modal.Body>
         <Modal.Footer>
