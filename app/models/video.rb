@@ -10,4 +10,7 @@ class Video < ApplicationRecord
   has_many :commenters, through: :vid_comments, source: :user
   has_many :vid_donations
   has_many :donators, through: :vid_donations, source: :user
+
+  has_many :vid_taglinks
+  has_many :tags, through: :vid_taglinks
 end

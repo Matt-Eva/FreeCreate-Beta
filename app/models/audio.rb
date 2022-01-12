@@ -10,4 +10,7 @@ class Audio < ApplicationRecord
   has_many :commenters, through: :aud_comments, source: :user
   has_many :aud_donations
   has_many :donators, through: :aud_donations, source: :user
+
+  has_many :aud_taglinks
+  has_many :tags, through: :aud_taglinks
 end

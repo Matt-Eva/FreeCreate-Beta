@@ -10,4 +10,7 @@ class Writing < ApplicationRecord
   has_many :commenters, through: :writ_comments, source: :user
   has_many :writ_donations
   has_many :donators, through: :writ_donations, source: :user
+
+  has_many :writ_taglinks
+  has_many :tags, through: :writ_taglinks
 end

@@ -10,4 +10,7 @@ class Art < ApplicationRecord
   has_many :commenters, through: :art_comments, source: :user
   has_many :art_donations
   has_many :donators, through: :art_donations, source: :user
+
+  has_many :art_taglinks
+  has_many :tags, through: :art_taglinks
 end
