@@ -39,4 +39,15 @@ class User < ApplicationRecord
     has_many :commented_arts, through: :art_comments, source: :art
     has_many :art_donations
     has_many :donated_arts, through: :art_donations, source: :art
+
+    has_many :vid_lib_items
+    has_many :lib_vids, through: :vid_lib_items, source: :video
+    has_many :vid_list_items
+    has_many :list_vids, through: :vid_list_items, source: :video
+    has_many :vid_likes
+    has_many :liked_vids, through: :vid_likes, source: :video
+    has_many :vid_comments
+    has_many :commented_vids, through: :vid_comments, source: :video
+    has_many :vid_donations
+    has_many :donated_vids, through: :vid_donations, source: :video
 end
