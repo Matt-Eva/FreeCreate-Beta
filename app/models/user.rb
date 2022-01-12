@@ -28,4 +28,15 @@ class User < ApplicationRecord
     has_many :commented_auds, through: :aud_comments, source: :audio
     has_many :aud_donations
     has_many :donated_auds, through: :aud_donations, source: :audio
+
+    has_many :art_lib_items
+    has_many :lib_arts, through: :art_lib_items, source: :art
+    has_many :art_list_items
+    has_many :list_arts, through: :art_list_items, source: :art
+    has_many :art_likes
+    has_many :liked_arts, through: :art_likes, source: :art
+    has_many :art_comments
+    has_many :commented_arts, through: :art_comments, source: :art
+    has_many :art_donations
+    has_many :donated_arts, through: :art_donations, source: :art
 end
