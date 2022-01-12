@@ -5,6 +5,10 @@ class CreateCreators < ActiveRecord::Migration[7.0]
       t.string :payment_info
       t.string :prof_pic
       t.string :name
+      t.boolean :is_writer
+      t.boolean :is_audio
+      t.boolean :is_artist
+      t.boolean :is_video
 
       t.timestamps
     end
