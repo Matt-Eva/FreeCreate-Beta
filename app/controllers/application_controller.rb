@@ -17,5 +17,9 @@ end
 def not_found exception
     render json: {errors: "#{exception.model} not found"}, status: :not_found
 end
+
+def current_user
+    @current_user ||=User.find_by(id: session[:user_id])
+end
     
 end

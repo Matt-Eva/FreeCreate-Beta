@@ -1,4 +1,10 @@
 class Api::UsersController < ApplicationController
+before_action :authorize
+skip_before_action :authorize, only: [:create]
+
+    def show
+        render json: current_user, status: :ok
+    end
 
     def create
         user = User.create!(user_params)
