@@ -1,14 +1,22 @@
 import Modal from 'react-bootstrap/Modal' 
 import Form from 'react-bootstrap/Form'
 import Button from "react-bootstrap/Button"
-import {useSelector, useDispatch} from "react-redux"
-import {showLogin, hideSignup} from "./userAuthModalSlice"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import {useSelector, useDispatch} from "react-redux"
+import {useState} from 'react'
+import { useNavigate } from "react-router-dom"
+import {showLogin, hideSignup} from "./userAuthModalSlice"
+import { setUser } from "./userSlice"
+
 
 function SignupModal() {
+const [errors, setErrors] = useState(null)
 const signupModal = useSelector(state => state.userAuthModal.signupModal)
 const dispatch = useDispatch()
+const navigate = useNavigate()
+
+const displayErrors = errors?.map(error => <p>{error}</p>)
 
 const formik = useFormik({
     initialValues: {
@@ -25,7 +33,32 @@ const formik = useFormik({
     onSubmit: (values) =>{
         // e.preventDefault()
         console.log(values)
-        formik.handleReset()
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(values)
+        }
+
+        fetch("/api/signup", configObj)
+        .then(r => {
+            if (r.ok){
+                r.json().then(data => {
+                    console.log(data)
+                    dispatch(setUser(data))
+                    formik.handleReset()
+                    hideModal()
+                    navigate('/')
+                })
+            } else {
+                r.json().then(data =>{
+                    console.log(data)
+                    setErrors(data.errors)
+                })
+            }
+        })
+        
     }
 })
 
@@ -75,6 +108,7 @@ const formik = useFormik({
                         <Button type="submit">Sign up</Button>
                     </Form.Group>
                 </Form>
+                {errors? displayErrors : null}
         </Modal.Body>
         <Modal.Footer>
             Already have an account? <Button variant="primary" onClick={toggleModal}>Log In</Button>
