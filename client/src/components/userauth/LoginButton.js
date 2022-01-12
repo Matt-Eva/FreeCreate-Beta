@@ -1,10 +1,11 @@
-import React from 'react'
+import Button from 'react-bootstrap/Button'
+import {showLogin} from "../userauth/userAuthModalSlice"
+import {useDispatch} from "react-redux"
 
 function LoginButton() {
+    const dispatch = useDispatch()
     return (
-        <div>
-            
-        </div>
+        <Button onClick={()=> dispatch(showLogin()) }>Login</Button>
     )
 }
 
