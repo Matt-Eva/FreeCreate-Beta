@@ -1,16 +1,64 @@
 import { Modal, Form, Button } from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
 import {hideLogin, showSignup} from "./userAuthModalSlice"
+import {setUser} from "./userSlice"
+import { useFormik } from "formik"
+import * as Yup from "yup"
+import { useNavigate } from "react-router-dom"
+import {useState} from 'react'
 
 function LoginModal() {
+    const [errors, setErrors] = useState(null)
     const loginModal = useSelector(state => state.userAuthModal.loginModal)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const displayErrors = errors?.map(error => <p>{error}</p>)
+
+    const formik = useFormik({
+        initialValues: {
+            username: "",
+            password: ""
+        },
+        validationSchema: Yup.object({
+            username: Yup.string().required("Required"),
+            password: Yup.string().required("Required"),
+        }),
+        onSubmit: (values) =>{
+           const configObj ={
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify(values)
+           }
+           fetch('/login', configObj)
+           .then(r =>{
+               if(r.ok){
+                   r.json().then(data =>{
+                       console.log(data)
+                       dispatch(setUser(data))
+                       formik.handleReset()
+                       hideModal()
+                       navigate("/")
+                   })
+               } else{
+                r.json().then(data =>{
+                    console.log(data)
+                    setErrors(data.errors)
+                })
+               }
+           })
+            
+        }
+    })
 
     function hideModal(){
         dispatch(hideLogin())
     }
 
     function toggleModal(){
+        formik.handleReset()
         dispatch(hideLogin())
         dispatch(showSignup())
     }
@@ -21,9 +69,22 @@ function LoginModal() {
                 <Modal.Title>Login</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
-
+                <Form onSubmit={formik.handleSubmit} onChange={formik.handleChange}>
+                    <Form.Group>
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control type="text" name="username" placeholder="Enter username..." value={formik.values.username}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control type="password" name="password" placeholder="Enter password..." value={formik.values.password}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <br/>
+                        <Button type="submit">Log in</Button>
+                    </Form.Group>
                 </Form>
+                <br />
+                {errors? displayErrors : null}
             </Modal.Body>
             <Modal.Footer>
                 Don't have an account yet? <Button variant="primary" onClick={toggleModal}>Sign Up</Button>
