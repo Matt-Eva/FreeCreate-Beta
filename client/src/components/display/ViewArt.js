@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ArtDisplay() {
+function ViewArt() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function ArtDisplay() {
     )
 }
 
-export default ArtDisplay
+export default ViewArt

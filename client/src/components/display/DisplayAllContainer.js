@@ -1,9 +1,18 @@
+import Container from "react-bootstrap"
+import Col from "react-bootstrap"
 
 function DisplayAllContainer() {
     return (
-        <div>
-            
-        </div>
+        <Container>
+            <Col>
+            </Col>
+            <Col>
+            </Col>
+            <Col>
+            </Col>
+            <Col>
+            </Col>
+        </Container>
     )
 }
 

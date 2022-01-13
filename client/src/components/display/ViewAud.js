@@ -1,6 +1,6 @@
 import React from 'react'
 
-function WritDisplay() {
+function ViewAud() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function WritDisplay() {
     )
 }
 
-export default WritDisplay
+export default ViewAud

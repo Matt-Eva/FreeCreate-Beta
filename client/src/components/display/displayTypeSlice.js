@@ -24,8 +24,8 @@ const slice = createSlice({
     }
 })
 
-const { setDisplayType } = slice.actions
+const { setDisplayTypeWriting, setDisplayTypeAudio, setDisplayTypeArt, setDisplayTypeVideo, setDisplayTypeAll } = slice.actions
 
-export { setUser, removeUser }
+export { setDisplayTypeWriting, setDisplayTypeAudio, setDisplayTypeArt, setDisplayTypeVideo, setDisplayTypeAll }
 
 export default slice.reducer

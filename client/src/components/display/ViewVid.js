@@ -1,6 +1,6 @@
 import React from 'react'
 
-function VidDisplay() {
+function ViewVid() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function VidDisplay() {
     )
 }
 
-export default VidDisplay
+export default ViewVid

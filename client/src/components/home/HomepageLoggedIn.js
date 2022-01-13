@@ -5,9 +5,11 @@ import TopNav from "../navigation/TopNav"
 import Sidebar from "../navigation/Sidebar"
 import BrowseSearch from "../navigation/BrowseSearch"
 import DisplayAllContainer from "../display/DisplayAllContainer"
+import DisplayTypeContainer from "../display/DisplayTypeContainer"
 
 function HomepageLoggedIn() {
     const user = useSelector(state => state.user.user)
+    const displayType = useSelector(state => state.displayType.displayType)
     return (
         <Container>
             <Row>
@@ -22,7 +24,7 @@ function HomepageLoggedIn() {
                         <BrowseSearch />
                     </Row>
                     <Row>
-                        <DisplayAllContainer />
+                        {displayType === "all" ? <DisplayAllContainer /> : <DisplayTypeContainer />}
                     </Row>
                 </Col>
             </Row>
