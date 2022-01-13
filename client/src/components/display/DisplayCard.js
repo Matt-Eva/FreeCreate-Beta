@@ -1,10 +1,17 @@
 import React from 'react'
+import Card from "react-bootstrap/Card"
 
-function DisplayCard() {
+function DisplayCard({creation}) {
+    const {title, thumbnail} = creation
     return (
-        <div>
-            
-        </div>
+        <Card>
+            <Card.Image src={thumbnail} />
+            <Card.Body>  
+                <Card.Title>
+                    {title}
+                </Card.Title>
+            </Card.Body>
+        </Card>
     )
 }
 

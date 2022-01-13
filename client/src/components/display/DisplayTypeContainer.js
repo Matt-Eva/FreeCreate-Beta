@@ -1,10 +1,12 @@
+import DisplayCard from "./DisplayCard";
+import Container from "react-bootstrap/Container"
 
-
-function DisplayTypeContainer() {
+function DisplayTypeContainer({display}) {
+    const displayCards = display?.map(creation => <DisplayCard key={creation.id} creation={creation}/>)
     return (
-        <div>
-            
-        </div>
+        <Container>
+            {displayCards}
+        </Container>
     )
 }
 

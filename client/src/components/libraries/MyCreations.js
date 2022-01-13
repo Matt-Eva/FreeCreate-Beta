@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UserLibrary() {
+function MyCreations() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function UserLibrary() {
     )
 }
 
-export default UserLibrary
+export default MyCreations
