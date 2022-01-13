@@ -15,7 +15,6 @@ function HomepageLoggedIn() {
     const queryDisplayArt = useSelector(state => state.queryDisplay.queryDisplayArt)
     const queryDisplayVideo = useSelector(state => state.queryDisplay.queryDisplayVideo)
 
-
     let singleTypeDisplay = []
     if (displayType === "writing"){
         singleTypeDisplay = queryDisplayWriting
@@ -26,6 +25,10 @@ function HomepageLoggedIn() {
     }  else if (displayType === "video"){
         singleTypeDisplay = queryDisplayVideo
     }
+
+    if (user === null){
+        return(<h1>Loading...</h1>)
+      }
 
     return (
         <Container>

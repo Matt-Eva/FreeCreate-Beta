@@ -1,11 +1,18 @@
 import {Link} from "react-router-dom"
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
+import {setDisplayTypeAll} from "../display/displayTypeSlice"
 
 function Icon() {
     const user = useSelector(state => state.user.user)
+    const dispatch = useDispatch()
+
+    function displayAll(){
+        dispatch(setDisplayTypeAll())
+    }
+
     return (
         <>
-        {user ? <h2><Link to="/">FreeCreate</Link></h2> : <h2><Link to="/loggedout">FreeCreate</Link></h2>}
+        {user ? <h2 onClick={displayAll}><Link to="/">FreeCreate</Link></h2> : <h2 onClick={displayAll}><Link to="/loggedout">FreeCreate</Link></h2>}
         </>
     )
 }

@@ -14,6 +14,7 @@ function TopNav() {
     const user = useSelector(state => state.user.user)
     return (
         <Container>
+            <Row>
             <Col>
                 <Icon />
             </Col>
@@ -21,8 +22,12 @@ function TopNav() {
                 {user ? <LoggedInTopNavClick />: <LoggedOutTopNavClick />}
             </Col>
             <Col>
+                {user ? <Link to="/createcreation">Create</Link> : null}
+            </Col>
+            <Col>
                 {user === null ? <LoginButton/> : <ProfileDropdown />}
             </Col>
+            </Row>
         </Container>
     )
 }
