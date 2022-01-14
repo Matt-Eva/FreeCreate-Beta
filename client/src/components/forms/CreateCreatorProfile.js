@@ -6,11 +6,13 @@ import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
 import {useSelector} from "react-redux"
 import { useState, useRef } from "react"
+import { useNavigate } from 'react-router-dom'
 import TopNav from "../navigation/TopNav"
 
 function CreateCreatorProfile() {
     const user = useSelector(state => state.user.user)
     const ref = useRef()
+    const navigate = useNavigate()
     const [creatorName, setCreatorName] = useState("")
     const [creatorType, setCreatorType] = useState({
             is_writer: false,
@@ -94,7 +96,9 @@ function CreateCreatorProfile() {
         fetch("/api/creators", configObj)
         .then(r => r.json())
         .catch(error => console.log(error))
-        .then(data => console.log(data))
+        .then(data => {
+            navigate("/")
+        })
     }
 
     return (
