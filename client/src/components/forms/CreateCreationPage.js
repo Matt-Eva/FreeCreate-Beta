@@ -4,23 +4,35 @@ import Col from "react-bootstrap/Col"
 import Image from "react-bootstrap/Image"
 import TopNav from "../navigation/TopNav"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import CreateArtForm from "./CreateArtForm"
 import CreateWritingForm from "./CreateWritingForm"
 import CreateAudioForm from "./CreateAudioForm"
 import CreateVideoForm from "./CreateVideoForm"
 
 function CreateCreationPage() {
+    const user = useSelector(state => state.user.user)
     const [contentType, setContentType] = useState("")
+    const [creator, setCreator] = useState(null)
     const [thumbnail, setThumbnail] = useState(null)
     console.log(contentType)
+    console.log(user.creators)
+    const creatorOptions = user.creators?.map(creator => <option value={creator.name}>{creator.name}</option>)
     return (
         <Container>
             <Row>
                 <TopNav />
             </Row>
             <Row>
+            <h1>Create!</h1>
+                    <select>
+                        <option>Select Creator Profile</option>
+                        {creatorOptions}
+                    </select>
+            </Row>
+            <Row>
                 <Col>
-                    <h1>Create!</h1>
+                    {creator ? <h2>{creator.name}</h2> : <h2>Please choose a creator Profile</h2>}
                     <select onChange={(e) => setContentType(e.target.value)}>
                         <option value="">Select Creation Type</option>
                         <option value="writing">Writing</option>
