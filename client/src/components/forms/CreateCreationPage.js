@@ -1,14 +1,16 @@
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
-import TopNav from "../navigation/TopNav"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import CreateArtForm from "./CreateArtForm"
 import CreateWritingForm from "./CreateWritingForm"
 import CreateAudioForm from "./CreateAudioForm"
 import CreateVideoForm from "./CreateVideoForm"
+import TopNav from "../navigation/TopNav"
 
 function CreateCreationPage() {
     const user = useSelector(state => state.user.user)
@@ -16,8 +18,12 @@ function CreateCreationPage() {
     const [creator, setCreator] = useState(null)
     const [thumbnail, setThumbnail] = useState(null)
     console.log(contentType)
-    console.log(user.creators)
-    const creatorOptions = user.creators?.map(creator => <option value={creator.name}>{creator.name}</option>)
+
+    let creatorOptions = null 
+    if (user !== null){
+        creatorOptions = user.creators?.map(creator => <option value={creator.name}>{creator.name}</option>)
+    }
+    console.log(creatorOptions)
     return (
         <Container>
             <Row>
@@ -25,10 +31,14 @@ function CreateCreationPage() {
             </Row>
             <Row>
             <h1>Create!</h1>
+            {creatorOptions.length === 0 ?  <div>
+                <h2>You haven't set up any creator profiles</h2>
+                <Link to="/newcreator"><Button>Create a Creator Profile</Button></Link>
+                </div> :
                     <select>
                         <option>Select Creator Profile</option>
                         {creatorOptions}
-                    </select>
+                    </select>}
             </Row>
             <Row>
                 <Col>
