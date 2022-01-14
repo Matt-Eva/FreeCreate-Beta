@@ -9,7 +9,7 @@ import { useState } from "react"
 function CreateCreatorProfile() {
     const user = useSelector(state => state.user.user)
     const [creatorData, setCreatorData] = useState({
-        user_id: user.id,
+        user_id: null,
         name: "",
         prof_pic: "",
         is_writer: false,
@@ -20,7 +20,8 @@ function CreateCreatorProfile() {
     })
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
-console.log(creatorThumbnail instanceof File)
+    console.log(user)
+
     function picChangeHandler(e){
         // console.log(e.target)
         const thumbnail = e.target.files[0]
