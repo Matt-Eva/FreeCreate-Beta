@@ -1,5 +1,5 @@
 import Form from 'react-bootstrap/Form'
-import useState from 'react'
+import {useState} from 'react'
 
 function CreateWritingForm() {
     const [uploadData, setUploadData] = useState({

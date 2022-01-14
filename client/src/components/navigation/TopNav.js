@@ -22,7 +22,7 @@ function TopNav() {
                 {user ? <LoggedInTopNavClick />: <LoggedOutTopNavClick />}
             </Col>
             <Col>
-                {user ? <Link to="/createcreation">Create</Link> : null}
+                {user ? <Link to="/newcreation">Create</Link> : null}
             </Col>
             <Col>
                 {user === null ? <LoginButton/> : <ProfileDropdown />}

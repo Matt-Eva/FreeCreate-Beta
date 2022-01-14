@@ -9,6 +9,7 @@ import HomepageLoggedOut from './home/HomepageLoggedOut';
 import LoginModal from "./userauth/LoginModal"
 import SignupModal from "./userauth/SignupModal"
 import CreateCreationPage from "./forms/CreateCreationPage"
+import CreateCreatorProfile from "./forms/CreateCreatorProfile"
 
 function App() {
 const navigate = useNavigate()
@@ -35,7 +36,8 @@ const dispatch = useDispatch()
       <LoginModal />
       <SignupModal />
       <Routes>
-        <Route path="/createcreation" element={<CreateCreationPage />}/>
+        <Route path="/newcreator" element={<CreateCreatorProfile />} />
+        <Route path="/newcreation" element={<CreateCreationPage />}/>
         <Route path="/loggedout" element={<HomepageLoggedOut/>}/>
         <Route exact path="/" element={<HomepageLoggedIn/>}/>
       </Routes>

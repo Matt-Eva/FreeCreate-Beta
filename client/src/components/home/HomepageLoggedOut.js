@@ -4,14 +4,18 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { useNavigate } from "react-router-dom"
 import {useSelector} from "react-redux"
+import { useEffect } from "react"
 
 function HomepageLoggedOut() {
     const user = useSelector(state => state.user.user)
     const navigate = useNavigate()
 
-    if (user !== null ){
-        navigate("/")
-    }
+    useEffect(() =>{
+        if (user !== null){
+            navigate("/")
+        }
+    }, [])
+
     return (
         <Container>
             <Row>

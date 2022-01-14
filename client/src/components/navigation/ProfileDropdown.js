@@ -1,7 +1,7 @@
 import Dropdown from "react-bootstrap/Dropdown"
 import {useDispatch} from "react-redux"
 import {removeUser} from "../userauth/userSlice"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 
 function ProfileDropdown() {
 const dispatch = useDispatch()
@@ -22,6 +22,7 @@ const navigate = useNavigate()
             <Dropdown.Menu>
                 <Dropdown.Item>View Profile</Dropdown.Item>
                 <Dropdown.Item>Creator Profiles</Dropdown.Item>
+                <Dropdown.Item onClick={() =>{navigate("/newcreator")}}>Add Creator Profile</Dropdown.Item>
                 <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
