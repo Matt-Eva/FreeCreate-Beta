@@ -14,7 +14,6 @@ function CreateCreatorProfile() {
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
-    // console.log(creatorThumbnail.name)
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -31,29 +30,29 @@ function CreateCreatorProfile() {
         e.preventDefault()
         setLoading(true)
         if (creatorThumbnail instanceof File){
-        const cloudinaryUrl = "https://api.cloudinary.com/v1_1/freecreate/image/upload"
-        const fd = new FormData()
-        fd.append('file', creatorThumbnail)
-        fd.append('upload_preset', 'you-create')
-        const configObj = {
-            method: "POST",
-            body: fd
-        }
-        fetch(cloudinaryUrl, configObj)
-        .then(r => {
-            console.log(r)
-            if (r.ok){
-                r.json()
-                .catch(error => console.log(error))
-                .then(data =>{
-                    setThumbnailDisplay(data.secure_url)
-                    setLoading(false)
-                })
-            } else{
-                setLoading(false)
-                alert("You did not select a valid image file")
+            const cloudinaryUrl = "https://api.cloudinary.com/v1_1/freecreate/image/upload"
+            const fd = new FormData()
+            fd.append('file', creatorThumbnail)
+            fd.append('upload_preset', 'you-create')
+            const configObj = {
+                method: "POST",
+                body: fd
             }
-           })     
+            fetch(cloudinaryUrl, configObj)
+            .then(r => {
+                console.log(r)
+                if (r.ok){
+                    r.json()
+                    .catch(error => console.log(error))
+                    .then(data =>{
+                        setThumbnailDisplay(data.secure_url)
+                        setLoading(false)
+                    })
+                } else{
+                    setLoading(false)
+                    alert("You did not select a valid image file")
+                }
+            })     
         } else {
             alert("please select an image")
             setLoading(false)
@@ -107,6 +106,21 @@ function CreateCreatorProfile() {
                 <Form.Group>
                     <Form.Label>Creator Name:</Form.Label>
                     <Form.Control type="text" name="name" value={creatorName}/>
+                </Form.Group>
+            </Form>
+            <Form>
+                <Form.Group>
+                    <Form.Label>How would you describe yourself? (Select all that apply)</Form.Label>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Writer</Form.Label>
+                    <Form.Check type="switch" checked={false}/>
+                    <Form.Label>Musician / Audio Producer</Form.Label>
+                    <Form.Check type="switch"/>
+                    <Form.Label>Visual Artist / Photographer</Form.Label>
+                    <Form.Check type="switch"/>
+                    <Form.Label>Video / Film Maker </Form.Label>
+                    <Form.Check type="switch"/>
                 </Form.Group>
             </Form>
         </Container>
