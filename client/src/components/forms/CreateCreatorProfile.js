@@ -1,10 +1,12 @@
-import React from 'react'
-import TopNav from "../navigation/TopNav"
+import Container from "react-bootstrap/container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
 import {useSelector} from "react-redux"
 import { useState } from "react"
+import TopNav from "../navigation/TopNav"
 
 function CreateCreatorProfile() {
     const user = useSelector(state => state.user.user)
@@ -20,6 +22,7 @@ function CreateCreatorProfile() {
     })
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
+    const [loading, setLoading] = useState(false)
     console.log(user)
 
     function picChangeHandler(e){
@@ -31,6 +34,7 @@ function CreateCreatorProfile() {
 
     function submitPic(e){
         e.preventDefault()
+        setLoading(true)
         if (creatorThumbnail instanceof File){
         const cloudinaryUrl = "https://api.cloudinary.com/v1_1/freecreate/image/upload"
         const fd = new FormData()
@@ -46,25 +50,43 @@ function CreateCreatorProfile() {
             console.log(data)
             console.log(data.secure_url)
             setThumbnailDisplay(data.secure_url)
+            setLoading(false)
             })     
         } else {
             alert("please select an image")
+            setLoading(false)
         }
     }
 
     return (
-        <div>
-            <TopNav />
-            <h1>Create Creator</h1>
-            {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
-            {thumbnailDisplay === null ? <Form onSubmit={submitPic} >
-                <Form.Group>
-                    <Form.Label>Upload your Creator profile picture <em>(Optional)</em></Form.Label>
-                    <Form.Control type="file" name="file" onChange={picChangeHandler}/>
-                    <Button type="submit">Add Prof Pic</Button>
-                </Form.Group>
-            </Form> : <Button onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
-        </div>
+        <Container>
+            <Row>
+                <TopNav />
+            </Row>
+            <Row>
+                <Col>
+                    <h1>Create Creator</h1>
+                </Col>
+                <Col>
+                    {loading ? <p>Loading Profile pic...</p> : null}
+                    {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
+                    {thumbnailDisplay === null ? null : <Button onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
+                </Col>
+            </Row>
+           <Row>
+                {thumbnailDisplay === null ? <Form onSubmit={submitPic} >
+                    <Form.Group>
+                        <Form.Label>Upload your Creator profile picture <em>(Optional)</em></Form.Label>
+                        <Form.Control type="file" name="file" onChange={picChangeHandler}/>
+                        <Button type="submit">Add Prof Pic</Button>
+                    </Form.Group>
+                </Form> : null}
+            </Row>
+            <Form>
+
+
+            </Form>
+        </Container>
     )
 }
 
