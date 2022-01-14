@@ -20,7 +20,6 @@ function CreateCreatorProfile() {
     })
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
-    // console.log(creatorThumbnail)
 
     function picChangeHandler(e){
         // console.log(e.target)
@@ -53,6 +52,8 @@ function CreateCreatorProfile() {
         .then(r => r.json())
         .then(data =>{
             console.log(data)
+            console.log(data.secure_url)
+            setThumbnailDisplay(data.secure_url)
             })
     }
 
