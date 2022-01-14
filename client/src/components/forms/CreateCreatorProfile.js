@@ -20,7 +20,7 @@ function CreateCreatorProfile() {
     })
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
-
+console.log(creatorThumbnail instanceof File)
     function picChangeHandler(e){
         // console.log(e.target)
         const thumbnail = e.target.files[0]
@@ -40,6 +40,7 @@ function CreateCreatorProfile() {
 
     function submitPic(e){
         e.preventDefault()
+        if (creatorThumbnail instanceof File){
         const cloudinaryUrl = "https://api.cloudinary.com/v1_1/freecreate/image/upload"
         const fd = new FormData()
         fd.append('file', creatorThumbnail)
@@ -48,13 +49,16 @@ function CreateCreatorProfile() {
             method: "POST",
             body: fd
         }
-        fetch("https://api.cloudinary.com/v1_1/freecreate/image/upload", configObj)
+        fetch(cloudinaryUrl, configObj)
         .then(r => r.json())
         .then(data =>{
             console.log(data)
             console.log(data.secure_url)
             setThumbnailDisplay(data.secure_url)
-            })
+            })     
+        } else {
+            alert("please select an image")
+        }
     }
 
     return (
