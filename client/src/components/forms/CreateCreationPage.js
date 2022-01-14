@@ -67,6 +67,7 @@ function CreateCreationPage() {
                 <Col>
                 {displayCreator !== undefined ? <div>
                     <Image src={displayCreator.prof_pic} style={{"height": "100px"}}/>
+                    {displayCreator.prof_pic ? null : <p><em>(No profile picture associated with this creator)</em></p>}
                     <h4>{displayCreator.name}</h4>
                 </div> : null}
                 </Col>
