@@ -14,6 +14,7 @@ function HomepageLoggedIn() {
     const queryDisplayAudio = useSelector(state => state.queryDisplay.queryDisplayAudio)
     const queryDisplayArt = useSelector(state => state.queryDisplay.queryDisplayArt)
     const queryDisplayVideo = useSelector(state => state.queryDisplay.queryDisplayVideo)
+    console.log(user)
 
     let singleTypeDisplay = []
     if (displayType === "writing"){

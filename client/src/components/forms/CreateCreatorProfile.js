@@ -21,7 +21,6 @@ function CreateCreatorProfile() {
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
-    console.log(creatorType)
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -87,6 +86,15 @@ function CreateCreatorProfile() {
             is_video: creatorType.is_video,
             payment_info: null
         }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify(creatorData)
+        }
+        fetch("/api/creators", configObj)
+        .then(r => r.json())
+        .catch(error => console.log(error))
+        .then(data => console.log(data))
     }
 
     return (
@@ -134,6 +142,7 @@ function CreateCreatorProfile() {
                     <Form.Check type="switch" checked={creatorType.is_video} onChange={() => setCreatorType({...creatorType, is_video: !creatorType.is_video})}/>
                 </Form.Group>
             </Form>
+            <Button onClick={submitCreator}>Create Profile</Button>
         </Container>
     )
 }

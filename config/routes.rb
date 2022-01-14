@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     get "/me", to: "users#show"
     post "/signup", to: "users#create"
+    resources :creators
   end
   
   post "/login", to: "sessions#create"
