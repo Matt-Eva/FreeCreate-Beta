@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
+import Form from "react-bootstrap/Form"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useSelector } from "react-redux"
@@ -74,6 +75,20 @@ function CreateCreationPage() {
             </Row>
             <Row>
                 <Col>
+                    <h4>Select creation thumbnail:</h4>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Upload Image:</Form.Label>
+                            <Form.Control type="file"/>
+                        </Form.Group>
+                    </Form>
+                </Col>
+                <Col>
+                    {thumbnail ? <Image src={thumbnail}/> : <h2><em>Your Thumbnail Here</em></h2>}
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     {/* {creator ? <h2>{creator.name}</h2> : <h2>Please choose a creator Profile</h2>} */}
                     <select onChange={(e) => setContentType(e.target.value)}>
                         <option value="">Select Creation Type</option>
@@ -82,9 +97,6 @@ function CreateCreationPage() {
                         <option value="art">Art(Images)</option>
                         <option value="video">Video</option>
                     </select>
-                </Col>
-                <Col>
-                    {thumbnail ? <Image src={thumbnail}/> : <h2><em>Your Thumbnail Here</em></h2>}
                 </Col>
             </Row>
             <Row>
