@@ -19,11 +19,28 @@ function CreateCreationPage() {
     const [thumbnail, setThumbnail] = useState(null)
     console.log(contentType)
 
-    let creatorOptions = null 
+    let creatorOptions = [] 
     if (user !== null){
         creatorOptions = user.creators?.map(creator => <option value={creator.name}>{creator.name}</option>)
     }
-    console.log(creatorOptions)
+    
+    if (creatorOptions.length === 0){
+        return(
+            <Container>
+                <Row>
+                    <TopNav />
+                </Row>
+                <Row>
+                <div>
+                    <h2>You haven't set up any creator profiles.</h2>
+                    <p>You will need to create a creator profile before posting your creations.</p>
+                    <Link to="/newcreator"><Button>Create a Creator Profile</Button></Link>
+                </div>
+                </Row>
+            </Container>
+        )
+    }
+
     return (
         <Container>
             <Row>
