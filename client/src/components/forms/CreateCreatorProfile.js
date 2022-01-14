@@ -10,26 +10,21 @@ import TopNav from "../navigation/TopNav"
 
 function CreateCreatorProfile() {
     const user = useSelector(state => state.user.user)
-    const [creatorData, setCreatorData] = useState({
-        user_id: null,
-        name: "",
-        prof_pic: "",
-        is_writer: false,
-        is_audio: false,
-        is_artist: false,
-        is_video: false,
-        payment_info: null
-    })
+    const [creatorName, setCreatorName] = useState("")
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
-    console.log(user)
+    // console.log(creatorThumbnail.name)
 
     function picChangeHandler(e){
-        // console.log(e.target)
         const thumbnail = e.target.files[0]
-        console.log(thumbnail)
-        setCreatorThumbnail(thumbnail)
+        if (thumbnail.name.endsWith(".jpg") || thumbnail.name.endsWith(".jpeg") ){
+            setCreatorThumbnail(thumbnail)
+        } else if (thumbnail.name.endsWith(".png")){
+            setCreatorThumbnail(thumbnail)
+        } else{
+            alert("That is not an appropriate image file.")
+        } 
     }
 
     function submitPic(e){
@@ -45,16 +40,42 @@ function CreateCreatorProfile() {
             body: fd
         }
         fetch(cloudinaryUrl, configObj)
-        .then(r => r.json())
-        .then(data =>{
-            console.log(data)
-            console.log(data.secure_url)
-            setThumbnailDisplay(data.secure_url)
-            setLoading(false)
-            })     
+        .then(r => {
+            console.log(r)
+            if (r.ok){
+                r.json()
+                .catch(error => console.log(error))
+                .then(data =>{
+                    setThumbnailDisplay(data.secure_url)
+                    setLoading(false)
+                })
+            } else{
+                setLoading(false)
+                alert("You did not select a valid image file")
+            }
+           })     
         } else {
             alert("please select an image")
             setLoading(false)
+        }
+    }
+
+
+    function nameChange(e){
+        setCreatorName(e.target.value)
+    }
+
+    function submitCreator(e){
+        e.preventDefault()
+        const creatorData = {
+            user_id: user.id,
+            name: creatorName,
+            prof_pic: thumbnailDisplay,
+            is_writer: false,
+            is_audio: false,
+            is_artist: false,
+            is_video: false,
+            payment_info: null
         }
     }
 
@@ -82,9 +103,11 @@ function CreateCreatorProfile() {
                     </Form.Group>
                 </Form> : null}
             </Row>
-            <Form>
-
-
+            <Form onChange={nameChange} onSubmit={submitCreator}>
+                <Form.Group>
+                    <Form.Label>Creator Name:</Form.Label>
+                    <Form.Control type="text" name="name" value={creatorName}/>
+                </Form.Group>
             </Form>
         </Container>
     )
