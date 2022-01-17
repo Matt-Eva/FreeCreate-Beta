@@ -78,27 +78,31 @@ function CreateCreatorProfile() {
 
     function submitCreator(e){
         e.preventDefault()
-        const creatorData = {
-            user_id: user.id,
-            name: creatorName,
-            prof_pic: thumbnailDisplay,
-            is_writer: creatorType.is_writer,
-            is_audio: creatorType.is_audio,
-            is_artist: creatorType.is_artist,
-            is_video: creatorType.is_video,
-            payment_info: null
+        if (creatorName !== ""){
+            const creatorData = {
+                user_id: user.id,
+                name: creatorName,
+                prof_pic: thumbnailDisplay,
+                is_writer: creatorType.is_writer,
+                is_audio: creatorType.is_audio,
+                is_artist: creatorType.is_artist,
+                is_video: creatorType.is_video,
+                payment_info: null
+            }
+            const configObj ={
+                method: "POST",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify(creatorData)
+            }
+            fetch("/api/creators", configObj)
+            .then(r => r.json())
+            .catch(error => console.log(error))
+            .then(data => {
+                navigate("/")
+            })
+        } else{
+            alert("You must enter a name.")
         }
-        const configObj ={
-            method: "POST",
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify(creatorData)
-        }
-        fetch("/api/creators", configObj)
-        .then(r => r.json())
-        .catch(error => console.log(error))
-        .then(data => {
-            navigate("/")
-        })
     }
 
     return (
