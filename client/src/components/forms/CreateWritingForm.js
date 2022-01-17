@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from "react-bootstrap/Image"
+import Button from "react-bootstrap/Button"
 import {useState, useRef} from "react"
 
 function CreateWritingForm() {
@@ -71,14 +72,16 @@ function CreateWritingForm() {
             <Row>
                 <Col>
                     <h4>Select creation thumbnail:</h4>
-                    <Form>
+                    {thumbnailDisplay ?  null : <Form onSubmit={submitPic}>
                         <Form.Group>
                             <Form.Label>Upload Image:</Form.Label>
-                            <Form.Control type="file"/>
+                            <Form.Control type="file" name="file" ref={ref} onChange={picChangeHandler}/>
                         </Form.Group>
-                    </Form>
+                        <Button type="submit">Add Thumbnail</Button>
+                    </Form> }
                 </Col>
                 <Col>
+                    {loading ? <p>Loading thumbnail...</p> : null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay}/> : <h4><em>Your Thumbnail Here</em></h4>}
                 </Col>
             </Row>
