@@ -18,11 +18,15 @@ function CreateWritingForm({creator}) {
     const [creationThumbnail, setCreationThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [creationId, setCreationId] = useState(0)
+    const [tag, setTag] = useState("")
+    const [taglinks, setTaglinks] = useState([])
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     // console.log(creator)
     // console.log(uploadData)
     // console.log(thumbnailDisplay)
+
+    const displayTaglinks = taglinks?.map(taglink => <span> {taglink} </span>)
 
 
     function picChangeHandler(e){
@@ -109,6 +113,14 @@ function CreateWritingForm({creator}) {
         })
     }
 
+    function submitTag(e){
+        e.preventDefault()
+        const newTag = {
+            tag: tag
+        }
+        console.log(newTag)
+    }
+
     return (
         <Container>
             <h4>Add writing:</h4>
@@ -131,14 +143,23 @@ function CreateWritingForm({creator}) {
             <Form onChange={handleFormChange} onSubmit={createWriting}>
                 <Form.Group>
                     <Form.Label>Title:</Form.Label>
-                    <Form.Control type="text" name="title" value={uploadData.title}/>
+                    {creationId === 0 ? <Form.Control type="text" name="title" value={uploadData.title}/> : <Form.Control type="text" name="title" value={uploadData.title} disabled/>  }
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Content:</Form.Label>
-                    <Form.Control as="textarea" name="content" value={uploadData.content}/>
+                    {creationId === 0 ? <Form.Control as="textarea" name="content" value={uploadData.content}/> :
+                     <Form.Control as="textarea" name="content" value={uploadData.content} disabled/> } 
                 </Form.Group>
-                {(uploadData.title === "" || uploadData.content === "") || thumbnailDisplay === "" ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === "" || creationId !== 0) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
             </Form>
+            <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
+                <Form.Label>Add Tags:</Form.Label>
+                <Form.Control type="text" value={tag}/>
+                {creationId === 0 ? <Button type="submit" disabled>Add Tag</Button> : <Button type="submit">Add Tag</Button> }
+            </Form>
+            <p>
+                {displayTaglinks}
+            </p>
         </Container>
     )
 }
