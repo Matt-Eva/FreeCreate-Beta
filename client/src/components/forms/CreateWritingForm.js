@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Image from "react-bootstrap/Image"
 import Button from "react-bootstrap/Button"
 import {useState, useRef} from "react"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 
 function CreateWritingForm({creator}) {
     const [uploadData, setUploadData] = useState({
@@ -26,7 +26,7 @@ function CreateWritingForm({creator}) {
     // console.log(uploadData)
     // console.log(thumbnailDisplay)
 
-    const displayTaglinks = taglinks?.map(taglink => <span> {taglink} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
 
 
     function picChangeHandler(e){
@@ -115,14 +115,39 @@ function CreateWritingForm({creator}) {
 
     function submitTag(e){
         e.preventDefault()
-        const newTag = {
-            tag: tag
+        for (const taglink of taglinks){
+            if (taglink === tag) {
+                setTag("")
+                return alert("you have already added that tag")
+            }
         }
-        console.log(newTag)
+        const newTag = {
+            tag: tag,
+            writing_id: creationId
+        }
+        const configObj = {
+            method: "POST",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(newTag)
+        }
+        fetch("/api/writ_taglinks", configObj)
+        .then(r =>{
+            if (r.ok){
+                r.json().then(data =>{
+                    console.log(data)
+                    setTaglinks([...taglinks, data.tag.tag])
+                    setTag("")
+                })
+            } else {
+                r.json().then(data=>{
+                    console.log(data)
+                })
+            }
+        })
     }
 
     return (
-        <Container>
+        <Container style={{"marginBottom": "50px"}}>
             <h4>Add writing:</h4>
             <Row>
                 <Col>
@@ -150,7 +175,7 @@ function CreateWritingForm({creator}) {
                     {creationId === 0 ? <Form.Control as="textarea" name="content" value={uploadData.content}/> :
                      <Form.Control as="textarea" name="content" value={uploadData.content} disabled/> } 
                 </Form.Group>
-                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === "" || creationId !== 0) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === null || creationId !== 0) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
             </Form>
             <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
                 <Form.Label>Add Tags:</Form.Label>
@@ -160,6 +185,7 @@ function CreateWritingForm({creator}) {
             <p>
                 {displayTaglinks}
             </p>
+            <Link to="/"><Button>Finish</Button></Link>
         </Container>
     )
 }
