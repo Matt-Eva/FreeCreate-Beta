@@ -14,10 +14,12 @@ function CreateWritingForm() {
         category: ""
     })
     const ref = useRef()
-
     const [creationThumbnail, setCreationThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
+    console.log(uploadData)
+    console.log(thumbnailDisplay)
+
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -66,6 +68,29 @@ function CreateWritingForm() {
         }
     }
 
+    function handleFormChange(e){
+        setUploadData({
+            ...uploadData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function createWriting(e){
+        e.preventDefault()
+        const newWrit = {
+            title: uploadData.title,
+            content: uploadData.content,
+            thumbnail: thumbnailDisplay,
+            category: uploadData.category
+        }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify(newWrit)
+        }
+        console.log(newWrit)
+    }
+
     return (
         <Container>
             <h4>Add writing:</h4>
@@ -85,15 +110,16 @@ function CreateWritingForm() {
                     {thumbnailDisplay ? <Image src={thumbnailDisplay}/> : <h4><em>Your Thumbnail Here</em></h4>}
                 </Col>
             </Row>
-            <Form>
+            <Form onChange={handleFormChange} onSubmit={createWriting}>
                 <Form.Group>
                     <Form.Label>Title:</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Control type="text" name="title" value={uploadData.title}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Content:</Form.Label>
-                    <Form.Control as="textarea" />
+                    <Form.Control as="textarea" name="content" value={uploadData.content}/>
                 </Form.Group>
+                {(uploadData.title === "" || uploadData.content === "") || thumbnailDisplay === "" ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
             </Form>
         </Container>
     )
