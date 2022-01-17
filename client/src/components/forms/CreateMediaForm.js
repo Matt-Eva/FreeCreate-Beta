@@ -5,18 +5,13 @@ import Col from 'react-bootstrap/Col'
 import Image from "react-bootstrap/Image"
 import {useState} from "react"
 
-function CreateWritingForm() {
-    const [uploadData, setUploadData] = useState({
-        title: "",
-        thumbnail: "",
-        content: "",
-        category: ""
-    })
+function CreateMediaForm({contentType, creator}) {
 
     const [thumbnail, setThumbnail] = useState(null)
+
     return (
         <Container>
-            <h4>Add writing:</h4>
+            <h4>Add {contentType}:</h4>
             <Row>
                 <Col>
                     <h4>Select creation thumbnail:</h4>
@@ -31,14 +26,17 @@ function CreateWritingForm() {
                     {thumbnail ? <Image src={thumbnail}/> : <h2><em>Your Thumbnail Here</em></h2>}
                 </Col>
             </Row>
-            <Form>
-                <Form.Group>
-                    <Form.Label>Title:</Form.Label>
-                    <Form.Control type="text"/>
-                </Form.Group>
-            </Form>
+            <Row>
+                <Form>
+                    <Form.Group>
+                        <Form.Label>Title:</Form.Label>
+                        <Form.Control type="text"/>
+                    </Form.Group>
+                </Form>
+            </Row>
+            
         </Container>
     )
 }
 
-export default CreateWritingForm
+export default CreateMediaForm

@@ -11,6 +11,7 @@ import CreateArtForm from "./CreateArtForm"
 import CreateWritingForm from "./CreateWritingForm"
 import CreateAudioForm from "./CreateAudioForm"
 import CreateVideoForm from "./CreateVideoForm"
+import CreateMediaForm from "./CreateMediaForm"
 import TopNav from "../navigation/TopNav"
 
 function CreateCreationPage() {
@@ -60,7 +61,10 @@ function CreateCreationPage() {
             <Row>
                 <Col>
                     <h1>Create!</h1>
-                    <select onChange={(e) => setCreatorId(parseInt(e.target.value))}>
+                    <select onChange={(e) => {
+                        setContentType("")
+                        setCreatorId(parseInt(e.target.value))
+                        }}>
                         <option value={"0"} >Select Creator Profile</option>
                         {creatorOptions}
                     </select>
@@ -75,35 +79,22 @@ function CreateCreationPage() {
             </Row>
             <Row>
                 <Col>
-                    <h4>Select creation thumbnail:</h4>
-                    <Form>
-                        <Form.Group>
-                            <Form.Label>Upload Image:</Form.Label>
-                            <Form.Control type="file"/>
-                        </Form.Group>
-                    </Form>
-                </Col>
-                <Col>
-                    {thumbnail ? <Image src={thumbnail}/> : <h2><em>Your Thumbnail Here</em></h2>}
-                </Col>
-            </Row>
-            <Row>
-                <Col>
                     {/* {creator ? <h2>{creator.name}</h2> : <h2>Please choose a creator Profile</h2>} */}
-                    <select onChange={(e) => setContentType(e.target.value)}>
+                    { displayCreator ?<select onChange={(e) => setContentType(e.target.value)}>
                         <option value="">Select Creation Type</option>
                         <option value="writing">Writing</option>
                         <option value="audio">Audio</option>
                         <option value="art">Art(Images)</option>
                         <option value="video">Video</option>
-                    </select>
+                    </select> : null}
                 </Col>
             </Row>
             <Row>
-                {contentType === "writing" ? <CreateWritingForm/>: null}
-                {contentType === "audio" ? <CreateAudioForm/>: null}
+                {contentType === "writing" && displayCreator ? <CreateWritingForm creator={displayCreator} />: null}
+                {(contentType !== "writing" && contentType !== "") && displayCreator ?<CreateMediaForm creator={displayCreator} contentType={contentType}/> : null}
+                {/* {contentType === "audio" ? <CreateAudioForm/>: null}
                 {contentType === "art" ? <CreateArtForm/>: null}
-                {contentType === "video" ? <CreateVideoForm/>: null}
+                {contentType === "video" ? <CreateVideoForm/>: null} */}
             </Row>
             
         </Container>
