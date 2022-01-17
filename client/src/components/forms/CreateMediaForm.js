@@ -3,11 +3,60 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from "react-bootstrap/Image"
-import {useState} from "react"
+import {useState, useRef} from "react"
 
 function CreateMediaForm({contentType, creator}) {
+    const [creationThumbnail, setCreatorThumbnail] = useState(null)
+    const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const ref = useRef()
 
-    const [thumbnail, setThumbnail] = useState(null)
+    function picChangeHandler(e){
+        const thumbnail = e.target.files[0]
+        if (thumbnail.name.endsWith(".jpg") || thumbnail.name.endsWith(".jpeg") ){
+            setCreatorThumbnail(thumbnail)
+        } else if (thumbnail.name.endsWith(".png")){
+            setCreatorThumbnail(thumbnail)
+        } else{
+            alert("That is not an appropriate image file.")
+            ref.current.value=""
+            console.log(e.target.value)
+        } 
+    }
+
+    function submitPic(e){
+        e.preventDefault()
+        setLoading(true)
+        if (creationThumbnail instanceof File){
+            const cloudinaryUrl = "https://api.cloudinary.com/v1_1/freecreate/image/upload"
+            const fd = new FormData()
+            fd.append('file', creationThumbnail)
+            fd.append('upload_preset', 'you-create')
+            const configObj = {
+                method: "POST",
+                body: fd
+            }
+            fetch(cloudinaryUrl, configObj)
+            .then(r => {
+                console.log(r)
+                if (r.ok){
+                    r.json()
+                    .catch(error => console.log(error))
+                    .then(data =>{
+                        setThumbnailDisplay(data.secure_url)
+                        setLoading(false)
+                    })
+                } else{
+                    setLoading(false)
+                    alert("You did not select a valid image file")
+                    ref.current.value=""
+                }
+            })     
+        } else {
+            alert("please select an image")
+            setLoading(false)
+        }
+    }
 
     return (
         <Container>
@@ -23,7 +72,7 @@ function CreateMediaForm({contentType, creator}) {
                     </Form>
                 </Col>
                 <Col>
-                    {thumbnail ? <Image src={thumbnail}/> : <h2><em>Your Thumbnail Here</em></h2>}
+                    {thumbnailDisplay ? <Image src={thumbnailDisplay}/> : <h2><em>Your Thumbnail Here</em></h2>}
                 </Col>
             </Row>
             <Row>
