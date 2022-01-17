@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "/me", to: "users#show"
     post "/signup", to: "users#create"
     resources :creators
+    resources :writings
   end
   
   post "/login", to: "sessions#create"

@@ -5,8 +5,9 @@ import Col from 'react-bootstrap/Col'
 import Image from "react-bootstrap/Image"
 import Button from "react-bootstrap/Button"
 import {useState, useRef} from "react"
+import {useNavigate} from "react-router-dom"
 
-function CreateWritingForm() {
+function CreateWritingForm({creator}) {
     const [uploadData, setUploadData] = useState({
         title: "",
         thumbnail: "",
@@ -16,9 +17,12 @@ function CreateWritingForm() {
     const ref = useRef()
     const [creationThumbnail, setCreationThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
+    const [creationId, setCreationId] = useState(0)
     const [loading, setLoading] = useState(false)
-    console.log(uploadData)
-    console.log(thumbnailDisplay)
+    const navigate = useNavigate()
+    // console.log(creator)
+    // console.log(uploadData)
+    // console.log(thumbnailDisplay)
 
 
     function picChangeHandler(e){
@@ -81,7 +85,9 @@ function CreateWritingForm() {
             title: uploadData.title,
             content: uploadData.content,
             thumbnail: thumbnailDisplay,
-            category: uploadData.category
+            category: uploadData.category,
+            length: uploadData.content.length,
+            creator_id: creator.id
         }
         const configObj ={
             method: "POST",
@@ -89,6 +95,18 @@ function CreateWritingForm() {
             body: JSON.stringify(newWrit)
         }
         console.log(newWrit)
+        fetch(`/api/writings`, configObj)
+        .then(r =>{
+            if(r.ok){
+                r.json().then(data =>{
+                    setCreationId(data.id)
+                    console.log(data)
+                    // navigate("/")
+                })
+            } else{
+                console.log(r)
+            }
+        })
     }
 
     return (

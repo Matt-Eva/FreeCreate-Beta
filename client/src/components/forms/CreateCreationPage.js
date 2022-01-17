@@ -26,16 +26,11 @@ function CreateCreationPage() {
     let displayCreator = undefined; 
     if (user !== null){
         creatorOptions = user.creators?.map(option => <option key={option.id} value={option.id}>{option.name}</option>)
-        // console.log(user.creators[0].id)
-        // user.creators.forEach(option => console.log(option.id))
         if (creatorId !== null && user.creators.length !== 0){
-            console.log(creatorId)
-            console.log(user.creators[0].id)
             displayCreator = user.creators.filter(option => option.id === creatorId)[0]
         }
     }
-    console.log(displayCreator)
-    
+
     if (creatorOptions.length === 0){
         return(
             <Container>
@@ -62,7 +57,6 @@ function CreateCreationPage() {
                 <Col>
                     <h1>Create!</h1>
                     <select onChange={(e) => {
-                        setContentType("")
                         setCreatorId(parseInt(e.target.value))
                         }}>
                         <option value={"0"} >Select Creator Profile</option>
