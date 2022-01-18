@@ -1,5 +1,10 @@
 class Api::VideosController < ApplicationController
 
+    def index
+        videos = Video.all.slice(0, 51)
+        render json: videos, status: :ok
+    end
+
     def create
         video = Video.create!(video_params)
         render json: video, status: :created

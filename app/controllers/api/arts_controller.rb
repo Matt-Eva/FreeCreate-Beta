@@ -1,5 +1,10 @@
 class Api::ArtsController < ApplicationController
 
+    def index
+        art = Art.all.slice(0, 51)
+        render json: art, status: :ok
+    end
+
     def create
         art = Art.create!(art_params)
         render json: art, status: :created

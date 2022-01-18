@@ -5,7 +5,7 @@ function DisplayCard({creation}) {
     const {title, thumbnail} = creation
     return (
         <Card>
-            <Card.Image src={thumbnail} />
+            <Card.Img src={thumbnail} />
             <Card.Body>  
                 <Card.Title>
                     {title}
