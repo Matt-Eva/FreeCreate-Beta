@@ -156,7 +156,7 @@ function CreateWritingForm({creator}) {
                             <Form.Label>Upload Image:</Form.Label>
                             <Form.Control type="file" name="file" ref={ref} onChange={picChangeHandler}/>
                         </Form.Group>
-                        <Button type="submit">Add Thumbnail</Button>
+                        <Button variant="success" type="submit">Add Thumbnail</Button>
                     </Form> }
                 </Col>
                 <Col>
@@ -174,17 +174,17 @@ function CreateWritingForm({creator}) {
                     {creationId === 0 ? <Form.Control as="textarea" name="content" value={uploadData.content}/> :
                      <Form.Control as="textarea" name="content" value={uploadData.content} disabled/> } 
                 </Form.Group>
-                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === null || creationId !== 0) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === null || creationId !== 0) ? <Button variant="success" type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
             </Form>
             <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
                 <Form.Label>Add Tags:</Form.Label>
                 <Form.Control type="text" value={tag}/>
-                {creationId === 0 ? <Button type="submit" disabled>Add Tag</Button> : <Button type="submit">Add Tag</Button> }
+                {creationId === 0 ? <Button variant="success" type="submit" disabled>Add Tag</Button> : <Button variant="success" type="submit">Add Tag</Button> }
             </Form>
             <p>
                 {displayTaglinks}
             </p>
-            {creationId !== 0 ? <Link to="/"><Button>Finish</Button></Link> : <Link to="/"><Button>Cancel</Button></Link>}
+            {creationId !== 0 ? <Link to="/"><Button variant="success" >Finish</Button></Link> : <Link to="/"><Button variant="success" >Cancel</Button></Link>}
         </Container>
     )
 }

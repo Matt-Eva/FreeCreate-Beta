@@ -121,7 +121,7 @@ function CreateCreatorProfile() {
                 <Col>
                     {loading ? <p>Loading Profile pic...</p> : null}
                     {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
-                    {thumbnailDisplay === null ? null : <Button onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
+                    {thumbnailDisplay === null ? null : <Button variant="success" onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
                 </Col>
             </Row>
            <Row>
@@ -129,7 +129,7 @@ function CreateCreatorProfile() {
                     <Form.Group>
                         <Form.Label>Upload your Creator profile picture <em>(Optional)</em></Form.Label>
                         <Form.Control type="file" name="file" ref={ref} onChange={picChangeHandler}/>
-                        <Button type="submit">Add Prof Pic</Button>
+                        <Button variant="success" type="submit">Add Prof Pic</Button>
                     </Form.Group>
                 </Form> : null}
             </Row>
@@ -154,7 +154,7 @@ function CreateCreatorProfile() {
                     <Form.Check type="switch" checked={creatorType.is_video} onChange={() => setCreatorType({...creatorType, is_video: !creatorType.is_video})}/>
                 </Form.Group>
             </Form>
-            <Button onClick={submitCreator}>Create Profile</Button>
+            <Button variant="success" onClick={submitCreator}>Create Profile</Button>
         </Container>
     )
 }

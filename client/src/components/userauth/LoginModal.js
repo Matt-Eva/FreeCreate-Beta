@@ -83,14 +83,14 @@ function LoginModal() {
                     </Form.Group>
                     <Form.Group>
                         <br/>
-                        <Button type="submit">Log in</Button>
+                        <Button variant="success" type="submit">Log in</Button>
                     </Form.Group>
                 </Form>
                 <br />
                 {errors? displayErrors : null}
             </Modal.Body>
             <Modal.Footer>
-                Don't have an account yet? <Button variant="primary" onClick={toggleModal}>Sign Up</Button>
+                Don't have an account yet? <Button variant="success" onClick={toggleModal}>Sign Up</Button>
             </Modal.Footer>
         </Modal>
     )

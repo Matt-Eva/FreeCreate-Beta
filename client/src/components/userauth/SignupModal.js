@@ -107,14 +107,14 @@ const formik = useFormik({
                     </Form.Group> */}
                     <Form.Group>
                         <br />
-                        <Button type="submit">Sign up</Button>
+                        <Button variant="success" type="submit">Sign up</Button>
                     </Form.Group>
                 </Form>
                 <br />
                 {errors? displayErrors : null}
         </Modal.Body>
         <Modal.Footer>
-            Already have an account? <Button variant="primary" onClick={toggleModal}>Log In</Button>
+            Already have an account? <Button variant="success" onClick={toggleModal}>Log In</Button>
         </Modal.Footer>
     </Modal>
     )

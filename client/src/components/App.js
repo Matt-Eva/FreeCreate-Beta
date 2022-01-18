@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../App.css"
 import { Container, Row, Col } from "react-bootstrap"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
@@ -13,6 +14,10 @@ import CreateCreationPage from "./forms/CreateCreationPage"
 import CreateCreatorProfile from "./forms/CreateCreatorProfile"
 import CreatorProfiles from "./profile/CreatorProfiles"
 import EditCreatorProfile from './forms/EditCreatorProfile';
+import ViewWrit from "./display/ViewWrit"
+import ViewArt from "./display/ViewArt"
+import ViewAud from "./display/ViewAud"
+import ViewVid from "./display/ViewVid"
 
 function App() {
 const navigate = useNavigate()
@@ -40,6 +45,10 @@ const dispatch = useDispatch()
       <LoginModal />
       <SignupModal />
       <Routes>
+        <Route path="/view/writing/:username/:creatorname/:creationtitle/:id" element={<ViewWrit />}/>
+        <Route path="/view/audio/:username/:creatorname/:creationtitle/:id" element={<ViewAud />}/>
+        <Route path="/view/art/:username/:creatorname/:creationtitle/:id" element={<ViewArt />}/>
+        <Route path="/view/video/:username/:creatorname/:creationtitle/:id" element={<ViewVid />}/>
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>
         <Route path="/newcreator" element={<CreateCreatorProfile />} />

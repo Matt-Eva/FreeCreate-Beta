@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux"
 function LoginButton() {
     const dispatch = useDispatch()
     return (
-        <Button onClick={()=> dispatch(showLogin()) }>Login</Button>
+        <Button variant="success" onClick={()=> dispatch(showLogin()) }>Login</Button>
     )
 }
 

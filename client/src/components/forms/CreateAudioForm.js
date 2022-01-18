@@ -186,7 +186,7 @@ function CreateAudioForm({contentType, creator}) {
                             <Form.Label>Upload Thumbnail:</Form.Label>
                             <Form.Control type="file" name="file" ref={thumbRef} onChange={picChangeHandler}/>
                         </Form.Group>
-                        <Button type="submit">Add Thumbnail</Button>
+                        <Button variant="success" type="submit">Add Thumbnail</Button>
                     </Form> }
                 </Col>
                 <Col>
@@ -200,7 +200,7 @@ function CreateAudioForm({contentType, creator}) {
                     <Form.Group>
                         <Form.Label>Content:</Form.Label>
                         <Form.Control type="file" ref={audioRef} onChange={audioChangeHandler}/>
-                        <Button type="submit">Upload Audio</Button>
+                        <Button variant="success" type="submit">Upload Audio</Button>
                     </Form.Group>
                 </Form>}
             </Row>
@@ -210,18 +210,18 @@ function CreateAudioForm({contentType, creator}) {
                         <Form.Label>Title:</Form.Label>
                         {creationId === 0 ? <Form.Control type="text" value={title}/> : <Form.Control disabled type="text" value={title}/> }
                     </Form.Group>
-                    {(title === "" || creationId !== 0) || (audioDisplay === null || thumbnailDisplay === null) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                    {(title === "" || creationId !== 0) || (audioDisplay === null || thumbnailDisplay === null) ? <Button variant="success" type="submit" disabled>Create</Button> : <Button variant="success" type="submit">Create</Button>}
                 </Form>
             </Row>
             <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
                 <Form.Label>Add Tags:</Form.Label>
                 <Form.Control type="text" value={tag}/>
-                {creationId === 0 ? <Button type="submit" disabled>Add Tag</Button> : <Button type="submit">Add Tag</Button> }
+                {creationId === 0 ? <Button variant="success" type="submit" disabled>Add Tag</Button> : <Button variant="success" type="submit">Add Tag</Button> }
             </Form>
             <p>
                 {displayTaglinks}
             </p>
-            {creationId !== 0 ? <Link to="/"><Button>Finish</Button></Link> : <Link to="/"><Button>Cancel</Button></Link>}
+            {creationId !== 0 ? <Link to="/"><Button variant="success">Finish</Button></Link> : <Link to="/"><Button variant="success">Cancel</Button></Link>}
             
         </Container>
     )

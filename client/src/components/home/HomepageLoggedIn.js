@@ -124,7 +124,7 @@ function HomepageLoggedIn() {
                         <BrowseSearch displayType={displayType}/>
                     </Row>
                     <Row>
-                        {displayType === "all" ? <DisplayAllContainer writing={queryDisplayWriting} audio={queryDisplayAudio} art={queryDisplayArt} video={queryDisplayVideo} /> : <DisplayTypeContainer display={singleTypeDisplay} />}
+                        {displayType === "all" ? <DisplayAllContainer writing={queryDisplayWriting} audio={queryDisplayAudio} art={queryDisplayArt} video={queryDisplayVideo} /> : <DisplayTypeContainer displayType={displayType} display={singleTypeDisplay} />}
                     </Row>
                 </Col>
             </Row>

@@ -149,8 +149,8 @@ function EditCreatorProfile() {
                 </Modal.Header>
                 <Modal.Body>
                     <p>Removing this creator profile will permanently delete all posts made this creator.</p>
-                    <Button onClick={deleteCreator}>Remove Profile</Button>
-                    <Button onClick={()=>setShowDeleteModal(false)}>Cancel</Button>
+                    <Button variant="success" onClick={deleteCreator}>Remove Profile</Button>
+                    <Button variant="success" onClick={()=>setShowDeleteModal(false)}>Cancel</Button>
                 </Modal.Body>
             </Modal>
             <Row>
@@ -163,10 +163,10 @@ function EditCreatorProfile() {
                 <Col>
                     {loading ? <p>Loading Profile pic...</p> : null}
                     {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
-                    {thumbnailDisplay === null ? null : <Button onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
+                    {thumbnailDisplay === null ? null : <Button variant="success" onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
                 </Col>
                 <Col>
-                    <Button onClick={() => setShowDeleteModal(true)}>Delete Creator Profile</Button>
+                    <Button variant="success" onClick={() => setShowDeleteModal(true)}>Delete Creator Profile</Button>
                 </Col>
             </Row>
            <Row>
@@ -174,7 +174,7 @@ function EditCreatorProfile() {
                     <Form.Group>
                         <Form.Label>Upload your Creator profile picture <em>(Optional)</em></Form.Label>
                         <Form.Control type="file" name="file" ref={ref} onChange={picChangeHandler}/>
-                        <Button type="submit">Add Prof Pic</Button>
+                        <Button variant="success" type="submit">Add Prof Pic</Button>
                     </Form.Group>
                 </Form> : null}
             </Row>
@@ -199,7 +199,7 @@ function EditCreatorProfile() {
                     <Form.Check type="switch" checked={creatorType.is_video} onChange={() => setCreatorType({...creatorType, is_video: !creatorType.is_video})}/>
                 </Form.Group>
             </Form>
-            <Button onClick={submitCreator}>Save</Button>
+            <Button variant="success" onClick={submitCreator}>Save</Button>
         </Container>
     )
 }
