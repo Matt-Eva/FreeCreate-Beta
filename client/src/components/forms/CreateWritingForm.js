@@ -162,7 +162,7 @@ function CreateWritingForm({creator}) {
                 </Col>
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
-                    {thumbnailDisplay ? <Image src={thumbnailDisplay}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
                 </Col>
             </Row>
             <Form onChange={handleFormChange} onSubmit={createWriting}>
@@ -185,7 +185,7 @@ function CreateWritingForm({creator}) {
             <p>
                 {displayTaglinks}
             </p>
-            <Link to="/"><Button>Finish</Button></Link>
+            {creationId !== 0 ? <Link to="/"><Button>Finish</Button></Link> : <Link to="/"><Button>Cancel</Button></Link>}
         </Container>
     )
 }

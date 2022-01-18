@@ -11,7 +11,6 @@ import CreateArtForm from "./CreateArtForm"
 import CreateWritingForm from "./CreateWritingForm"
 import CreateAudioForm from "./CreateAudioForm"
 import CreateVideoForm from "./CreateVideoForm"
-import CreateMediaForm from "./CreateMediaForm"
 import TopNav from "../navigation/TopNav"
 
 function CreateCreationPage() {
@@ -73,7 +72,6 @@ function CreateCreationPage() {
             </Row>
             <Row>
                 <Col>
-                    {/* {creator ? <h2>{creator.name}</h2> : <h2>Please choose a creator Profile</h2>} */}
                     { displayCreator ?<select onChange={(e) => setContentType(e.target.value)}>
                         <option value="">Select Creation Type</option>
                         <option value="writing">Writing</option>
@@ -85,7 +83,7 @@ function CreateCreationPage() {
             </Row>
             <Row>
                 {contentType === "writing" && displayCreator ? <CreateWritingForm creator={displayCreator} />: null}
-                {(contentType !== "writing" && contentType !== "") && displayCreator ?<CreateMediaForm creator={displayCreator} contentType={contentType}/> : null}
+                {contentType === "art" && displayCreator ?<CreateArtForm creator={displayCreator} contentType={contentType}/> : null}
                 {/* {contentType === "audio" ? <CreateAudioForm/>: null}
                 {contentType === "art" ? <CreateArtForm/>: null}
                 {contentType === "video" ? <CreateVideoForm/>: null} */}
