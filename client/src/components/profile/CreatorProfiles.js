@@ -12,7 +12,11 @@ function CreatorProfile() {
     const user = useSelector(state => state.user.user)
     console.log(user)
 
-    const creatorCards = user.creators?.map(creator => <CreatoProfileCard key={creator.id} creator={creator}/>)
+    if (user === null ){
+        return <h1>Loading...</h1>
+    }
+
+    const creatorCards = user.creators?.map(creator => <CreatorProfileCard key={creator.id} creator={creator}/>)
 
     return (
         <Container>
