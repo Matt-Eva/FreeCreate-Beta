@@ -123,8 +123,25 @@ function CreateArtForm({contentType, creator}) {
             title: title,
             content: artDisplay,
             thumbnail: thumbnailDisplay,
+            creator_id: creator.id
         }
-        console.log(newArt)
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify(newArt)
+        }
+
+        fetch("/api/arts", configObj)
+        .then(r => {
+            if (r.ok){
+                r.json().then(data =>{
+                    console.log(data)
+                    setCreationId(data.id)
+                })
+            } else{
+                r.json().then(data => console.log(data))
+            }
+        })
     }
 
     function submitTag(e){
@@ -193,9 +210,9 @@ function CreateArtForm({contentType, creator}) {
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createArt}>
                     <Form.Group>
                         <Form.Label>Title:</Form.Label>
-                        <Form.Control type="text" value={title}/>
+                        {creationId === 0 ? <Form.Control type="text" value={title}/> : <Form.Control disabled type="text" value={title}/> }
                     </Form.Group>
-                    {title === "" || (artDisplay === null || thumbnailDisplay === null) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                    {(title === "" || creationId !== 0) || (artDisplay === null || thumbnailDisplay === null) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
                 </Form>
             </Row>
             <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>

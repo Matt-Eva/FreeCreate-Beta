@@ -105,7 +105,6 @@ function CreateWritingForm({creator}) {
                 r.json().then(data =>{
                     setCreationId(data.id)
                     console.log(data)
-                    // navigate("/")
                 })
             } else{
                 console.log(r)
