@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :writ_taglinks
     resources :art_taglinks
     resources :vid_taglinks
+    resources :aud_taglinks
   end
   
   post "/login", to: "sessions#create"

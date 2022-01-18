@@ -74,7 +74,7 @@ function CreateAudioForm({contentType, creator}) {
         if (file.name.endsWith(".mp3")){
             setAudioFile(file)
         } else{
-            alert("That is not an appropriate image file.")
+            alert("That is not an appropriate audio file.")
             audioRef.current.value=""
             console.log(e.target.value)
         } 
@@ -159,10 +159,11 @@ function CreateAudioForm({contentType, creator}) {
             headers: { "Content-Type" : "application/json"},
             body: JSON.stringify(newTag)
         }
-        fetch("/api/vid_taglinks", configObj)
+        fetch("/api/aud_taglinks", configObj)
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
+                    console.log(data)
                     setTaglinks([...taglinks, data.tag.tag])
                     setTag("")
                 })
