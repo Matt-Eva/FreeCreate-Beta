@@ -25,7 +25,10 @@ function CreatorProfile() {
                 <TopNav />
             </Row>
             <Row>
-                {creators.length === 0 ? <p>You haven't yet created any creator profiles</p> : null}
+                {creators.length === 0 ? <div>
+                    <p>You haven't yet created any creator profiles</p>
+                    <Link to="/newcreator"><Button>Create a Creator Profile</Button></Link>
+                    </div> : null}
                 {creatorCards}
             </Row>
         </Container>

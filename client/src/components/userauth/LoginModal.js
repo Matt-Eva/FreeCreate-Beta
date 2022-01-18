@@ -38,6 +38,7 @@ function LoginModal() {
                if(r.ok){
                    r.json().then(data =>{
                        console.log(data)
+                       setErrors(null)
                        dispatch(setUser(data))
                        dispatch(setCreators(data.creators))
                        formik.handleReset()
