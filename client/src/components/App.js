@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { setUser } from "./userauth/userSlice"
+import { setCreators } from "./userauth/creatorsSlice"
 import { useEffect } from "react"
 import HomepageLoggedIn from "./home/HomepageLoggedIn"
 import HomepageLoggedOut from './home/HomepageLoggedOut';
@@ -23,6 +24,7 @@ const dispatch = useDispatch()
       if (r.ok){
         r.json().then(data =>{
           dispatch(setUser(data))
+          dispatch(setCreators(data.creators))
         })
       } else {
         console.log("running")

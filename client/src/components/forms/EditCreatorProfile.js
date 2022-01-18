@@ -116,6 +116,7 @@ function EditCreatorProfile() {
             .then(r => r.json())
             .catch(error => console.log(error))
             .then(data => {
+                console.log(data)
                 navigate("/")
             })
         } else{

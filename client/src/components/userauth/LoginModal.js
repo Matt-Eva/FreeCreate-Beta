@@ -2,6 +2,7 @@ import { Modal, Form, Button } from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
 import {hideLogin, showSignup} from "./userAuthModalSlice"
 import {setUser} from "./userSlice"
+import { setCreators } from "./creatorsSlice"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { useNavigate } from "react-router-dom"
@@ -38,6 +39,7 @@ function LoginModal() {
                    r.json().then(data =>{
                        console.log(data)
                        dispatch(setUser(data))
+                       dispatch(setCreators(data.creators))
                        formik.handleReset()
                        hideModal()
                        navigate("/")

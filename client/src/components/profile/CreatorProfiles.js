@@ -10,12 +10,14 @@ import CreatorProfileCard from './CreatorProfileCard'
 
 function CreatorProfile() {
     const user = useSelector(state => state.user.user)
+    const creators = useSelector(state => state.creators.creators)
+
 
     if (user === null ){
         return <h1>Loading...</h1>
     }
 
-    const creatorCards = user.creators?.map(creator => <CreatorProfileCard key={creator.id} creator={creator}/>)
+    const creatorCards = creators?.map(creator => <CreatorProfileCard key={creator.id} creator={creator}/>)
 
     return (
         <Container>
@@ -23,6 +25,7 @@ function CreatorProfile() {
                 <TopNav />
             </Row>
             <Row>
+                {creators.length === 0 ? <p>You haven't yet created any creator profiles</p> : null}
                 {creatorCards}
             </Row>
         </Container>

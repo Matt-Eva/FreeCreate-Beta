@@ -5,6 +5,12 @@ class Api::CreatorsController < ApplicationController
         render json: creator, status: :created
     end
 
+    def update
+        creator = Creator.find(params[:id])
+        creator.update!(creator_params)
+        render json: creator, status: :accepted
+    end
+
     private 
 
     def creator_params
