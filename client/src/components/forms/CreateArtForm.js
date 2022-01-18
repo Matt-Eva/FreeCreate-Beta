@@ -149,29 +149,29 @@ function CreateArtForm({contentType, creator}) {
         for (const taglink of taglinks){
             if (taglink === tag) {
                 setTag("")
+                console.log("no new")
                 return alert("you have already added that tag")
             }
         }
         const newTag = {
             tag: tag,
-            writing_id: creationId
+            art_id: creationId
         }
         const configObj = {
             method: "POST",
             headers: { "Content-Type" : "application/json"},
             body: JSON.stringify(newTag)
         }
-        fetch("/api/writ_taglinks", configObj)
+        fetch("/api/art_taglinks", configObj)
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
-                    console.log(data)
                     setTaglinks([...taglinks, data.tag.tag])
                     setTag("")
                 })
             } else {
                 r.json().then(data=>{
-                    console.log(data)
+                    // console.log(data)
                 })
             }
         })
