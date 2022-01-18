@@ -10,7 +10,6 @@ import CreatorProfileCard from './CreatorProfileCard'
 
 function CreatorProfile() {
     const user = useSelector(state => state.user.user)
-    console.log(user)
 
     if (user === null ){
         return <h1>Loading...</h1>
