@@ -6,6 +6,11 @@ class Api::AudiosController < ApplicationController
         render json: audios, status: :ok
     end
 
+    def show
+        audio = Audio.find(params[:id])
+        render json: audio, status: :ok
+    end
+
     def create
         audio = Audio.create!(audio_params)
         render json: audio, status: :created
