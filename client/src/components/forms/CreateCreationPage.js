@@ -84,6 +84,7 @@ function CreateCreationPage() {
             <Row>
                 {contentType === "writing" && displayCreator ? <CreateWritingForm creator={displayCreator} />: null}
                 {contentType === "art" && displayCreator ?<CreateArtForm creator={displayCreator} contentType={contentType}/> : null}
+                {contentType === "video" && displayCreator ?<CreateVideoForm creator={displayCreator} contentType={contentType}/> : null}
                 {/* {contentType === "audio" ? <CreateAudioForm/>: null}
                 {contentType === "art" ? <CreateArtForm/>: null}
                 {contentType === "video" ? <CreateVideoForm/>: null} */}
