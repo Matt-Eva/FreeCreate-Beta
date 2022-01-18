@@ -11,6 +11,7 @@ import CreatorProfileCard from './CreatorProfileCard'
 function CreatorProfile() {
     const user = useSelector(state => state.user.user)
     const creators = useSelector(state => state.creators.creators)
+    console.log(creators)
 
 
     if (user === null ){

@@ -4,13 +4,15 @@ import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
+import {updateCreators} from "../userauth/creatorsSlice"
 import { useState, useRef, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import TopNav from "../navigation/TopNav"
 
 function EditCreatorProfile() {
     const user = useSelector(state => state.user.user)
+    const dispatch = useDispatch()
     const editCreator = useSelector(state => state.editCreator.editCreator)
     const ref = useRef()
     const navigate = useNavigate()
@@ -117,6 +119,7 @@ function EditCreatorProfile() {
             .catch(error => console.log(error))
             .then(data => {
                 console.log(data)
+                dispatch(updateCreators(data))
                 navigate("/")
             })
         } else{

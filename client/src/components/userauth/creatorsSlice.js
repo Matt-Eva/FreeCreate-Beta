@@ -18,14 +18,17 @@ const slice = createSlice({
                 }
             })
         },
+        addCreator: (state, action) =>{
+            state.creators = [...(state.creators), action.payload]
+        },
         removeCreator: (state, action) =>{
             state.creators = state.creators.filter(creator => creator.id !== action.payload.id)
         }
     }
 })
 
-const { setCreators, removeCreator, updateCreators } = slice.actions
+const { setCreators, removeCreator, updateCreators, addCreator } = slice.actions
 
-export {  setCreators, removeCreator, updateCreators }
+export {  setCreators, removeCreator, updateCreators, addCreator }
 
 export default slice.reducer
