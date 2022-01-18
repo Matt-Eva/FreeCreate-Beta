@@ -102,7 +102,7 @@ function CreateCreatorProfile() {
             .then(data => {
                 console.log(data)
                 dispatch(addCreator(data))
-                navigate("/")
+                navigate("/creatorprofiles")
             })
         } else{
             alert("You must enter a name.")
