@@ -8,22 +8,27 @@ import {useState, useRef} from "react"
 import {useNavigate, Link} from "react-router-dom"
 
 function CreateArtForm({contentType, creator}) {
-    const [creationThumbnail, setCreatorThumbnail] = useState(null)
+    const [creationThumbnail, setCreationThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [artFile, setArtFile] = useState(null)
     const [artUrl, setArtUrl] = useState("")
     const [loading, setLoading] = useState(false)
     const [artLoading, setArtLoading] = useState(false)
     const [artDisplay, setArtDisplay] = useState(null)
+    const [title, setTitle] = useState("")
     const thumbRef = useRef()
     const artRef = useRef()
+    const [creationId, setCreationId] = useState(0)
+    const [tag, setTag] = useState("")
+    const [taglinks, setTaglinks] = useState([])
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
         if (thumbnail.name.endsWith(".jpg") || thumbnail.name.endsWith(".jpeg") ){
-            setCreatorThumbnail(thumbnail)
+            setCreationThumbnail(thumbnail)
         } else if (thumbnail.name.endsWith(".png")){
-            setCreatorThumbnail(thumbnail)
+            setCreationThumbnail(thumbnail)
         } else{
             alert("That is not an appropriate image file.")
             thumbRef.current.value=""
@@ -108,12 +113,51 @@ function CreateArtForm({contentType, creator}) {
             })
         } else {
             alert("please select an image")
-            setLoading(false)
+            setArtLoading(false)
         }
     }
 
-    function createArt(){
+    function createArt(e){
+        e.preventDefault()
+        const newArt = {
+            title: title,
+            content: artDisplay,
+            thumbnail: thumbnailDisplay,
+        }
+        console.log(newArt)
+    }
 
+    function submitTag(e){
+        e.preventDefault()
+        for (const taglink of taglinks){
+            if (taglink === tag) {
+                setTag("")
+                return alert("you have already added that tag")
+            }
+        }
+        const newTag = {
+            tag: tag,
+            writing_id: creationId
+        }
+        const configObj = {
+            method: "POST",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(newTag)
+        }
+        fetch("/api/writ_taglinks", configObj)
+        .then(r =>{
+            if (r.ok){
+                r.json().then(data =>{
+                    console.log(data)
+                    setTaglinks([...taglinks, data.tag.tag])
+                    setTag("")
+                })
+            } else {
+                r.json().then(data=>{
+                    console.log(data)
+                })
+            }
+        })
     }
 
     return (
@@ -146,13 +190,23 @@ function CreateArtForm({contentType, creator}) {
                 </Form>}
             </Row>
             <Row>
-            <Form>
+                <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createArt}>
                     <Form.Group>
                         <Form.Label>Title:</Form.Label>
-                        <Form.Control type="text"/>
+                        <Form.Control type="text" value={title}/>
                     </Form.Group>
+                    {title === "" || (artDisplay === null || thumbnailDisplay === null) ? <Button type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
                 </Form>
             </Row>
+            <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
+                <Form.Label>Add Tags:</Form.Label>
+                <Form.Control type="text" value={tag}/>
+                {creationId === 0 ? <Button type="submit" disabled>Add Tag</Button> : <Button type="submit">Add Tag</Button> }
+            </Form>
+            <p>
+                {displayTaglinks}
+            </p>
+            {creationId !== 0 ? <Link to="/"><Button>Finish</Button></Link> : <Link to="/"><Button>Cancel</Button></Link>}
             
         </Container>
     )
