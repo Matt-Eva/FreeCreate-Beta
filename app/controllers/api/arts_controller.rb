@@ -5,6 +5,11 @@ class Api::ArtsController < ApplicationController
         render json: art, status: :ok
     end
 
+    def show
+        art = Art.find(params[:id])
+        render json: art, status: :ok
+    end
+
     def create
         art = Art.create!(art_params)
         render json: art, status: :created

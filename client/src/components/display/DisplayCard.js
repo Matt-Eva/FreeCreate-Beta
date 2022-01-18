@@ -20,6 +20,10 @@ function DisplayCard({creation, displayType}) {
                 <Card.Title>
                     {creation.title}
                 </Card.Title>
+                {displayType === "writing" ? "✒️": null}
+                {displayType === "audio" ? "🔊": null}
+                {displayType === "art" ? "🖌️": null}
+                {displayType === "video" ? "🎥": null}
                 <Link to={`/view/${displayType}/${user.username}/${creator.name}/${title}/${creation.id}`}><Button variant="success">View</Button></Link>
             </Card.Body>
         </Card>
