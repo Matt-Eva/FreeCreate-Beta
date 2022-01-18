@@ -10,6 +10,8 @@ import LoginModal from "./userauth/LoginModal"
 import SignupModal from "./userauth/SignupModal"
 import CreateCreationPage from "./forms/CreateCreationPage"
 import CreateCreatorProfile from "./forms/CreateCreatorProfile"
+import CreatorProfiles from "./profile/CreatorProfiles"
+import EditCreatorProfile from './forms/EditCreatorProfile';
 
 function App() {
 const navigate = useNavigate()
@@ -36,6 +38,8 @@ const dispatch = useDispatch()
       <LoginModal />
       <SignupModal />
       <Routes>
+        <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
+        <Route path="/editcreator" element={<EditCreatorProfile/>}/>
         <Route path="/newcreator" element={<CreateCreatorProfile />} />
         <Route path="/newcreation" element={<CreateCreationPage />}/>
         <Route path="/loggedout" element={<HomepageLoggedOut/>}/>

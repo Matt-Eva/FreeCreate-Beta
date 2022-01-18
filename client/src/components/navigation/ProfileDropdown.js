@@ -21,7 +21,7 @@ const navigate = useNavigate()
             </Dropdown.Toggle>
             <Dropdown.Menu>
                 <Dropdown.Item>View Profile</Dropdown.Item>
-                <Dropdown.Item>Creator Profiles</Dropdown.Item>
+                <Dropdown.Item onClick={() =>navigate("/creatorprofiles")}>Creator Profiles</Dropdown.Item>
                 <Dropdown.Item onClick={() =>{navigate("/newcreator")}}>Add Creator Profile</Dropdown.Item>
                 <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
