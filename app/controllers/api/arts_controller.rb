@@ -2,7 +2,7 @@ class Api::ArtsController < ApplicationController
 
     def index
         art = Art.all.slice(0, 51)
-        render json: art, status: :ok
+        render json: art, include: ['creator', 'creator.user'], status: :ok
     end
 
     def show

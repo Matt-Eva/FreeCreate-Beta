@@ -11,6 +11,7 @@ function DisplayCard({creation, displayType}) {
     console.log("creator", creation.creator)
     const creationTitle = creation.title
     const title = creationTitle.replace(/[.,/#!$?%^&*;:{}=-_`~()]/g, "")
+    const username = creator.user.username
     console.log('title', title)
 
     return (
@@ -24,7 +25,7 @@ function DisplayCard({creation, displayType}) {
                 {displayType === "audio" ? "🔊": null}
                 {displayType === "art" ? "🖌️": null}
                 {displayType === "video" ? "🎥": null}
-                <Link to={`/view/${displayType}/${user.username}/${creator.name}/${title}/${creation.id}`}><Button variant="success">View</Button></Link>
+                <Link to={`/view/${displayType}/${username}/${creator.name}/${title}/${creation.id}`}><Button variant="success">View</Button></Link>
             </Card.Body>
         </Card>
     )

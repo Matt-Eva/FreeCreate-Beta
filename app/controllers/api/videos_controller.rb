@@ -2,7 +2,7 @@ class Api::VideosController < ApplicationController
 
     def index
         videos = Video.all.slice(0, 51)
-        render json: videos, status: :ok
+        render json: videos, include: ['creator', 'creator.user'], status: :ok
     end
     
     def show

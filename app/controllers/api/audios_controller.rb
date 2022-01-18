@@ -3,7 +3,7 @@ class Api::AudiosController < ApplicationController
 
     def index
         audios = Audio.all.slice(0, 51)
-        render json: audios, status: :ok
+        render json: audios, include: ['creator', 'creator.user'], status: :ok
     end
 
     def show

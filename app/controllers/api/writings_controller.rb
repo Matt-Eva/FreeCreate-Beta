@@ -2,7 +2,12 @@ class Api::WritingsController < ApplicationController
     
     def index
         writings = Writing.all.slice(0, 51)
-        render json: writings, status: :ok
+        render json: writings, include: ['creator', 'creator.user'], status: :ok
+    end
+
+    def show
+        writing = Writing.find(params[:id])
+        render json: writing, status: :ok
     end
 
     def create
