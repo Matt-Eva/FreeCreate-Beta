@@ -4,8 +4,9 @@ import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
+import Modal from 'react-bootstrap/Modal'
 import {useSelector, useDispatch} from "react-redux"
-import {updateCreators} from "../userauth/creatorsSlice"
+import {updateCreators, removeCreator} from "../userauth/creatorsSlice"
 import { useState, useRef, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import TopNav from "../navigation/TopNav"
@@ -26,6 +27,7 @@ function EditCreatorProfile() {
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     useEffect(() =>{
         if (editCreator === null){
@@ -127,12 +129,30 @@ function EditCreatorProfile() {
         }
     }
 
+    function deleteCreator(){
+        fetch(`/api/creators/${editCreator.id}`, {method: "DELETE"})
+        .then(()=>{
+            dispatch(removeCreator(editCreator))
+            navigate("/creatorprofiles")
+        })
+    }
+
     if (editCreator === null){
         return <h1>Loading... </h1>
     }
 
     return (
         <Container>
+            <Modal show={showDeleteModal} backdrop="static">
+                <Modal.Header closeButton>
+                    <Modal.Title>Remove Creator Profile?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Removing this creator profile will permanently delete all posts made this creator.</p>
+                    <Button onClick={deleteCreator}>Remove Profile</Button>
+                    <Button onClick={()=>setShowDeleteModal(false)}>Cancel</Button>
+                </Modal.Body>
+            </Modal>
             <Row>
                 <TopNav />
             </Row>
@@ -144,6 +164,9 @@ function EditCreatorProfile() {
                     {loading ? <p>Loading Profile pic...</p> : null}
                     {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
                     {thumbnailDisplay === null ? null : <Button onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
+                </Col>
+                <Col>
+                    <Button onClick={() => setShowDeleteModal(true)}>Delete Creator Profile</Button>
                 </Col>
             </Row>
            <Row>

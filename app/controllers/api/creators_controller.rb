@@ -11,6 +11,12 @@ class Api::CreatorsController < ApplicationController
         render json: creator, status: :accepted
     end
 
+    def destroy
+        creator = Creator.find(params[:id])
+        creator.destroy
+        head :no_content
+    end
+
     private 
 
     def creator_params
