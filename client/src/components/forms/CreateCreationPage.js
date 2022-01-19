@@ -40,7 +40,7 @@ function CreateCreationPage() {
                 <div>
                     <h2>You haven't set up any creator profiles.</h2>
                     <p>You will need to create a creator profile before posting your creations.</p>
-                    <Link to="/newcreator"><Button>Create a Creator Profile</Button></Link>
+                    <Link to="/newcreator"><Button variant="success">Create a Creator Profile</Button></Link>
                 </div>
                 </Row>
             </Container>

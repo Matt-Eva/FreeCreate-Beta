@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from "react-bootstrap/Button"
+import Modal from 'react-bootstrap/Modal'
 import {useSelector} from "react-redux"
 import {useNavigate} from 'react-router-dom'
 import {useEffect, useState} from "react"
@@ -11,6 +12,7 @@ import TopNav from "../navigation/TopNav"
 
 function EditWritingPage() {
     const writing = useSelector(state => state.editCreations.editWriting)
+    const [showDelete, setShowDelete] = useState(false)
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -62,12 +64,30 @@ function EditWritingPage() {
 
     }
 
+    function deleteWriting(){
+        fetch(`/api/writings/${writing.id}`, {method: "DELETE"})
+        .then(() =>{
+            console.log("delete successful")
+            navigate("/mycreations")
+        })
+    }
+
     if (writing === null){
         return <h1>Loading... </h1>
     }
 
     return (
         <Container>
+            <Modal show={showDelete} backdrop="static" onHide={() => setShowDelete(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete {writing.title}?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to delete {writing.title}? Deleting {writing.title} will permanently remove it from FreeCreate.</p>
+                    <Button variant="success" onClick={() => setShowDelete(false)}>Cancel</Button>
+                    <Button variant="success" onClick={deleteWriting}>Delete</Button>
+                </Modal.Body>
+            </Modal>
             <Row>
                 <TopNav />
             </Row>
@@ -78,6 +98,9 @@ function EditWritingPage() {
                 <Col>
                     <Image src={writing.thumbnail} style={{"width": "300px"}}/>
                 </Col> 
+                <Col>
+                    <Button variant="success" onClick={() => setShowDelete(true)}>Delete</Button>
+                </Col>
             </Row>
             <Row>
                 <Form onChange={handleChange} onSubmit={updateWriting}>

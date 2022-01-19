@@ -21,6 +21,12 @@ class Api::WritingsController < ApplicationController
         render json: writing, status: :accepted
     end
 
+    def destroy
+        writing = Writing.find(params[:id])
+        writing.destroy
+        head :no_content
+    end
+
     private
     
     def writing_params
