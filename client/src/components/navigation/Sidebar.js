@@ -1,12 +1,13 @@
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import { Link } from "react-router-dom"
 
 function Sidebar() {
     return (
         <Container>
             <Row>
-                <h2>My Creations</h2>
+                <h2><Link to="/mycreations">My Creations</Link></h2>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>

@@ -13,7 +13,7 @@ function CreatorProfileCard({creator}) {
         <div>
             <h4>{creator.name}</h4>
             {creator.prof_pic !== null ? <img style={{"height" : "100px"}} src={creator.prof_pic} /> : <p>No profile picture</p>}
-            <Link to="/editcreator"><Button onClick={editCreator}>Edit</Button></Link>
+            <Link to="/editcreator"><Button variant="success" onClick={editCreator}>Edit</Button></Link>
         </div>
     )
 }

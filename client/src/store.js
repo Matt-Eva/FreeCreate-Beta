@@ -5,6 +5,7 @@ import displayTypeReducer from "./components/display/displayTypeSlice"
 import queryDisplayReducer from "./components/display/queryDisplaySlice"
 import editCreatorReducer from "./components/forms/editCreatorSlice"
 import creatorsReducer from "./components/userauth/creatorsSlice"
+import myWritingsReducer from "./components/libraries/myWritingsSlice"
 
 const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
         displayType: displayTypeReducer,
         queryDisplay: queryDisplayReducer,
         editCreator: editCreatorReducer,
-        creators: creatorsReducer
+        creators: creatorsReducer,
+        myWritings: myWritingsReducer
     }
 })
 

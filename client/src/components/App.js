@@ -18,6 +18,7 @@ import ViewWrit from "./display/ViewWrit"
 import ViewArt from "./display/ViewArt"
 import ViewAud from "./display/ViewAud"
 import ViewVid from "./display/ViewVid"
+import MyCreations from './libraries/MyCreations';
 
 function App() {
 const navigate = useNavigate()
@@ -49,6 +50,7 @@ const dispatch = useDispatch()
         <Route path="/view/audio/:username/:creatorname/:creationtitle/:id" element={<ViewAud />}/>
         <Route path="/view/art/:username/:creatorname/:creationtitle/:id" element={<ViewArt />}/>
         <Route path="/view/video/:username/:creatorname/:creationtitle/:id" element={<ViewVid />}/>
+        <Route path="/mycreations" element={<MyCreations />}/>
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>
         <Route path="/newcreator" element={<CreateCreatorProfile />} />

@@ -28,7 +28,7 @@ function CreatorProfile() {
             <Row>
                 {creators.length === 0 ? <div>
                     <p>You haven't yet created any creator profiles</p>
-                    <Link to="/newcreator"><Button>Create a Creator Profile</Button></Link>
+                    <Link to="/newcreator"><Button variant="success">Create a Creator Profile</Button></Link>
                     </div> : null}
                 {creatorCards}
             </Row>

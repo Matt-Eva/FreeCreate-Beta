@@ -17,6 +17,16 @@ class Api::CreatorsController < ApplicationController
         head :no_content
     end
 
+    def my_creations
+        creator = Creator.find(params[:id])
+        writings = creator.writings
+        arts = creator.arts
+        videos = creator.videos
+        audios = creators.audios
+        creations = {writings: writings, arts: arts, videos: videos, audios: audios}
+        render json: creations, status: :ok
+    end
+
     private 
 
     def creator_params
