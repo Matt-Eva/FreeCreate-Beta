@@ -25,6 +25,8 @@ function CreateCreatorProfile() {
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [publicId, setPublicId] = useState(null)
+    console.log(publicId)
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -53,11 +55,12 @@ function CreateCreatorProfile() {
             }
             fetch(cloudinaryUrl, configObj)
             .then(r => {
-                console.log(r)
                 if (r.ok){
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        console.log(data)
+                        setPublicId(data.public_id)
                         setThumbnailDisplay(data.secure_url)
                         setLoading(false)
                     })
@@ -71,6 +74,20 @@ function CreateCreatorProfile() {
             alert("please select an image")
             setLoading(false)
         }
+    }
+
+    function removeThumbnail(){
+        const idObj = {
+            public_id: publicId
+        }
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        fetch("/cloudinary/image/destroy", configObj)
+        .then(r => r.json())
+        .then(console.log)
     }
 
 
@@ -121,7 +138,10 @@ function CreateCreatorProfile() {
                 <Col>
                     {loading ? <p>Loading Profile pic...</p> : null}
                     {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
-                    {thumbnailDisplay === null ? null : <Button variant="success" onClick={() => setThumbnailDisplay(null)}>Remove Photo</Button>}
+                    {thumbnailDisplay === null ? null : <Button variant="success" onClick={() => {
+                        removeThumbnail()
+                        // setThumbnailDisplay(null)
+                        }}>Remove Photo</Button>}
                 </Col>
             </Row>
            <Row>
