@@ -7,6 +7,7 @@ import Sidebar from '../navigation/Sidebar'
 import {useSelector, useDispatch} from "react-redux"
 import DisplayAllContainer from '../display/DisplayAllContainer'
 import DisplayTypeContainer from '../display/DisplayTypeContainer'
+import MyCreationsDisplayAllContainer from '../display/MyCreationsDisplayAllContainer'
 import PersonalSearch from '../navigation/PersonalSearch'
 
 function MyCreations() {
@@ -28,7 +29,11 @@ function MyCreations() {
             .then(r => {
                 if (r.ok){
                     r.json().then(data => {
-                        console.log(data)
+                        console.log(data.videos)
+                        setArt(data.arts)
+                        setWriting(data.writing)
+                        setVideo(data.videos)
+                        setAudio(data.audio)
                     })
                 }else{
                     r.json().then(data =>{
@@ -55,8 +60,7 @@ function MyCreations() {
                         {creatorOptions}
                     </select>
                     <PersonalSearch />
-                    <DisplayAllContainer writing={writing} audio={audio} video={video} art={art}/>
-                    <DisplayTypeContainer />
+                    <MyCreationsDisplayAllContainer writing={writing} audio={audio} video={video} art={art} />
                 </Col>
             </Row>
            

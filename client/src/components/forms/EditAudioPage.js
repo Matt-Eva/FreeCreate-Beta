@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function EditVideoForm() {
+function EditAudioPage() {
     return (
         <div>
-            
+            Audio
         </div>
     )
 }
+
+export default EditAudioPage

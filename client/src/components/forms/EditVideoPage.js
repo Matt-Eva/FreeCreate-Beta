@@ -1,11 +1,11 @@
 import React from 'react'
 
-function EditAudioForm() {
+function EditVideoPage() {
     return (
         <div>
-            
+            Video
         </div>
     )
 }
 
-export default EditAudioForm
+export default EditVideoPage

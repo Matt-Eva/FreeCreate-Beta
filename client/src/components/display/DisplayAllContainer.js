@@ -9,6 +9,8 @@ function DisplayAllContainer({writing, audio, art, video}) {
     const audDisplayCards = audio?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"audio"}/>)
     const artDisplayCards = art?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"art"}/>)
     const vidDisplayCards = video?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"video"}/>)
+    console.log(writDisplayCards)
+    console.log(vidDisplayCards)
     return (
         <Container>
             <Row>

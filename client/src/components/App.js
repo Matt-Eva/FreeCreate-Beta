@@ -18,6 +18,10 @@ import ViewWrit from "./display/ViewWrit"
 import ViewArt from "./display/ViewArt"
 import ViewAud from "./display/ViewAud"
 import ViewVid from "./display/ViewVid"
+import EditArtPage from "./forms/EditArtPage"
+import EditVideoPage from './forms/EditVideoPage';
+import EditWritingPage from './forms/EditWritingPage';
+import EditAudioPage from './forms/EditAudioPage';
 import MyCreations from './libraries/MyCreations';
 
 function App() {
@@ -46,10 +50,14 @@ const dispatch = useDispatch()
       <LoginModal />
       <SignupModal />
       <Routes>
-        <Route path="/view/writing/:username/:creatorname/:creationtitle/:id" element={<ViewWrit />}/>
-        <Route path="/view/audio/:username/:creatorname/:creationtitle/:id" element={<ViewAud />}/>
-        <Route path="/view/art/:username/:creatorname/:creationtitle/:id" element={<ViewArt />}/>
-        <Route path="/view/video/:username/:creatorname/:creationtitle/:id" element={<ViewVid />}/>
+        <Route path="/view/writing/:creationtitle/:id" element={<ViewWrit />}/>
+        <Route path="/view/audio/:creationtitle/:id" element={<ViewAud />}/>
+        <Route path="/view/art/:creationtitle/:id" element={<ViewArt />}/>
+        <Route path="/view/video/:creationtitle/:id" element={<ViewVid />}/>
+        <Route path="/edit/writing/:creationtitle/:id" element={<EditWritingPage />}/>
+        <Route path="/edit/audio/:creationtitle/:id" element={<EditAudioPage />}/>
+        <Route path="/edit/art/:creationtitle/:id" element={<EditArtPage />}/>
+        <Route path="/edit/video/:creationtitle/:id" element={<EditVideoPage />}/>
         <Route path="/mycreations" element={<MyCreations />}/>
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>

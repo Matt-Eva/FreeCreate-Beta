@@ -1,11 +1,11 @@
 import React from 'react'
 
-function EditWritingForm() {
+function EditArtPage() {
     return (
         <div>
-            
+            Art
         </div>
     )
 }
 
-export default EditWritingForm
+export default EditArtPage

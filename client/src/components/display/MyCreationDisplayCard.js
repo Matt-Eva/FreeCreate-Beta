@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom"
 import {useSelector} from "react-redux"
 
-function DisplayCard({creation, displayType}) {
+function MyCreationDisplayCard({creation, displayType}) {
     const {thumbnail} = creation
     const creationTitle = creation.title
     const title = creationTitle.replace(/[.,/#!$?%^&*;:{}=-_`~()]/g, "")
@@ -21,10 +21,11 @@ function DisplayCard({creation, displayType}) {
                 {displayType === "audio" ? "🔊": null}
                 {displayType === "art" ? "🖌️": null}
                 {displayType === "video" ? "🎥": null}
+                <Link to={`/edit/${displayType}/${title}/${creation.id}`}><Button variant="success">Edit</Button></Link>
                 <Link to={`/view/${displayType}/${title}/${creation.id}`}><Button variant="success">View</Button></Link>
             </Card.Body>
         </Card>
     )
 }
 
-export default DisplayCard
+export default MyCreationDisplayCard
