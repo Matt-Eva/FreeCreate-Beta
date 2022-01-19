@@ -21,6 +21,12 @@ class Api::ArtsController < ApplicationController
         render json: art, status: :accepted
     end
 
+    def destroy
+        art = Art.find(params[:id])
+        art.destroy
+        head :no_content
+    end
+
     private
     
     def art_params
