@@ -16,6 +16,18 @@ class Api::AudiosController < ApplicationController
         render json: audio, status: :created
     end
 
+    def update
+        audio = Audio.find(params[:id])
+        audio.update!(audio_params)
+        render json: audio, status: :accepted
+    end
+
+    def destroy
+        audio = Audio.find(params[:id])
+        audio.destroy
+        head :no_content
+    end
+
     private
     
     def audio_params

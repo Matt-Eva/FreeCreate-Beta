@@ -103,7 +103,7 @@ function EditVideo() {
                 </Col>
             </Row>
             <Row>
-           <video><source src={video.content} type="video/mp4"/></video>
+           <video controls style={{"width": "500px"}}><source src={video.content} type="video/mp4"/></video>
             </Row>
             <Row>
                 <Form onChange={handleChange} onSubmit={updateVideo}>
