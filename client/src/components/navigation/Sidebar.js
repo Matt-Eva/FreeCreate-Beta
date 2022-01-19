@@ -7,7 +7,7 @@ function Sidebar() {
     return (
         <Container>
             <Row>
-                <h2><Link to="/mycreations">My Creations</Link></h2>
+                <h4><Link to="/mycreations">My Creations</Link></h4>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -16,7 +16,7 @@ function Sidebar() {
                 </ul>
             </Row>
             <Row>
-                <h2>Subscriptions</h2>
+                <h4>Subscriptions</h4>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -25,7 +25,7 @@ function Sidebar() {
                 </ul>
             </Row>
             <Row>
-                <h2>My List</h2>
+                <h4>My List</h4>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -34,7 +34,7 @@ function Sidebar() {
                 </ul>
             </Row>
             <Row>
-                <h2>My Library</h2>
+                <h4>My Library</h4>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -43,7 +43,7 @@ function Sidebar() {
                 </ul>
             </Row>
             <Row>
-                <h2>Following</h2>
+                <h4>Following</h4>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -52,7 +52,7 @@ function Sidebar() {
                 </ul>
             </Row>
             <Row>
-                <h2>Liked Creations</h2>
+                <h4>Liked Creations</h4>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>

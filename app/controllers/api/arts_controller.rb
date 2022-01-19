@@ -15,6 +15,12 @@ class Api::ArtsController < ApplicationController
         render json: art, status: :created
     end
 
+    def update
+        art = Art.find(params[:id])
+        art.update!(art_params)
+        render json: art, status: :accepted
+    end
+
     private
     
     def art_params
