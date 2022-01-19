@@ -6,15 +6,38 @@ import TopNav from '../navigation/TopNav'
 import Sidebar from '../navigation/Sidebar'
 import {useSelector, useDispatch} from "react-redux"
 import DisplayAllContainer from '../display/DisplayAllContainer'
+import DisplayTypeContainer from '../display/DisplayTypeContainer'
 import PersonalSearch from '../navigation/PersonalSearch'
 
 function MyCreations() {
     const user = useSelector(state => state.user.user)
-    const creator = useState(null)
-    const writings = useState([])
-    const audios = useState([])
+    const creators = useSelector(state => state.creators.creators)
+    const [creatorId, setCreatorId] = useState("")
+    const [writing, setWriting] = useState([])
+    const [audio, setAudio] = useState([])
+    const [video, setVideo] = useState([])
+    const [art, setArt] = useState([])
 
+    console.log(creatorId)
 
+    const creatorOptions = creators?.map(creator => <option key={creator.id} value={creator.id}>{creator.name}</option>)
+
+    useEffect(() => {
+        if (creatorId !== ""){
+            fetch(`/api/mycreations/${creatorId}`)
+            .then(r => {
+                if (r.ok){
+                    r.json().then(data => {
+                        console.log(data)
+                    })
+                }else{
+                    r.json().then(data =>{
+                        console.log(data)
+                    })
+                }
+            })
+        }
+    }, [creatorId])
 
     return (
         <Container>
@@ -27,8 +50,13 @@ function MyCreations() {
                 </Col>
                 <Col>
                     <h1>My Creations</h1>
+                    <select onChange={(e) => setCreatorId(e.target.value)}>
+                        <option value="">Select Creator Profile</option>
+                        {creatorOptions}
+                    </select>
                     <PersonalSearch />
-                    <DisplayAllContainer />
+                    <DisplayAllContainer writing={writing} audio={audio} video={video} art={art}/>
+                    <DisplayTypeContainer />
                 </Col>
             </Row>
            

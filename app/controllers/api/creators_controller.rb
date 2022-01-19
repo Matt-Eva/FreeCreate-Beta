@@ -22,7 +22,7 @@ class Api::CreatorsController < ApplicationController
         writings = creator.writings
         arts = creator.arts
         videos = creator.videos
-        audios = creators.audios
+        audios = creator.audios
         creations = {writings: writings, arts: arts, videos: videos, audios: audios}
         render json: creations, status: :ok
     end
