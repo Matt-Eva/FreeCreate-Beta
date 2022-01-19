@@ -15,6 +15,18 @@ class Api::VideosController < ApplicationController
         render json: video, status: :created
     end
 
+    def update
+        video = Video.find(params[:id])
+        video.update!(video_params)
+        render json: video, status: :accepted
+    end
+
+    def destroy
+        video = Video.find(params[:id])
+        video.destroy
+        head :no_content
+    end
+
     private
     
     def video_params
