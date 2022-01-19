@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/row'
-import Col from 'react-bootstrap/col'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import TopNav from '../navigation/TopNav'
 import Sidebar from '../navigation/Sidebar'
 import {useSelector, useDispatch} from "react-redux"
