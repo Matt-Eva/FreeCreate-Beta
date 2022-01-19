@@ -31,9 +31,9 @@ function MyCreations() {
                     r.json().then(data => {
                         console.log(data.videos)
                         setArt(data.arts)
-                        setWriting(data.writing)
+                        setWriting(data.writings)
                         setVideo(data.videos)
-                        setAudio(data.audio)
+                        setAudio(data.audios)
                     })
                 }else{
                     r.json().then(data =>{

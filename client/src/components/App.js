@@ -54,10 +54,10 @@ const dispatch = useDispatch()
         <Route path="/view/audio/:creationtitle/:id" element={<ViewAud />}/>
         <Route path="/view/art/:creationtitle/:id" element={<ViewArt />}/>
         <Route path="/view/video/:creationtitle/:id" element={<ViewVid />}/>
-        <Route path="/edit/writing/:creationtitle/:id" element={<EditWritingPage />}/>
-        <Route path="/edit/audio/:creationtitle/:id" element={<EditAudioPage />}/>
-        <Route path="/edit/art/:creationtitle/:id" element={<EditArtPage />}/>
-        <Route path="/edit/video/:creationtitle/:id" element={<EditVideoPage />}/>
+        <Route path="/edit/writing" element={<EditWritingPage />}/>
+        <Route path="/edit/audio" element={<EditAudioPage />}/>
+        <Route path="/edit/art" element={<EditArtPage />}/>
+        <Route path="/edit/video" element={<EditVideoPage />}/>
         <Route path="/mycreations" element={<MyCreations />}/>
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>
