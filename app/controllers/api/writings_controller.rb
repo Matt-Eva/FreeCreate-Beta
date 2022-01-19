@@ -15,6 +15,12 @@ class Api::WritingsController < ApplicationController
         render json: writing, status: :created
     end
 
+    def update
+        writing = Writing.find(params[:id])
+        writing.update!(writing_params)
+        render json: writing, status: :accepted
+    end
+
     private
     
     def writing_params

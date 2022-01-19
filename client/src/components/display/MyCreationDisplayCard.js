@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card"
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
+import {setEditWriting, setEditAudio, setEditArt, setEditVideo} from "../forms/editCreationsSlice"
 
 function MyCreationDisplayCard({creation, displayType}) {
     const {thumbnail} = creation
@@ -12,7 +13,15 @@ function MyCreationDisplayCard({creation, displayType}) {
 
 
     function editCreation(){
-
+        if(displayType === "writing"){
+            dispatch(setEditWriting(creation))
+        } else if(displayType === "audio"){
+            dispatch(setEditAudio(creation))
+        } else if(displayType === "video"){
+            dispatch(setEditVideo(creation))
+        } else if(displayType === "art"){
+            dispatch(setEditArt(creation))
+        }
     }
 
     return (
