@@ -87,7 +87,9 @@ function CreateCreatorProfile() {
         }
         fetch("/cloudinary/image/destroy", configObj)
         .then(r => r.json())
-        .then(console.log)
+        .then(data => {
+            console.log(data)
+        })
     }
 
 
@@ -140,7 +142,7 @@ function CreateCreatorProfile() {
                     {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
                     {thumbnailDisplay === null ? null : <Button variant="success" onClick={() => {
                         removeThumbnail()
-                        // setThumbnailDisplay(null)
+                        setThumbnailDisplay(null)
                         }}>Remove Photo</Button>}
                 </Col>
             </Row>
