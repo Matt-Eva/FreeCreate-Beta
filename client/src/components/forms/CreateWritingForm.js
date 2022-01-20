@@ -17,7 +17,9 @@ function CreateWritingForm({creator}) {
     const ref = useRef()
     const [creationThumbnail, setCreationThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
+    const [deletingThumbnail, setDeletingThumbnail] = useState(null)
     const [creationId, setCreationId] = useState(0)
+    const [publicId, setPublicId] = useState(null)
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
     const [loading, setLoading] = useState(false)
@@ -61,6 +63,7 @@ function CreateWritingForm({creator}) {
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        setPublicId(data.public_id)
                         setThumbnailDisplay(data.secure_url)
                         setLoading(false)
                     })
@@ -74,6 +77,25 @@ function CreateWritingForm({creator}) {
             alert("please select an image")
             setLoading(false)
         }
+    }
+
+    function deleteThumbnail(){
+        const idObj = {
+            public_id: publicId
+        }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        setDeletingThumbnail(true)
+        fetch(`/cloudinary/thumbnail/destroy`, configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingThumbnail(false)
+            setThumbnailDisplay(null)
+        })
     }
 
     function handleFormChange(e){
@@ -161,7 +183,9 @@ function CreateWritingForm({creator}) {
                 </Col>
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
+                    {deletingThumbnail ? <p>Deleting thumbnail...</p> : null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Form onChange={handleFormChange} onSubmit={createWriting}>
