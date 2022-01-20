@@ -15,13 +15,18 @@ function CreateAudioForm({contentType, creator}) {
     const [audioLoading, setAudioLoading] = useState(false)
     const [audioDisplay, setAudioDisplay] = useState(null)
     const [deletingThumbnail, setDeletingThumbnail] = useState(null)
+    const [deletingAudio, setDeletingAudio] = useState(null)
     const [publicId, setPublicId] = useState(null)
+    const [publicAudioId, setPublicAudioId] = useState(null)
     const [title, setTitle] = useState("")
     const thumbRef = useRef()
     const audioRef = useRef()
     const [creationId, setCreationId] = useState(0)
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
+
+    console.log(publicAudioId)
+
     const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
 
     function picChangeHandler(e){
@@ -121,6 +126,7 @@ function CreateAudioForm({contentType, creator}) {
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        setPublicAudioId(data.public_id)
                         setAudioDisplay(data.secure_url)
                         setAudioLoading(false)
                     })
@@ -134,6 +140,25 @@ function CreateAudioForm({contentType, creator}) {
             alert("please select an image")
             setAudioLoading(false)
         }
+    }
+
+    function removeAudio(){
+        const audId={
+            public_id: publicAudioId
+        }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(audId)
+        }
+        setDeletingAudio(true)
+        fetch("/cloudinary/audio/destroy", configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingAudio(false)
+            setAudioDisplay(null)
+        })
     }
 
     function createAudio(e){
@@ -220,13 +245,15 @@ function CreateAudioForm({contentType, creator}) {
             </Row>
             <Row>
                 {audioLoading ? <p>Loading audio...</p> : null}
+                {deletingAudio ? <p>Removing audio...</p> : null}
                 {audioDisplay ? <audio controls src={audioDisplay}>Your browser does not support this element</audio> : <Form onSubmit={uploadAudio}>
                     <Form.Group>
-                        <Form.Label>Content:</Form.Label>
+                        <Form.Label>Audio:</Form.Label>
                         <Form.Control type="file" ref={audioRef} onChange={audioChangeHandler}/>
                         <Button variant="success" type="submit">Upload Audio</Button>
                     </Form.Group>
                 </Form>}
+                {audioDisplay ? <Button variant="success" onClick={removeAudio}>Remove Audio</Button> : null}
             </Row>
             <Row>
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createAudio}>
