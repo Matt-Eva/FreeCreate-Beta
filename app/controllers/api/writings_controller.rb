@@ -27,6 +27,22 @@ class Api::WritingsController < ApplicationController
         head :no_content
     end
 
+    def search_query
+        writings = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
+        render json: writings, status: :ok
+    end
+
+    def filter_query
+        tag = Tag.find_by(tag: params[:tag])
+        if !tag
+            render json: {message: "That filter produced no results"}, status: :not_found
+        else
+            writings = tag.writings.sort_by{|a| -(a.ranking)}.slice(0, 51)
+            render json: writings, status: :ok
+        end
+
+    end
+
     private
     
     def writing_params

@@ -13,4 +13,17 @@ class Writing < ApplicationRecord
 
   has_many :writ_taglinks, dependent: :destroy
   has_many :tags, through: :writ_taglinks
+
+  def ranking
+    likes = self.writ_likes.length
+    libs = self.writ_lib_items.length
+    queues = self.writ_list_items.length
+
+    rank = queues + (likes * 5) + (libs * 10)
+    rank
+  end
+
+  def self.order_all
+    self.all.sort_by{|a| -(a.ranking)}.slice(0, 51)
+  end
 end

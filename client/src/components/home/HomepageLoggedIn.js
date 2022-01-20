@@ -18,7 +18,7 @@ function HomepageLoggedIn() {
     const queryDisplayVideo = useSelector(state => state.queryDisplay.queryDisplayVideo)
     const dispatch = useDispatch()
 
-    console.log(queryDisplayWriting, queryDisplayArt, queryDisplayAudio, queryDisplayVideo)
+    // console.log(queryDisplayWriting, queryDisplayArt, queryDisplayAudio, queryDisplayVideo)
 
     let singleTypeDisplay = []
     if (displayType === "writing"){
@@ -111,15 +111,15 @@ function HomepageLoggedIn() {
       }
 
     return (
-        <Container>
+        <Container style={{"margin": "0px"}}>
             <Row>
                 <TopNav />
             </Row>
             <Row>
-                <Col xs={3}>
+                <Col xs={2}>
                     <Sidebar />
                 </Col>
-                <Col xs={6} sm={6}>
+                <Col xs={8} sm={8}>
                     <Row>
                         <BrowseSearch displayType={displayType}/>
                     </Row>

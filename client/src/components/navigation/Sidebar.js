@@ -25,40 +25,40 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                <h4>My List</h4>
-                <ul>
+                <h4>My Queue</h4>
+                {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
                     <li>Art</li>
                     <li>Video</li>
-                </ul>
+                </ul> */}
             </Row>
             <Row>
                 <h4>My Library</h4>
-                <ul>
+                {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
                     <li>Art</li>
                     <li>Video</li>
-                </ul>
+                </ul> */}
             </Row>
             <Row>
                 <h4>Following</h4>
-                <ul>
+                {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
                     <li>Art</li>
                     <li>Video</li>
-                </ul>
+                </ul> */}
             </Row>
             <Row>
                 <h4>Liked Creations</h4>
-                <ul>
+                {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
                     <li>Art</li>
                     <li>Video</li>
-                </ul>
+                </ul> */}
             </Row>
         </Container>
     )

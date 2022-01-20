@@ -7,6 +7,14 @@ Rails.application.routes.draw do
     get "/me", to: "users#show"
     post "/signup", to: "users#create"
     get "/mycreations/:id", to: "creators#my_creations"
+    post "/search/writings", to: "writings#search_query"
+    post "/search/audios", to: "audios#search_query"
+    post "/search/arts", to: "arts#search_query"
+    post "/search/videos", to: "videos#search_query"
+    post "/filter/videos", to: "videos#filter_query"
+    post "/filter/arts", to: "arts#filter_query"
+    post "/filter/writings", to: "writings#filter_query"
+    post "/filter/audios", to: "audios#filter_query"
     resources :creators
     resources :writings
     resources :arts
