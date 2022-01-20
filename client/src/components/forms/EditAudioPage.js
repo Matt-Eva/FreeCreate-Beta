@@ -79,10 +79,10 @@ function EditAudio() {
         <Container>
             <Modal show={showDelete} backdrop="static" onHide={() => setShowDelete(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete {audio.title}?</Modal.Title>
+                    <Modal.Title>Delete "{audio.title}"?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Are you sure you want to delete {audio.title}? Deleting {audio.title} will permanently remove it from FreeCreate.</p>
+                    <p>Are you sure you want to delete "{audio.title}"? Deleting "{audio.title}" will permanently remove it from FreeCreate.</p>
                     <Button variant="success" onClick={() => setShowDelete(false)}>Cancel</Button>
                     <Button variant="success" onClick={deleteAudio}>Delete</Button>
                 </Modal.Body>

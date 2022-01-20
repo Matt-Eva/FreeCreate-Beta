@@ -8,14 +8,14 @@ function Sidebar() {
         <Container>
             <Row>
                 <h4><Link to="/mycreations">My Creations</Link></h4>
-                <ul>
+                {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
                     <li>Art</li>
                     <li>Video</li>
-                </ul>
+                </ul> */}
             </Row>
-            <Row>
+            {/* <Row>
                 <h4>Subscriptions</h4>
                 <ul>
                     <li>Writing</li>
@@ -23,7 +23,7 @@ function Sidebar() {
                     <li>Art</li>
                     <li>Video</li>
                 </ul>
-            </Row>
+            </Row> */}
             <Row>
                 <h4>My List</h4>
                 <ul>

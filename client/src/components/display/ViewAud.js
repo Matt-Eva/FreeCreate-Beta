@@ -31,6 +31,9 @@ function ViewAud() {
             <Row>
                 <TopNav />
             </Row>
+            <Row>
+                <Image src={audio.thumbnail} style={{"width": "300px"}}/>
+            </Row>
             <Row className="justify-content-center text-center">
                 <h1>{audio.title}</h1>
                 <audio controls src={audio.content} style={{"width": "800px"}}>Your browser does not support this audio player</audio>
