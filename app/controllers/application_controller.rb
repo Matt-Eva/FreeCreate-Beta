@@ -4,6 +4,14 @@ class ApplicationController < ActionController::API
 rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
+def search_all
+    writings = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
+end
+
+def filter_all
+    
+end
+
 private
 
 def authorize

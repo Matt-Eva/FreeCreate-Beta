@@ -13,26 +13,44 @@ function BrowseSearch({displayType}) {
     
     function searchQuery(e){
         e.preventDefault()
+        const searchObj ={
+            search: search
+        }
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(searchObj)
+        }
         if (displayType === "writing"){
-            const searchObj ={
-                search: search
-            }
-            const configObj = {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(searchObj)
-            }
             fetch("/api/search/writings", configObj)
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setQueryDisplayWriting(data))
+                setSearch("")
+            })
+        }
+    }
+
+    function filterQuery(e){
+        e.preventDefault()
+        setSearch("")
+        const filterObj ={
+            tag: tag
+        }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(filterObj)
+        }
+        if (displayType === "writing"){
+            fetch("/api/filter/writings", configObj)
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
                 dispatch(setQueryDisplayWriting(data))
             })
         }
-    }
-
-    function filterQuery(){
-
     }
 
     return (
@@ -44,7 +62,7 @@ function BrowseSearch({displayType}) {
                         <Button variant="success">Search</Button>
                     </Form.Group>
                 </Form>
-                <Form onChange={(e) => setTag(e.target.value)}>
+                <Form onChange={(e) => setTag(e.target.value)} onSubmit={filterQuery}>
                     <Form.Group>
                         <Form.Control type="text" placeholder={`Filter ${displayType} by tag...`}/>
                         <Button variant="success">Filter</Button>
