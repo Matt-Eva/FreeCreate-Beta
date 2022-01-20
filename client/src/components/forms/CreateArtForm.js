@@ -22,7 +22,7 @@ function CreateArtForm({contentType, creator}) {
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
     const [deletingThumbnail, setDeletingThumbnail] = useState(null)
-    const [deletingVideo, setDeletingVideo] = useState(null)
+    const [deletingArt, setDeletingArt] = useState(false)
     const [publicThumbnailId, setPublicThumbnailId] = useState(null)
     const [publicArtId, setPublicArtId] = useState(null)
 
@@ -131,6 +131,7 @@ function CreateArtForm({contentType, creator}) {
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        setPublicArtId(data.public_id)
                         setArtDisplay(data.secure_url)
                         setArtLoading(false)
                     })
@@ -144,6 +145,25 @@ function CreateArtForm({contentType, creator}) {
             alert("please select an image")
             setArtLoading(false)
         }
+    }
+
+    function deleteArt(){
+        const idObj = {
+            public_id: publicArtId
+        }
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        setDeletingArt(true)
+        fetch("/cloudinary/art/destroy", configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingArt(false)
+            setArtDisplay(null)
+        })
     }
 
     function createArt(e){
@@ -224,11 +244,12 @@ function CreateArtForm({contentType, creator}) {
                     {loading ? <p>Loading thumbnail...</p> : null}
                     {deletingThumbnail ? <p>Removing thumbnail...</p> : null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
-                    {thumbnailDisplay ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
+                    {thumbnailDisplay && creationId === 0 ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Row>
                 {artLoading ? <p>Loading image...</p> : null}
+                {deletingArt ? <p>Deleting art...</p> : null}
                 {artDisplay ? <Image src={artDisplay} style={{"height": "300px", "width": "300px"}}/> : <Form onSubmit={uploadArt}>
                     <Form.Group>
                         <Form.Label>Content:</Form.Label>
@@ -236,6 +257,7 @@ function CreateArtForm({contentType, creator}) {
                         <Button variant="success" type="submit">Upload Image</Button>
                     </Form.Group>
                 </Form>}
+                {artDisplay && creationId === 0 ? <Button variant="success" onClick={deleteArt}>Remove Art</Button> : null}
                 
             </Row>
             <Row>

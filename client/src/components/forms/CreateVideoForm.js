@@ -237,7 +237,7 @@ function CreateVideoForm({contentType, creator}) {
                     {loading ? <p>Loading thumbnail...</p> : null}
                     {deletingThumbnail ? <p>Removing thumbnail...</p>: null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
-                    {thumbnailDisplay ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
+                    {thumbnailDisplay && creationId === 0 ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Row>
@@ -250,7 +250,7 @@ function CreateVideoForm({contentType, creator}) {
                         <Button variant="success" type="submit">Upload Video</Button>
                     </Form.Group>
                 </Form>}
-                {videoDisplay ? <Button variant="success" onClick={deleteVideo}>Remove Video</Button>: null}
+                {videoDisplay && creationId === 0 ? <Button variant="success" onClick={deleteVideo}>Remove Video</Button>: null}
             </Row>
             <Row>
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createVideo}>
