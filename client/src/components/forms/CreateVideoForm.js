@@ -125,6 +125,7 @@ function CreateVideoForm({contentType, creator}) {
                     .catch(error => console.log(error))
                     .then(data =>{
                         setVideoDisplay(data.secure_url)
+                        setPublicVideoId(data.public_id)
                         setVideoLoading(false)
                     })
                 } else{
@@ -137,6 +138,25 @@ function CreateVideoForm({contentType, creator}) {
             alert("please select an image")
             setVideoLoading(false)
         }
+    }
+
+    function deleteVideo(){
+        const idObj={
+            public_id: publicVideoId
+        }
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        setDeletingVideo(true)
+        fetch("/cloudinary/video/destroy", configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingVideo(false)
+            setVideoDisplay(null)
+        })
     }
 
     function createVideo(e){
@@ -222,6 +242,7 @@ function CreateVideoForm({contentType, creator}) {
             </Row>
             <Row>
                 {videoLoading ? <p>Loading video...</p> : null}
+                {deletingVideo ? <p>Removing video...</p> : null}
                 {videoDisplay ? <video controls style={{"width": "300px"}}><source src={videoDisplay} type="video/mp4"/></video> : <Form onSubmit={uploadVideo}>
                     <Form.Group>
                         <Form.Label>Content:</Form.Label>
@@ -229,6 +250,7 @@ function CreateVideoForm({contentType, creator}) {
                         <Button variant="success" type="submit">Upload Video</Button>
                     </Form.Group>
                 </Form>}
+                {videoDisplay ? <Button variant="success" onClick={deleteVideo}>Remove Video</Button>: null}
             </Row>
             <Row>
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createVideo}>
