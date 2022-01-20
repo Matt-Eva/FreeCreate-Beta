@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_195020) do
+ActiveRecord::Schema.define(version: 2022_01_20_185808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2022_01_12_195020) do
     t.integer "length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "public_thumbnail_id"
+    t.string "public_id"
     t.index ["creator_id"], name: "index_arts_on_creator_id"
   end
 
@@ -152,6 +154,8 @@ ActiveRecord::Schema.define(version: 2022_01_12_195020) do
     t.integer "length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "public_thumbnail_id"
+    t.string "public_id"
     t.index ["creator_id"], name: "index_audios_on_creator_id"
   end
 
@@ -175,6 +179,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_195020) do
     t.boolean "is_video"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "public_prof_pic_id"
     t.index ["user_id"], name: "index_creators_on_user_id"
   end
 
@@ -299,6 +304,8 @@ ActiveRecord::Schema.define(version: 2022_01_12_195020) do
     t.integer "length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "public_thumbnail_id"
+    t.string "public_id"
     t.index ["creator_id"], name: "index_videos_on_creator_id"
   end
 
@@ -369,6 +376,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_195020) do
     t.integer "length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "public_thumbnail_id"
     t.index ["creator_id"], name: "index_writings_on_creator_id"
   end
 

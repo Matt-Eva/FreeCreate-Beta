@@ -198,7 +198,7 @@ function CreateWritingForm({creator}) {
                     {creationId === 0 ? <Form.Control as="textarea" name="content" value={uploadData.content}/> :
                      <Form.Control as="textarea" name="content" value={uploadData.content} disabled/> } 
                 </Form.Group>
-                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === null || creationId !== 0) ? <Button variant="success" type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                {(uploadData.title === "" || uploadData.content === "") || (thumbnailDisplay === null || creationId !== 0) ? <Button variant="success" type="submit" disabled>Create</Button> : <Button variant="success" type="submit">Create</Button>}
             </Form>
             <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
                 <Form.Label>Add Tags:</Form.Label>

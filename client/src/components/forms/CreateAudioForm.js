@@ -167,7 +167,7 @@ function CreateAudioForm({contentType, creator}) {
             title: title,
             content: audioDisplay,
             thumbnail: thumbnailDisplay,
-            creator_id: creator.id
+            creator_id: creator.id 
         }
         const configObj = {
             method: "POST",
