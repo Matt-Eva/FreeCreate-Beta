@@ -18,15 +18,14 @@ function HomepageLoggedOut(){
     const queryDisplayVideo = useSelector(state => state.queryDisplay.queryDisplayVideo)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    console.log(user)
 
     useEffect(() =>{
         if (user !== null){
             navigate("/")
         }
-    }, [])
+    }, [user])
 
-
-    console.log(queryDisplayWriting, queryDisplayArt, queryDisplayAudio, queryDisplayVideo)
 
     let singleTypeDisplay = []
     if (displayType === "writing"){

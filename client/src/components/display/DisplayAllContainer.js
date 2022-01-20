@@ -4,13 +4,12 @@ import Row from "react-bootstrap/Row"
 import DisplayCard from "./DisplayCard"
 
 function DisplayAllContainer({writing, audio, art, video}) {
-    // console.log(writing, audio, art, video)
+
     const writDisplayCards = writing?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"writing"}/>)
     const audDisplayCards = audio?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"audio"}/>)
     const artDisplayCards = art?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"art"}/>)
     const vidDisplayCards = video?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"video"}/>)
-    console.log(writDisplayCards)
-    console.log(vidDisplayCards)
+    
     return (
         <Container>
             <Row>
