@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "/cloudinary/thumbnail/destroy", to: "assets#destroy_thumbnail"
   post "/cloudinary/audio/destroy", to: "assets#destroy_audio"
+  post "/cloudinary/video/destroy", to: "assets#destroy_video"
   delete "/logout", to: "sessions#destroy"
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

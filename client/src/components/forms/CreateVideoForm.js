@@ -20,6 +20,11 @@ function CreateVideoForm({contentType, creator}) {
     const [creationId, setCreationId] = useState(0)
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
+    const [deletingThumbnail, setDeletingThumbnail] = useState(null)
+    const [deletingVideo, setDeletingVideo] = useState(null)
+    const [publicThumbnailId, setPublicThumbnailId] = useState(null)
+    const [publicVideoId, setPublicVideoId] = useState(null)
+
     const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
 
     function picChangeHandler(e){
@@ -54,6 +59,7 @@ function CreateVideoForm({contentType, creator}) {
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        setPublicThumbnailId(data.public_id)
                         setThumbnailDisplay(data.secure_url)
                         setLoading(false)
                     })
@@ -67,6 +73,25 @@ function CreateVideoForm({contentType, creator}) {
             alert("please select an image")
             setLoading(false)
         }
+    }
+
+    function deleteThumbnail(){
+        const idObj = {
+            public_id: publicThumbnailId
+        }
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        setDeletingThumbnail(true)
+        fetch('/cloudinary/thumbnail/destroy', configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingThumbnail(false)
+            setThumbnailDisplay(null)
+        })
     }
 
     function videoChangeHandler(e){
@@ -190,7 +215,9 @@ function CreateVideoForm({contentType, creator}) {
                 </Col>
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
+                    {deletingThumbnail ? <p>Removing thumbnail...</p>: null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Row>

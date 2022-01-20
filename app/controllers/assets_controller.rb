@@ -23,4 +23,15 @@ class AssetsController < ApplicationController
         render json: {message: "Id destroyed"}, status: :ok
     end
 
+    def destroy_video
+        public_id = params[:public_id]
+        Cloudinary::Uploader.destroy(public_id, options = {
+            cloud_name: ENV["CLOUD_NAME"],
+            api_key: ENV["API_KEY"],
+            api_secret: ENV["API_SECRET"],
+            resource_type: 'video'
+        })
+        render json: {message: "Id destroyed"}, status: :ok
+    end
+
 end
