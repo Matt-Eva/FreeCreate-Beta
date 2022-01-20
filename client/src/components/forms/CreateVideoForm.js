@@ -245,7 +245,7 @@ function CreateVideoForm({contentType, creator}) {
                 {deletingVideo ? <p>Removing video...</p> : null}
                 {videoDisplay ? <video controls style={{"width": "300px"}}><source src={videoDisplay} type="video/mp4"/></video> : <Form onSubmit={uploadVideo}>
                     <Form.Group>
-                        <Form.Label>Content:</Form.Label>
+                        <Form.Label>Video:</Form.Label>
                         <Form.Control type="file" ref={videoRef} onChange={videoChangeHandler}/>
                         <Button variant="success" type="submit">Upload Video</Button>
                     </Form.Group>

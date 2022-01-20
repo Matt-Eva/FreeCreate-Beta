@@ -21,7 +21,16 @@ function CreateArtForm({contentType, creator}) {
     const [creationId, setCreationId] = useState(0)
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
+    const [deletingThumbnail, setDeletingThumbnail] = useState(null)
+    const [deletingVideo, setDeletingVideo] = useState(null)
+    const [publicThumbnailId, setPublicThumbnailId] = useState(null)
+    const [publicArtId, setPublicArtId] = useState(null)
+
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink} onClick={deleteTagLink}> {taglink} </span>)
+
+    function deleteTagLink(){
+
+    }
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -55,6 +64,7 @@ function CreateArtForm({contentType, creator}) {
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        setPublicThumbnailId(data.public_id)
                         setThumbnailDisplay(data.secure_url)
                         setLoading(false)
                     })
@@ -68,6 +78,25 @@ function CreateArtForm({contentType, creator}) {
             alert("please select an image")
             setLoading(false)
         }
+    }
+
+    function deleteThumbnail(){
+        const idObj ={
+            public_id: publicThumbnailId
+        }
+        const configObj = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        setDeletingThumbnail(true)
+        fetch("/cloudinary/thumbnail/destroy", configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingThumbnail(false)
+            setThumbnailDisplay(null)
+        })
     }
 
     function artChangeHandler(e){
@@ -193,7 +222,9 @@ function CreateArtForm({contentType, creator}) {
                 </Col>
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
+                    {deletingThumbnail ? <p>Removing thumbnail...</p> : null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Row>
@@ -205,6 +236,7 @@ function CreateArtForm({contentType, creator}) {
                         <Button variant="success" type="submit">Upload Image</Button>
                     </Form.Group>
                 </Form>}
+                
             </Row>
             <Row>
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createArt}>
