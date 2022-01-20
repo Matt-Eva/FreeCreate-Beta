@@ -14,6 +14,8 @@ function CreateAudioForm({contentType, creator}) {
     const [loading, setLoading] = useState(false)
     const [audioLoading, setAudioLoading] = useState(false)
     const [audioDisplay, setAudioDisplay] = useState(null)
+    const [deletingThumbnail, setDeletingThumbnail] = useState(null)
+    const [publicId, setPublicId] = useState(null)
     const [title, setTitle] = useState("")
     const thumbRef = useRef()
     const audioRef = useRef()
@@ -54,6 +56,7 @@ function CreateAudioForm({contentType, creator}) {
                     r.json()
                     .catch(error => console.log(error))
                     .then(data =>{
+                        setPublicId(data.public_id)
                         setThumbnailDisplay(data.secure_url)
                         setLoading(false)
                     })
@@ -67,6 +70,25 @@ function CreateAudioForm({contentType, creator}) {
             alert("please select an image")
             setLoading(false)
         }
+    }
+
+    function deleteThumbnail(){
+        const idObj = {
+            public_id: publicId
+        }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(idObj)
+        }
+        setDeletingThumbnail(true)
+        fetch(`/cloudinary/thumbnail/destroy`, configObj)
+        .then(r => r.json())
+        .then(data =>{
+            console.log(data)
+            setDeletingThumbnail(false)
+            setThumbnailDisplay(null)
+        })
     }
 
     function audioChangeHandler(e){
@@ -191,7 +213,9 @@ function CreateAudioForm({contentType, creator}) {
                 </Col>
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
+                    {deletingThumbnail ? <p>Deleting thumbnail...</p> : null}
                     {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Row>
