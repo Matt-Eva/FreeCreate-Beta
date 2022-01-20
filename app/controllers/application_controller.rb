@@ -5,11 +5,26 @@ rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
 def search_all
-    writings = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
+    writing = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
+    audio = Audio.where(title: params[:search])
+    art = Art.where(title: params[:search])
+    video = Video.where(title: params[:search])
+    creations = {video: video, art: art, audio: audio, writing: writing}
+    render json: creations, status: :ok
 end
 
 def filter_all
-    
+    tag = Tag.find_by(tag: params[:tag])
+    if !tag
+        render json: {message: "That tag produced no results"}, status: :not_found
+    else
+        writing = tag.writings.sort_by{|a| -(a.ranking)}.slice(0, 51)
+        art = tag.arts
+        video = tag.videos
+        audio = tag.audios
+        creations = {writing: writing, art: art, video: video, audio: audio}
+        render json: creations, status: :ok
+    end
 end
 
 private

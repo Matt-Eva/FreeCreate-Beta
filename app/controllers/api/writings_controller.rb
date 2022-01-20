@@ -40,7 +40,6 @@ class Api::WritingsController < ApplicationController
             writings = tag.writings.sort_by{|a| -(a.ranking)}.slice(0, 51)
             render json: writings, status: :ok
         end
-
     end
 
     private

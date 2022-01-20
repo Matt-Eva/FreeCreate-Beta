@@ -28,6 +28,21 @@ class Api::AudiosController < ApplicationController
         head :no_content
     end
 
+    def search_query
+        audios = Audio.where(title: params[:search])
+        render json: audios, status: :ok
+    end
+
+    def filter_query
+        tag = Tag.find_by(tag: params[:tag])
+        if !tag
+            render json: {message: "That filter produced no results"}, status: :not_found
+        else
+            audios = tag.audios
+            render json: audios, status: :ok
+        end
+    end
+
     private
     
     def audio_params

@@ -27,6 +27,21 @@ class Api::VideosController < ApplicationController
         head :no_content
     end
 
+    def search_query
+        videos = Video.where(title: params[:search])
+        render json: videos, status: :ok
+    end
+
+    def filter_query
+        tag = Tag.find_by(tag: params[:tag])
+        if !tag
+            render json: {message: "That filter produced no results"}, status: :not_found
+        else
+            videos = tag.videos
+            render json: videos, status: :ok
+        end
+    end
+
     private
     
     def video_params

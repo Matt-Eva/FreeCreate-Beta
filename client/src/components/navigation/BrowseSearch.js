@@ -21,7 +21,18 @@ function BrowseSearch({displayType}) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(searchObj)
         }
-        if (displayType === "writing"){
+        if (displayType ==="all"){
+            fetch("/allcreations/search", configObj)
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                setSearch("")
+                dispatch(setQueryDisplayWriting(data.writing))
+                dispatch(setQueryDisplayAudio(data.audio))
+                dispatch(setQueryDisplayArt(data.art))
+                dispatch(setQueryDisplayVideo(data.video))
+            })
+        } else if (displayType === "writing"){
             fetch("/api/search/writings", configObj)
             .then(r => r.json())
             .then(data =>{
@@ -29,11 +40,36 @@ function BrowseSearch({displayType}) {
                 dispatch(setQueryDisplayWriting(data))
                 setSearch("")
             })
+        } else if(displayType === "audio"){
+            fetch("/api/search/audios", configObj)
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setQueryDisplayAudio(data))
+                setSearch("")
+            })
+        } else if(displayType === "art"){
+            fetch("/api/search/arts", configObj)
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setQueryDisplayArt(data))
+                setSearch("")
+            })
+        } else if(displayType === "video"){
+            fetch("/api/search/videos", configObj)
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setQueryDisplayVideo(data))
+                setSearch("")
+            })
         }
     }
 
     function filterQuery(e){
         e.preventDefault()
+        if (tag === "")
         setSearch("")
         const filterObj ={
             tag: tag
@@ -43,12 +79,76 @@ function BrowseSearch({displayType}) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(filterObj)
         }
-        if (displayType === "writing"){
-            fetch("/api/filter/writings", configObj)
+        if (displayType === "all"){
+            fetch("/allcreations/filter", configObj)
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setQueryDisplayWriting(data))
+                setTag("")
+                dispatch(setQueryDisplayWriting(data.writing))
+                dispatch(setQueryDisplayAudio(data.audio))
+                dispatch(setQueryDisplayArt(data.art))
+                dispatch(setQueryDisplayVideo(data.video))
+            })
+        } else if (displayType === "writing"){
+            fetch("/api/filter/writings", configObj)
+            .then(r => {
+                if (r.ok){
+                    r.json().then(data =>{
+                        console.log(data)
+                        setTag("")
+                        dispatch(setQueryDisplayWriting(data))
+                    })
+                }else{
+                    r.json().then(data =>{
+                        alert(data.message)
+                    })
+                }
+            })
+        } else if (displayType === "audio"){
+            fetch("/api/filter/audios", configObj)
+            .then(r => {
+                if (r.ok){
+                    r.json().then(data =>{
+                        console.log(data)
+                        setTag("")
+                        dispatch(setQueryDisplayAudio(data))
+                    })
+                }else{
+                    r.json().then(data =>{
+                        alert(data.message)
+                    })
+                }
+            })
+        } else if (displayType === "art"){
+            fetch("/api/filter/arts", configObj)
+            .then(r => {
+                if (r.ok){
+                    r.json().then(data =>{
+                        console.log(data)
+                        setTag("")
+                        dispatch(setQueryDisplayArt(data))
+                    })
+                }else{
+                    r.json().then(data =>{
+                        alert(data.message)
+                    })
+                }
+            })
+        } else if (displayType === "video"){
+            fetch("/api/filter/videos", configObj)
+            .then(r => {
+                if (r.ok){
+                    r.json().then(data =>{
+                        console.log(data)
+                        setTag("")
+                        dispatch(setQueryDisplayVideo(data))
+                    })
+                }else{
+                    r.json().then(data =>{
+                        alert(data.message)
+                    })
+                }
             })
         }
     }
@@ -59,13 +159,13 @@ function BrowseSearch({displayType}) {
                 <Form onChange={(e) => setSearch(e.target.value)} onSubmit={searchQuery}>
                     <Form.Group>
                         <Form.Control type="text" placeholder={`Search ${displayType} by name...`} value={search}/>
-                        <Button variant="success">Search</Button>
+                        <Button variant="success" type="submit">Search</Button>
                     </Form.Group>
                 </Form>
                 <Form onChange={(e) => setTag(e.target.value)} onSubmit={filterQuery}>
                     <Form.Group>
-                        <Form.Control type="text" placeholder={`Filter ${displayType} by tag...`}/>
-                        <Button variant="success">Filter</Button>
+                        <Form.Control type="text" placeholder={`Filter ${displayType} by tag...`} value={tag}/>
+                        <Button variant="success" type="submit">Filter</Button>
                     </Form.Group>
                 </Form>
             </Row>

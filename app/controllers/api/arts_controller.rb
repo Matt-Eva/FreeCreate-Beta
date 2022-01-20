@@ -27,6 +27,21 @@ class Api::ArtsController < ApplicationController
         head :no_content
     end
 
+    def search_query
+        arts = Art.where(title: params[:search])
+        render json: arts, status: :ok
+    end
+
+    def filter_query
+        tag = Tag.find_by(tag: params[:tag])
+        if !tag
+            render json: {message: "That filter produced no results"}, status: :not_found
+        else
+            arts = tag.arts
+            render json: arts, status: :ok
+        end
+    end
+
     private
     
     def art_params
