@@ -25,6 +25,7 @@ function CreateCreatorProfile() {
     const [creatorThumbnail, setCreatorThumbnail] = useState(null)
     const [thumbnailDisplay, setThumbnailDisplay] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [deleting, setDeleting] = useState(false)
     const [publicId, setPublicId] = useState(null)
     console.log(publicId)
 
@@ -85,10 +86,13 @@ function CreateCreatorProfile() {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(idObj)
         }
-        fetch("/cloudinary/image/destroy", configObj)
+        setDeleting(true)
+        fetch("/cloudinary/thumbnail/destroy", configObj)
         .then(r => r.json())
         .then(data => {
             console.log(data)
+            setDeleting(false)
+            setThumbnailDisplay(null)
         })
     }
 
@@ -138,12 +142,10 @@ function CreateCreatorProfile() {
                     <h1>Create A New Creator Profile</h1>
                 </Col>
                 <Col>
-                    {loading ? <p>Loading Profile pic...</p> : null}
+                    {loading ? <p>Loading profile pic...</p> : null}
+                    {deleting ? <p>Removing profile pic...</p> : null}
                     {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
-                    {thumbnailDisplay === null ? null : <Button variant="success" onClick={() => {
-                        removeThumbnail()
-                        setThumbnailDisplay(null)
-                        }}>Remove Photo</Button>}
+                    {thumbnailDisplay === null ? null : <Button variant="success" onClick={removeThumbnail}>Remove Photo</Button>}
                 </Col>
             </Row>
            <Row>

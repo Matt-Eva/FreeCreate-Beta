@@ -1,6 +1,7 @@
 import Dropdown from "react-bootstrap/Dropdown"
 import {useDispatch} from "react-redux"
 import {removeUser} from "../userauth/userSlice"
+import {setCreators} from "../userauth/creatorsSlice"
 import {useNavigate, Link} from "react-router-dom"
 
 function ProfileDropdown() {
@@ -11,6 +12,7 @@ const navigate = useNavigate()
         fetch("/logout", {method: "DELETE"})
         .then(() =>{
             dispatch(removeUser())
+            dispatch(setCreators([]))
             navigate("/loggedout")
         })
     }

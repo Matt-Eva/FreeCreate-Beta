@@ -15,22 +15,24 @@ import TopNav from "../navigation/TopNav"
 
 function CreateCreationPage() {
     const user = useSelector(state => state.user.user)
+    const creators = useSelector(state => state.creators.creators)
     const [contentType, setContentType] = useState("")
     const [creatorId, setCreatorId] = useState(null)
     const [thumbnail, setThumbnail] = useState(null)
     // console.log(contentType)
     // console.log(creatorId)
 
-    let creatorOptions = []
-    let displayCreator = undefined; 
-    if (user !== null){
-        creatorOptions = user.creators?.map(option => <option key={option.id} value={option.id}>{option.name}</option>)
-        if (creatorId !== null && user.creators.length !== 0){
-            displayCreator = user.creators.filter(option => option.id === creatorId)[0]
-        }
-    }
+    let creatorOptions = creators?.map(option => <option key={option.id} value={option.id}>{option.name}</option>)
+    let displayCreator = undefined;
+    displayCreator = creators.filter(option => option.id === creatorId)[0] 
+    // if (user !== null){
+    //     creatorOptions = user.creators?.map(option => <option key={option.id} value={option.id}>{option.name}</option>)
+    //     if (creatorId !== null && user.creators.length !== 0){
+    //         displayCreator = user.creators.filter(option => option.id === creatorId)[0]
+    //     }
+    // }
 
-    if (creatorOptions.length === 0){
+    if (creators.length === 0){
         return(
             <Container>
                 <Row>

@@ -1,6 +1,6 @@
 require 'cloudinary'
 class AssetsController < ApplicationController
-    def destroy_image
+    def destroy_thumbnail
         public_id = params[:public_id]
         auth ={
             cloud_name: ENV["CLOUD_NAME"],
