@@ -19,12 +19,7 @@ class Api::CreatorsController < ApplicationController
 
     def my_creations
         creator = Creator.find(params[:id])
-        writings = creator.writings
-        arts = creator.arts
-        videos = creator.videos
-        audios = creator.audios
-        creations = {writings: writings, arts: arts, videos: videos, audios: audios}
-        render json: creations, status: :ok
+        render json: creator, include: ['writings', 'writings.tags', 'audios', 'audios.tags', 'videos', 'videos.tags', 'arts', 'arts.tags'], status: :ok
     end
 
     private 

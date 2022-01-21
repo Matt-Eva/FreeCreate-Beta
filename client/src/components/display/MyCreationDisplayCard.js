@@ -10,6 +10,7 @@ function MyCreationDisplayCard({creation, displayType}) {
     const creationTitle = creation.title
     const title = creationTitle.replace(/[.,/#!$?%^&*;:{}=-_`~()]/g, "")
     const dispatch = useDispatch()
+    console.log(creation)
 
 
     function editCreation(){

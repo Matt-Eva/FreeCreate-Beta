@@ -19,7 +19,7 @@ function MyCreations() {
     const [video, setVideo] = useState([])
     const [art, setArt] = useState([])
 
-    console.log(creatorId)
+   
 
     const creatorOptions = creators?.map(creator => <option key={creator.id} value={creator.id}>{creator.name}</option>)
 
@@ -29,7 +29,7 @@ function MyCreations() {
             .then(r => {
                 if (r.ok){
                     r.json().then(data => {
-                        console.log(data.videos)
+                        console.log(data)
                         setArt(data.arts)
                         setWriting(data.writings)
                         setVideo(data.videos)

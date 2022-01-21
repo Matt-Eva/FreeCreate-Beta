@@ -17,7 +17,11 @@ function EditArt() {
         title: "",
         content: "",
     })
+    const [tag, setTag] = useState("")
+    const [taglinks, setTaglinks] = useState([])
     const navigate = useNavigate()
+    
+    const displayTaglinks = taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
 
     useEffect(() =>{
         if (art === null){
@@ -27,6 +31,7 @@ function EditArt() {
                 title: art.title,
                 content: art.content
             })
+            setTaglinks(art.tags)
         }
     }, [])
 
@@ -71,6 +76,39 @@ function EditArt() {
         })
     }
 
+    function submitTag(e){
+        e.preventDefault()
+        for (const taglink of taglinks){
+            if (taglink.tag === tag) {
+                setTag("")
+                console.log("no new")
+                return alert("you have already added that tag")
+            }
+        }
+        const newTag = {
+            tag: tag,
+            art_id: art.id
+        }
+        const configObj = {
+            method: "POST",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(newTag)
+        }
+        fetch("/api/art_taglinks", configObj)
+        .then(r =>{
+            if (r.ok){
+                r.json().then(data =>{
+                    setTaglinks([...taglinks, data.tag])
+                    setTag("")
+                })
+            } else {
+                r.json().then(data=>{
+                    // console.log(data)
+                })
+            }
+        })
+    }
+
     if (art === null){
         return <h1>Loading... </h1>
     }
@@ -112,6 +150,14 @@ function EditArt() {
                     </Form.Group>
                     <Button type="submit" variant="success">Save Changes</Button>
                 </Form>
+                <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
+                    <Form.Label>Add Tags:</Form.Label>
+                    <Form.Control type="text" value={tag}/>
+                    <Button variant="success" type="submit">Add Tag</Button> 
+                </Form>
+                    <p>
+                        {displayTaglinks}
+                    </p>
             </Row>
         </Container>
     )
