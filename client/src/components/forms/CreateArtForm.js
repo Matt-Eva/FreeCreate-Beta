@@ -108,15 +108,15 @@ function CreateArtForm({contentType, creator}) {
         console.log(e.target.value)
         const file = e.target.files[0]
         setArtFile(file)
-        // if (file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") ){
-        //     setArtFile(file)
-        // } else if (file.name.endsWith(".png")){
-        //     setArtFile(file)
-        // } else{
-        //     alert("That is not an appropriate image file.")
-        //     artRef.current.value=""
-        //     console.log(e.target.value)
-        // } 
+        if (file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") ){
+            setArtFile(file)
+        } else if (file.name.endsWith(".png")){
+            setArtFile(file)
+        } else{
+            alert("That is not an appropriate image file.")
+            artRef.current.value=""
+            console.log(e.target.value)
+        } 
     }
 
     function uploadArt(e){

@@ -1,4 +1,3 @@
 class WritTaglinkSerializer < ActiveModel::Serializer
-  attributes :id, :tag_id
-  has_one :tag
+  attributes :id, :tag_text
 end

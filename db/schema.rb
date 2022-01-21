@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "tag"
+    t.string "tag_text"
     t.index ["art_id"], name: "index_art_taglinks_on_art_id"
     t.index ["tag_id"], name: "index_art_taglinks_on_tag_id"
   end
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "tag"
+    t.string "tag_text"
     t.index ["audio_id"], name: "index_aud_taglinks_on_audio_id"
     t.index ["tag_id"], name: "index_aud_taglinks_on_tag_id"
   end
@@ -293,7 +293,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "tag"
+    t.string "tag_text"
     t.index ["tag_id"], name: "index_vid_taglinks_on_tag_id"
     t.index ["video_id"], name: "index_vid_taglinks_on_video_id"
   end
@@ -366,7 +366,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "tag"
+    t.string "tag_text"
     t.index ["tag_id"], name: "index_writ_taglinks_on_tag_id"
     t.index ["writing_id"], name: "index_writ_taglinks_on_writing_id"
   end

@@ -1,4 +1,3 @@
 class VidTaglinkSerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :tag
+  attributes :id, :tag_text
 end

@@ -19,11 +19,20 @@ function EditWritingPage() {
     })
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
-    console.log(writing)
+    // console.log(writing)
+    // console.log(taglinks)
 
     const navigate = useNavigate()
 
-    const displayTaglinks = [] //taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag_text} </span>)
+
+    function deleteTagLink(id){
+        fetch(`/api/writ_taglinks/${id}`, {method: "DELETE"})
+        .then(() =>{
+            const oneLess = taglinks.filter(taglink => taglink.id !== id)
+            setTaglinks([...oneLess])
+        })
+    }
 
     useEffect(() =>{
         if (writing === null){
@@ -33,7 +42,7 @@ function EditWritingPage() {
                 title: writing.title,
                 content: writing.content
             })
-            setTaglinks(writing.tags)
+            setTaglinks(writing.writ_taglinks)
         }
     }, [])
 
@@ -82,7 +91,7 @@ function EditWritingPage() {
     function submitTag(e){
         e.preventDefault()
         for (const taglink of taglinks){
-            if (taglink.tag === tag) {
+            if (taglink.tag_text === tag) {
                 setTag("")
                 console.log("no new")
                 return alert("you have already added that tag")
@@ -101,7 +110,8 @@ function EditWritingPage() {
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
-                    setTaglinks([...taglinks, data.tag])
+                    console.log(data)
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {
