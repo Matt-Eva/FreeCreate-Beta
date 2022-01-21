@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_182703) do
+ActiveRecord::Schema.define(version: 2022_01_21_234113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "public_thumbnail_id"
     t.string "public_id"
+    t.integer "rank"
     t.index ["creator_id"], name: "index_arts_on_creator_id"
   end
 
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "public_thumbnail_id"
     t.string "public_id"
+    t.integer "rank"
     t.index ["creator_id"], name: "index_audios_on_creator_id"
   end
 
@@ -309,6 +311,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "public_thumbnail_id"
     t.string "public_id"
+    t.integer "rank"
     t.index ["creator_id"], name: "index_videos_on_creator_id"
   end
 
@@ -381,6 +384,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_182703) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "public_thumbnail_id"
+    t.integer "rank"
     t.index ["creator_id"], name: "index_writings_on_creator_id"
   end
 

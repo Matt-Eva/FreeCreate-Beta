@@ -43,7 +43,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                <h4>Following</h4>
+                {/* <h4>Following</h4> */}
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
