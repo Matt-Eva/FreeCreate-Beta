@@ -26,10 +26,15 @@ function CreateArtForm({contentType, creator}) {
     const [publicThumbnailId, setPublicThumbnailId] = useState(null)
     const [publicArtId, setPublicArtId] = useState(null)
 
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink} onClick={deleteTagLink}> {taglink} </span>)
+    // console.log(taglinks[0].tag.tag)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag.tag} </span>)
 
-    function deleteTagLink(){
-
+    function deleteTagLink(id){
+        fetch(`/api/art_taglinks/${id}`, {method: "DELETE"})
+        .then(() =>{
+            const oneLess = taglinks.filter(taglink => taglink.id !== id)
+            setTaglinks(...oneLess)
+        })
     }
 
     function picChangeHandler(e){
@@ -100,16 +105,18 @@ function CreateArtForm({contentType, creator}) {
     }
 
     function artChangeHandler(e){
+        console.log(e.target.value)
         const file = e.target.files[0]
-        if (file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") ){
-            setArtFile(file)
-        } else if (file.name.endsWith(".png")){
-            setArtFile(file)
-        } else{
-            alert("That is not an appropriate image file.")
-            artRef.current.value=""
-            console.log(e.target.value)
-        } 
+        setArtFile(file)
+        // if (file.name.endsWith(".jpg") || file.name.endsWith(".jpeg") ){
+        //     setArtFile(file)
+        // } else if (file.name.endsWith(".png")){
+        //     setArtFile(file)
+        // } else{
+        //     alert("That is not an appropriate image file.")
+        //     artRef.current.value=""
+        //     console.log(e.target.value)
+        // } 
     }
 
     function uploadArt(e){
@@ -215,7 +222,8 @@ function CreateArtForm({contentType, creator}) {
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
-                    setTaglinks([...taglinks, data.tag.tag])
+                    console.log(data)
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {

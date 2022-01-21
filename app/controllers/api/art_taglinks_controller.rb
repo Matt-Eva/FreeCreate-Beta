@@ -14,4 +14,10 @@ class Api::ArtTaglinksController < ApplicationController
         end
     end
 
+    def destroy
+        art_taglink = ArtTaglink.find(params[:id])
+        art_taglink.destroy
+        head :no_content
+    end
+
 end

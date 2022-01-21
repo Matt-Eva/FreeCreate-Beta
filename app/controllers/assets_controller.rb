@@ -1,4 +1,5 @@
 require 'cloudinary'
+
 class AssetsController < ApplicationController
 
     def destroy_thumbnail
