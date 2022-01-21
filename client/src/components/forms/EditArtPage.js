@@ -21,7 +21,15 @@ function EditArt() {
     const [taglinks, setTaglinks] = useState([])
     const navigate = useNavigate()
     
-    const displayTaglinks = taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
+    const displayTaglinks = taglinks.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)} title="click to delete" style={{"cursor": "pointer"}}>  | {taglink.tag_text} | </span>)
+
+    function deleteTagLink(id){
+        fetch(`/api/art_taglinks/${id}`, {method: "DELETE"})
+        .then(() =>{
+            const oneLess = taglinks.filter(taglink => taglink.id !== id)
+            setTaglinks([...oneLess])
+        })
+    }
 
     useEffect(() =>{
         if (art === null){
@@ -31,7 +39,7 @@ function EditArt() {
                 title: art.title,
                 content: art.content
             })
-            setTaglinks(art.tags)
+            setTaglinks(art.art_taglinks)
         }
     }, [])
 
@@ -79,7 +87,7 @@ function EditArt() {
     function submitTag(e){
         e.preventDefault()
         for (const taglink of taglinks){
-            if (taglink.tag === tag) {
+            if (taglink.tag_text === tag) {
                 setTag("")
                 console.log("no new")
                 return alert("you have already added that tag")
@@ -98,7 +106,7 @@ function EditArt() {
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
-                    setTaglinks([...taglinks, data.tag])
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {
