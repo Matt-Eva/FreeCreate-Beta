@@ -17,7 +17,12 @@ function EditAudio() {
         title: "",
         content: "",
     })
+    const [tag, setTag] = useState("")
+    const [taglinks, setTaglinks] = useState([])
+    
     const navigate = useNavigate()
+
+    const displayTaglinks = taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
 
     useEffect(() =>{
         if (audio === null){
@@ -27,6 +32,7 @@ function EditAudio() {
                 title: audio.title,
                 content: audio.content
             })
+            setTaglinks(audio.tags)
         }
     }, [])
 
@@ -71,6 +77,39 @@ function EditAudio() {
         })
     }
 
+    function submitTag(e){
+        e.preventDefault()
+        for (const taglink of taglinks){
+            if (taglink.tag === tag) {
+                setTag("")
+                console.log("no new")
+                return alert("you have already added that tag")
+            }
+        }
+        const newTag = {
+            tag: tag,
+            audio_id: audio.id
+        }
+        const configObj = {
+            method: "POST",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(newTag)
+        }
+        fetch("/api/aud_taglinks", configObj)
+        .then(r =>{
+            if (r.ok){
+                r.json().then(data =>{
+                    setTaglinks([...taglinks, data.tag])
+                    setTag("")
+                })
+            } else {
+                r.json().then(data=>{
+                    console.log(data)
+                })
+            }
+        })
+    }
+
     if (audio === null){
         return <h1>Loading... </h1>
     }
@@ -112,6 +151,14 @@ function EditAudio() {
                     </Form.Group>
                     <Button type="submit" variant="success">Save Changes</Button>
                 </Form>
+                <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
+                    <Form.Label>Add Tags:</Form.Label>
+                    <Form.Control type="text" value={tag}/>
+                    <Button variant="success" type="submit">Add Tag</Button> 
+                </Form>
+                    <p>
+                        {displayTaglinks}
+                    </p>
             </Row>
         </Container>
     )
