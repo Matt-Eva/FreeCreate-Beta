@@ -22,7 +22,15 @@ function EditAudio() {
     
     const navigate = useNavigate()
 
-    const displayTaglinks = taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag_text} </span>)
+
+    function deleteTagLink(id){
+        fetch(`/api/aud_taglinks/${id}`, {method: "DELETE"})
+        .then(() =>{
+            const oneLess = taglinks.filter(taglink => taglink.id !== id)
+            setTaglinks([...oneLess])
+        })
+    }
 
     useEffect(() =>{
         if (audio === null){
@@ -32,7 +40,7 @@ function EditAudio() {
                 title: audio.title,
                 content: audio.content
             })
-            setTaglinks(audio.tags)
+            setTaglinks(audio.aud_taglinks)
         }
     }, [])
 
@@ -80,7 +88,7 @@ function EditAudio() {
     function submitTag(e){
         e.preventDefault()
         for (const taglink of taglinks){
-            if (taglink.tag === tag) {
+            if (taglink.tag_text === tag) {
                 setTag("")
                 console.log("no new")
                 return alert("you have already added that tag")
@@ -99,7 +107,7 @@ function EditAudio() {
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
-                    setTaglinks([...taglinks, data.tag])
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {
