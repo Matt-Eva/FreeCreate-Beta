@@ -19,10 +19,11 @@ function EditWritingPage() {
     })
     const [tag, setTag] = useState("")
     const [taglinks, setTaglinks] = useState([])
+    console.log(writing)
 
     const navigate = useNavigate()
 
-    const displayTaglinks = taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
+    const displayTaglinks = [] //taglinks.map(tag => <span key={tag.id}> {tag.tag} </span>)
 
     useEffect(() =>{
         if (writing === null){
