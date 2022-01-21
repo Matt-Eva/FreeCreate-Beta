@@ -24,7 +24,7 @@ function EditWritingPage() {
 
     const navigate = useNavigate()
 
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag_text} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)} title="click to delete" style={{"cursor": "pointer"}}> {taglink.tag_text} </span>)
 
     function deleteTagLink(id){
         fetch(`/api/writ_taglinks/${id}`, {method: "DELETE"})

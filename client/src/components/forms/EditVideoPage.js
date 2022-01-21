@@ -17,7 +17,20 @@ function EditVideo() {
         title: "",
         content: "",
     })
+    const [tag, setTag] = useState("")
+    const [taglinks, setTaglinks] = useState([])
+
     const navigate = useNavigate()
+
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)} title="click to delete" style={{"cursor": "pointer"}}> | {taglink.tag_text} | </span>)
+
+    function deleteTagLink(id){
+        fetch(`/api/vid_taglinks/${id}`, {method: "DELETE"})
+        .then(() =>{
+            const oneLess = taglinks.filter(taglink => taglink.id !== id)
+            setTaglinks([...oneLess])
+        })
+    }
 
     useEffect(() =>{
         if (video === null){
@@ -27,6 +40,7 @@ function EditVideo() {
                 title: video.title,
                 content: video.content
             })
+            setTaglinks(video.vid_taglinks)
         }
     }, [])
 
@@ -72,6 +86,39 @@ function EditVideo() {
         })
     }
 
+    function submitTag(e){
+        e.preventDefault()
+        for (const taglink of taglinks){
+            if (taglink.tag_text === tag) {
+                setTag("")
+                console.log("no new")
+                return alert("you have already added that tag")
+            }
+        }
+        const newTag = {
+            tag: tag,
+            video_id: video.id
+        }
+        const configObj = {
+            method: "POST",
+            headers: { "Content-Type" : "application/json"},
+            body: JSON.stringify(newTag)
+        }
+        fetch("/api/vid_taglinks", configObj)
+        .then(r =>{
+            if (r.ok){
+                r.json().then(data =>{
+                    setTaglinks([...taglinks, data])
+                    setTag("")
+                })
+            } else {
+                r.json().then(data=>{
+                    console.log(data)
+                })
+            }
+        })
+    }
+
     if (video === null){
         return <h1>Loading... </h1>
     }
@@ -113,6 +160,14 @@ function EditVideo() {
                     </Form.Group>
                     <Button type="submit" variant="success">Save Changes</Button>
                 </Form>
+                <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>
+                    <Form.Label>Add Tags:</Form.Label>
+                    <Form.Control type="text" value={tag}/>
+                    <Button variant="success" type="submit">Add Tag</Button> 
+                </Form>
+                    <p>
+                        {displayTaglinks}
+                    </p>
             </Row>
         </Container>
     )
