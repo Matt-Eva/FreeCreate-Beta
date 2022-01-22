@@ -25,7 +25,7 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                <h4>My Queue</h4>
+                <h4>My List</h4>
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>

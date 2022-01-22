@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 
 function ViewVid() {
@@ -29,6 +30,13 @@ function ViewVid() {
         <Container>
             <Row>
                 <TopNav />
+            </Row>
+            <Row>
+                <Col>
+                    <Button variant="success">Like</Button>
+                    <Button variant="success">Add to Library</Button>
+                    <Button variant="success">Add to Reading List</Button>
+                </Col>
             </Row>
             <Row className="justify-content-center text-center">
                 <h1>{writing.title}</h1>
