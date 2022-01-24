@@ -27,7 +27,7 @@ const slice = createSlice({
         },
         removeWritLike: (state, action) =>{
             const writLikes = state.writ_likes
-            state.writ_likes = writLikes.filter(like => like.id !== action.payload.id)
+            state.writ_likes = writLikes.filter(like => like.id !== action.payload)
         },
         setVidLikes: (state, action) => {
             state.vid_likes = action.payload
@@ -37,7 +37,7 @@ const slice = createSlice({
         },
         removeVidLike: (state, action) =>{
             const vidLikes = state.vid_likes
-            state.vid_likes = vidLikes.filter(like => like.id !== action.payload.id)
+            state.vid_likes = vidLikes.filter(like => like.id !== action.payload)
         },
         setAudLikes: (state, action) => {
             state.aud_likes = action.payload
@@ -47,7 +47,7 @@ const slice = createSlice({
         },
         removeAudLike: (state, action) =>{
             const audLikes = state.aud_likes
-            state.aud_likes = audLikes.filter(like => like.id !== action.payload.id)
+            state.aud_likes = audLikes.filter(like => like.id !== action.payload)
         }
     }
 })

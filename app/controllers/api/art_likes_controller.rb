@@ -8,7 +8,11 @@ class Api::ArtLikesController < ApplicationController
     def create
         like = current_user.art_likes.create!(art_id: params[:art_id])
         art = Art.find(params[:art_id])
-        art.update(rank: (art.rank + 5))
+        if !art.rank
+            art.update(rank: 0)
+        else
+            art.update(rank: (art.rank + 5))
+        end
         render json: like, status: :created
     end
 

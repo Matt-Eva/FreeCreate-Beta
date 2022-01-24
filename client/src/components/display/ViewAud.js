@@ -6,10 +6,28 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
+import {useSelector, useDispatch} from "react-redux"
+import { setAudLikes, addAudLike, removeAudLike } from "../libraries/likesSlice.js"
 
 function ViewAud() {
     const [audio, setAudio] = useState(null)
+    const user = useSelector(state => state.user.user)
+    const audLikes = useSelector(state => state.likes.aud_likes)
+    const dispatch = useDispatch()
     const {id} = useParams()
+    console.log(audLikes)
+
+    let isLiked = false
+    let audLikeId = null
+    if (audLikes.length !== 0 && audio !== null){
+        audLikes.forEach(like =>{
+            if (like.audio_id === audio.id ){
+                console.log(audio)
+                isLiked = true
+                audLikeId = like.id
+            }
+        })
+    }
 
     useEffect(()=>{
         fetch(`/api/audios/${id}`)
@@ -23,8 +41,41 @@ function ViewAud() {
         })
     }, [])
 
-    function like(){
+    useEffect(() => {
+        if (audLikes.length === 0){
+            fetch("/api/aud_likes")
+            .then(r => r.json())
+            .then(data => {
+                console.log(data)
+                dispatch(setAudLikes(data))
+            })
+        }
+    }, [])
 
+    function like(){
+        const newLike ={
+            audio_id: audio.id,
+            user_id: user.id
+        }
+        const configObj ={
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newLike)
+        }
+
+        fetch("/api/aud_likes", configObj)
+        .then(r => r.json())
+        .then(data => {
+            console.log(data)
+            dispatch(addAudLike(data))
+        })
+    }
+
+    function dislike(){
+        fetch(`/api/aud_likes/${audLikeId}`, {method: "DELETE"})
+        .then(() =>{
+            dispatch(removeAudLike(audLikeId))
+        })
     }
 
     function listAdd(){
@@ -53,7 +104,7 @@ function ViewAud() {
             </Row>
             <Row>
                 <Col>
-                    <Button variant="success">Like</Button>
+                    {isLiked ? <Button variant="success" onClick={dislike}>Remove</Button> : <Button variant="success" onClick={like}>Like</Button>}
                     <Button variant="success">Add to Library</Button>
                     <Button variant="success">Add to Reading List</Button>
                 </Col>
