@@ -7,6 +7,7 @@ import editCreatorReducer from "./components/forms/editCreatorSlice"
 import creatorsReducer from "./components/userauth/creatorsSlice"
 import myWritingsReducer from "./components/libraries/myWritingsSlice"
 import editCreationsReducer from './components/forms/editCreationsSlice'
+import likesReducer from "./components/libraries/likesSlice"
 
 const store = configureStore({
     reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
         editCreator: editCreatorReducer,
         creators: creatorsReducer,
         myWritings: myWritingsReducer,
-        editCreations: editCreationsReducer
+        editCreations: editCreationsReducer,
+        likes: likesReducer
     }
 })
 

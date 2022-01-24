@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :art_taglinks
     resources :vid_taglinks
     resources :aud_taglinks
+    resources :writ_likes
+    resources :art_likes
+    resources :vid_likes
+    resources :aud_likes
   end
   
   post "/login", to: "sessions#create"

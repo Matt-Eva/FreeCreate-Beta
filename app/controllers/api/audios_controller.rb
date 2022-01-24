@@ -46,7 +46,7 @@ class Api::AudiosController < ApplicationController
     private
     
     def audio_params
-        params.permit(:category, :title, :thumbnail, :content, :length, :creator_id)
+        params.permit(:category, :title, :thumbnail, :content, :length, :creator_id, :rank)
     end
     
 end

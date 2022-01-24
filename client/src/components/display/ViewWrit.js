@@ -22,6 +22,18 @@ function ViewVid() {
         })
     }, [])
 
+    function like(){
+
+    }
+
+    function listAdd(){
+
+    }
+
+    function libAdd(){
+
+    }
+
     if (writing === null){
         return <h1>Loading...</h1>
     }
@@ -33,9 +45,9 @@ function ViewVid() {
             </Row>
             <Row>
                 <Col>
-                    <Button variant="success">Like</Button>
-                    <Button variant="success">Add to Library</Button>
-                    <Button variant="success">Add to Reading List</Button>
+                    <Button variant="success" onClick={like}>Like</Button>
+                    <Button variant="success" onClick={libAdd}>Add to Library</Button>
+                    <Button variant="success" onClick={listAdd}>Add to Reading List</Button>
                 </Col>
             </Row>
             <Row className="justify-content-center text-center">

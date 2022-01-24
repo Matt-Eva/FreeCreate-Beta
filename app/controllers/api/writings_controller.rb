@@ -45,6 +45,6 @@ class Api::WritingsController < ApplicationController
     private
     
     def writing_params
-        params.permit(:category, :title, :thumbnail, :content, :length, :creator_id)
+        params.permit(:category, :title, :thumbnail, :content, :length, :creator_id, :rank)
     end
 end

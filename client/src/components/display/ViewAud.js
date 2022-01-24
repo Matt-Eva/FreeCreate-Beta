@@ -23,6 +23,18 @@ function ViewAud() {
         })
     }, [])
 
+    function like(){
+
+    }
+
+    function listAdd(){
+
+    }
+
+    function libAdd(){
+        
+    }
+
     if (audio === null){
         return <h1>Loading...</h1>
     }

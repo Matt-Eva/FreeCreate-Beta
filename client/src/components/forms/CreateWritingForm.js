@@ -113,7 +113,8 @@ function CreateWritingForm({creator}) {
             thumbnail: thumbnailDisplay,
             category: uploadData.category,
             length: uploadData.content.length,
-            creator_id: creator.id
+            creator_id: creator.id,
+            rank: 0
         }
         const configObj ={
             method: "POST",

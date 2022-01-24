@@ -45,6 +45,6 @@ class Api::ArtsController < ApplicationController
     private
     
     def art_params
-        params.permit(:category, :title, :thumbnail, :content, :length, :creator_id)
+        params.permit(:category, :title, :thumbnail, :content, :length, :creator_id, :rank)
     end
 end

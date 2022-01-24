@@ -22,6 +22,18 @@ function ViewVid() {
         })
     }, [])
 
+    function like(){
+
+    }
+
+    function listAdd(){
+
+    }
+
+    function libAdd(){
+        
+    }
+
     if (video === null){
         return <h1>Loading...</h1>
     }

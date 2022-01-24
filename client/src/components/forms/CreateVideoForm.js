@@ -165,7 +165,8 @@ function CreateVideoForm({contentType, creator}) {
             title: title,
             content: videoDisplay,
             thumbnail: thumbnailDisplay,
-            creator_id: creator.id
+            creator_id: creator.id,
+            rank: 0
         }
         const configObj = {
             method: "POST",
