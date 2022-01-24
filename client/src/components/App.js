@@ -23,6 +23,7 @@ import EditVideoPage from './forms/EditVideoPage';
 import EditWritingPage from './forms/EditWritingPage';
 import EditAudioPage from './forms/EditAudioPage';
 import MyCreations from './libraries/MyCreations';
+import LikedCreations from './libraries/LikedCreations';
 
 function App() {
 const navigate = useNavigate()
@@ -59,6 +60,7 @@ const dispatch = useDispatch()
         <Route path="/edit/art" element={<EditArtPage />}/>
         <Route path="/edit/video" element={<EditVideoPage />}/>
         <Route path="/mycreations" element={<MyCreations />}/>
+        <Route path="/likedcreations" element={<LikedCreations />} />
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>
         <Route path="/newcreator" element={<CreateCreatorProfile />} />

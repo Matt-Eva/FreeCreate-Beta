@@ -25,7 +25,7 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                <h4>My List</h4>
+                {/* <h4>My List</h4> */}
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -34,7 +34,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                <h4>My Library</h4>
+                {/* <h4>My Library</h4> */}
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -52,7 +52,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                <h4>Liked Creations</h4>
+                <Link to="/likedcreations"><h4>Liked Creations</h4></Link>
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>

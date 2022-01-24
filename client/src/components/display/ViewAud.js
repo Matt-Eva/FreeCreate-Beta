@@ -105,8 +105,8 @@ function ViewAud() {
             <Row>
                 <Col>
                     {isLiked ? <Button variant="success" onClick={dislike}>Remove</Button> : <Button variant="success" onClick={like}>Like</Button>}
-                    <Button variant="success">Add to Library</Button>
-                    <Button variant="success">Add to Reading List</Button>
+                    {/* <Button variant="success">Add to Library</Button>
+                    <Button variant="success">Add to Reading List</Button> */}
                 </Col>
             </Row>
         </Container>
