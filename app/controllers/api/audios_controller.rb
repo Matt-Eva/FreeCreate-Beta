@@ -2,7 +2,7 @@ class Api::AudiosController < ApplicationController
 
 
     def index
-        audios = Audio.all.slice(0, 51)
+        audios = Audio.all.sort_by{|a| -(a.rank)}.slice(0, 51)
         render json: audios, include: ['creator', 'creator.user'], status: :ok
     end
 
@@ -38,7 +38,7 @@ class Api::AudiosController < ApplicationController
         if !tag
             render json: {message: "That filter produced no results"}, status: :not_found
         else
-            audios = tag.audios
+            audios = tag.audios.sort_by{|a| -(a.rank)}.slice(0, 51)
             render json: audios, status: :ok
         end
     end

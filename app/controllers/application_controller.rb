@@ -18,10 +18,10 @@ def filter_all
     if !tag
         render json: {message: "That tag produced no results"}, status: :not_found
     else
-        writing = tag.writings.sort_by{|a| -(a.ranking)}.slice(0, 51)
+        writing = tag.writings.sort_by{|a| -(a.rank)}.slice(0, 51)
         art = tag.arts
         video = tag.videos
-        audio = tag.audios
+        audio = tag.audios.sort_by{|a| -(a.rank)}.slice(0, 51)
         creations = {writing: writing, art: art, video: video, audio: audio}
         render json: creations, status: :ok
     end
