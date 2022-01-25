@@ -37,11 +37,13 @@ function LikedCreations() {
                 <TopNav />
             </Row>
             <Row>
-                <Col>
+                <Col xs={2}>
                     <Sidebar/>
                 </Col>
-                <Col>
-                    <DisplayAllContainer writing={writing} art={art} video={video} audio={audio}/>
+                <Col xs={10} sm={10}>
+                    <Row>
+                        <DisplayAllContainer writing={writing} art={art} video={video} audio={audio}/>
+                    </Row>  
                 </Col>
             </Row>
         </Container>

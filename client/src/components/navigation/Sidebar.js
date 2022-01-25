@@ -7,7 +7,7 @@ function Sidebar() {
     return (
         <Container>
             <Row>
-                <h4><Link to="/mycreations">My Creations</Link></h4>
+                <h5><Link to="/mycreations">My Creations</Link></h5>
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -16,7 +16,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             {/* <Row>
-                <h4>Subscriptions</h4>
+                <h5>Subscriptions</h5>
                 <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -25,7 +25,7 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                {/* <h4>My List</h4> */}
+                {/* <h5>My List</h5> */}
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -34,7 +34,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                {/* <h4>My Library</h4> */}
+                {/* <h5>My Library</h5> */}
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -43,7 +43,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                {/* <h4>Following</h4> */}
+                {/* <h5>Following</h5> */}
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>
@@ -52,7 +52,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                <Link to="/likedcreations"><h4>Liked Creations</h4></Link>
+                <Link to="/likedcreations"><h5>Liked Creations</h5></Link>
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>

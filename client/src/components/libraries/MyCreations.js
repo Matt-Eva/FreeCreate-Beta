@@ -45,7 +45,7 @@ function MyCreations() {
     }, [creatorId])
 
     return (
-        <Container>
+        <Container style={{"margin": "0px"}}>
             <Row>
                 <TopNav />
             </Row>
@@ -53,7 +53,7 @@ function MyCreations() {
                 <Col>
                     <Sidebar />
                 </Col>
-                <Col>
+                <Col xs={10} sm={10}>
                     <h1>My Creations</h1>
                     <select onChange={(e) => setCreatorId(e.target.value)}>
                         <option value="">Select Creator Profile</option>

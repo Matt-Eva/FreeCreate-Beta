@@ -11,20 +11,20 @@ function DisplayAllContainer({writing, audio, art, video}) {
     const vidDisplayCards = video?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"video"}/>)
     
     return (
-        <Container>
-            <Row>
-            <Col style={{"borderRight" : "solid", "borderWidth": "1px"}}>
-                {writDisplayCards}
-            </Col>
-            <Col style={{"borderRight" : "solid", "borderWidth": "1px"}}>
-             {audDisplayCards}
-            </Col>
-            <Col style={{"borderRight" : "solid", "borderWidth": "1px"}}>
-            {artDisplayCards}
-            </Col>
-            <Col>
-            {vidDisplayCards}
-            </Col>
+        <Container style={{"margin": "0px"}} >
+            <Row >
+                <Col >
+                    {writDisplayCards}
+                </Col>
+                <Col >
+                    {audDisplayCards}
+                </Col>
+                <Col >
+                    {artDisplayCards}
+                </Col>
+                <Col >
+                    {vidDisplayCards}
+                </Col>
             </Row>
         </Container>
     )

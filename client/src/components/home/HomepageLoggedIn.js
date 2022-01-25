@@ -119,7 +119,7 @@ function HomepageLoggedIn() {
                 <Col xs={2}>
                     <Sidebar />
                 </Col>
-                <Col xs={8} sm={8}>
+                <Col xs={10} sm={10}>
                     <Row>
                         <BrowseSearch displayType={displayType}/>
                     </Row>
