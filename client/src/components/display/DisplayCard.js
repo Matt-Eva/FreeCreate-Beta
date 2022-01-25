@@ -8,7 +8,6 @@ function DisplayCard({creation, displayType}) {
     const {thumbnail} = creation
     const creationTitle = creation.title
     const title = creationTitle.replace(/[.,/#!$?%^&*;:{}=-_`~()]/g, "")
-    console.log('title', title)
 
     return (
         <Card style={{"maxWidth" : "200px"}}>

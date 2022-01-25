@@ -32,13 +32,17 @@ Rails.application.routes.draw do
   end
   
   post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
   post "/cloudinary/thumbnail/destroy", to: "assets#destroy_thumbnail"
   post "/cloudinary/audio/destroy", to: "assets#destroy_audio"
   post "/cloudinary/video/destroy", to: "assets#destroy_video"
   post "/cloudinary/art/destroy", to: "assets#destroy_art"
+
+  get "/alllikedcreations", to: "application#all_liked_creations"
   post "/allcreations/search", to: "application#search_all"
   post "/allcreations/filter", to: "application#filter_all"
-  delete "/logout", to: "sessions#destroy"
+  
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

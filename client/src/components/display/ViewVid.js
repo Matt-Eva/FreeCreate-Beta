@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setVidLikes, addVidLike, removeVidLike } from "../libraries/likesSlice.js"
+import { addLikedVid, removeLikedVid} from "../libraries/likedCreationsSlice"
 
 function ViewVid() {
     const [video, setVideo] = useState(null)
@@ -67,6 +68,7 @@ function ViewVid() {
         .then(data => {
             console.log(data)
             dispatch(addVidLike(data))
+            dispatch(addLikedVid(video))
         })
     }
 
@@ -74,6 +76,7 @@ function ViewVid() {
         fetch(`/api/vid_likes/${vidLikeId}`, {method: "DELETE"})
         .then(() =>{
             dispatch(removeVidLike(vidLikeId))
+            dispatch(removeLikedVid(video.id))
         })
     }
 
