@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setAudLikes, addAudLike, removeAudLike } from "../libraries/likesSlice.js"
+import { addLikedAud, removeLikedAud} from "../libraries/likedCreationsSlice"
 
 function ViewAud() {
     const [audio, setAudio] = useState(null)
@@ -68,6 +69,7 @@ function ViewAud() {
         .then(data => {
             console.log(data)
             dispatch(addAudLike(data))
+            dispatch(addLikedAud(audio))
         })
     }
 
@@ -75,6 +77,7 @@ function ViewAud() {
         fetch(`/api/aud_likes/${audLikeId}`, {method: "DELETE"})
         .then(() =>{
             dispatch(removeAudLike(audLikeId))
+            dispatch(removeLikedAud(audio.id))
         })
     }
 

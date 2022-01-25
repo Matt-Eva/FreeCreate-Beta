@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setWritLikes, addWritLike, removeWritLike } from "../libraries/likesSlice.js"
+import { addLikedWrit, removeLikedWrit} from "../libraries/likedCreationsSlice"
 
 function ViewWrit() {
     const [writing, setWriting] = useState(null)
@@ -67,6 +68,7 @@ function ViewWrit() {
         .then(data => {
             console.log(data)
             dispatch(addWritLike(data))
+            dispatch(addLikedWrit(writing))
         })
     }
 
@@ -74,6 +76,7 @@ function ViewWrit() {
         fetch(`/api/writ_likes/${writLikeId}`, {method: "DELETE"})
         .then(() =>{
             dispatch(removeWritLike(writLikeId))
+            dispatch(removeLikedWrit(writing.id))
         })
     }
 

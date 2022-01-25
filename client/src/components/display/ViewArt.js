@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setArtLikes, addArtLike, removeArtLike } from "../libraries/likesSlice.js"
+import { addLikedArt, removeLikedArt} from "../libraries/likedCreationsSlice"
 
 function ViewArt() {
     const [art, setArt] = useState(null)
@@ -67,6 +68,7 @@ function ViewArt() {
         .then(data => {
             console.log(data)
             dispatch(addArtLike(data))
+            dispatch(addLikedArt(art))
         })
     }
 
@@ -74,6 +76,7 @@ function ViewArt() {
         fetch(`/api/art_likes/${artLikeId}`, {method: "DELETE"})
         .then(() =>{
             dispatch(removeArtLike(artLikeId))
+            dispatch(removeLikedArt(art.id))
         })
     }
 
