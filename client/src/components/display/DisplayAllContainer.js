@@ -22,7 +22,7 @@ function DisplayAllContainer({writing, audio, art, video}) {
                 <Col className="d-flex justify-content-center flex-wrap border-end border-dark">
                     {artDisplayCards}
                 </Col>
-                <Col className="d-flex justify-content-center flex-wrap border-end border-dark">
+                <Col className="d-flex justify-content-center flex-wrap">
                     {vidDisplayCards}
                 </Col>
             </Row>

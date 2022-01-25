@@ -93,7 +93,7 @@ function ViewArt() {
     }
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>

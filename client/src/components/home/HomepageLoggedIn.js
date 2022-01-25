@@ -111,7 +111,7 @@ function HomepageLoggedIn() {
       }
 
     return (
-        <Container fluid>
+        <Container fluid className='p-0'>
             <Row>
                 <TopNav />
             </Row>

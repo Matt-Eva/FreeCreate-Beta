@@ -94,7 +94,7 @@ function ViewAud() {
     }
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>

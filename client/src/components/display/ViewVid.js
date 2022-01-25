@@ -93,7 +93,7 @@ function ViewVid() {
     }
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>

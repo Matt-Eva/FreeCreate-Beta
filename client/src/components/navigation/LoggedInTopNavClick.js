@@ -30,13 +30,13 @@ function LoggedInTopNavClick() {
         <Container fluid>
             <Row className="text-center">
                 <Col className="d-flex justify-content-center">
-                    {displayType === "writing" ? <NavLink to="/loggedout"onClick={setWriting} className="me-2" style={{"background": "hsl(180, 90%, 90%)"}}><h4>Writing</h4></NavLink> :<NavLink to="/loggedout" className="me-2" onClick={setWriting}><h4>Writing</h4></NavLink>}
+                    {displayType === "writing" ? <NavLink to="/"onClick={setWriting} className="me-3 pe-2 ps-2 rounded" style={{"background": "hsl(180, 90%, 90%)"}}><h3>Writing</h3></NavLink> :<NavLink to="/" className="me-3 pe-2 ps-2 rounded" onClick={setWriting}><h3>Writing</h3></NavLink>}
 
-                    {displayType === "audio" ? <NavLink to="/loggedout" onClick={setAudio} className="me-2" style={{"background": "hsl(180, 90%, 90%)"}}><h4>Audio</h4></NavLink> :<NavLink to="/loggedout" className="me-2" onClick={setAudio}><h4>Audio</h4></NavLink> }
+                    {displayType === "audio" ? <NavLink to="/" onClick={setAudio} className="me-3 pe-2 ps-2 rounded" style={{"background": "hsl(180, 90%, 90%)"}}><h3>Audio</h3></NavLink> :<NavLink to="/" className="me-3 pe-2 ps-2 rounded" onClick={setAudio}><h3>Audio</h3></NavLink> }
 
-                    {displayType === "art" ? <NavLink to="/loggedout" className="me-2"><h4 onClick={setArt} style={{"background": "hsl(180, 90%, 90%)"}}>Art</h4></NavLink> :<NavLink to="/loggedout" className="me-2"><h4 onClick={setArt}>Art</h4></NavLink> }
+                    {displayType === "art" ? <NavLink to="/" className="me-3 pe-2 ps-2 rounded" onClick={setArt} style={{"background": "hsl(180, 90%, 90%)"}}><h3>Art</h3></NavLink> :<NavLink to="/" className="me-3 pe-2 ps-2 rounded"><h3 onClick={setArt}>Art</h3></NavLink> }
 
-                    {displayType === "video" ? <NavLink to="/loggedout"><h4 onClick={setVideo} style={{"background": "hsl(180, 90%, 90%)"}}>Video</h4></NavLink> :<NavLink to="/loggedout"><h4 onClick={setVideo}>Video</h4></NavLink> }
+                    {displayType === "video" ? <NavLink to="/" onClick={setVideo} className="pe-2 ps-2 rounded" style={{"background": "hsl(180, 90%, 90%)"}}><h3>Video</h3></NavLink> :<NavLink to="/" className="pe-2 ps-2 rounded" onClick={setVideo}><h3 >Video</h3></NavLink> }
                 </Col>
             </Row>
         </Container>

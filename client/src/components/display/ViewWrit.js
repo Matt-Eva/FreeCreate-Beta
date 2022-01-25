@@ -93,7 +93,7 @@ function ViewWrit() {
     }
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>

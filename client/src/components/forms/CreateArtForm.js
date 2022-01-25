@@ -26,8 +26,8 @@ function CreateArtForm({contentType, creator}) {
     const [publicThumbnailId, setPublicThumbnailId] = useState(null)
     const [publicArtId, setPublicArtId] = useState(null)
 
-    // console.log(taglinks[0].tag.tag)
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag.tag} </span>)
+    console.log(taglinks)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag_text} </span>)
 
     function deleteTagLink(id){
         fetch(`/api/art_taglinks/${id}`, {method: "DELETE"})
@@ -252,7 +252,8 @@ function CreateArtForm({contentType, creator}) {
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
                     {deletingThumbnail ? <p>Removing thumbnail...</p> : null}
-                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "200px"}} className="rounded mb-2"/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    <br/>
                     {thumbnailDisplay && creationId === 0 ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>

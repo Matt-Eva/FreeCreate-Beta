@@ -50,13 +50,13 @@ function CreateCreationPage() {
     }
 
     return (
-        <Container>
+        <Container fluid className="me-0 ms-0 p-0">
             <Row>
                 <TopNav />
             </Row>
             <Row>
                 <Col>
-                    <h1>Create!</h1>
+                    <h3>Select a Creator Profile to Start Creating:</h3>
                     <select onChange={(e) => {
                         setCreatorId(parseInt(e.target.value))
                         }}>

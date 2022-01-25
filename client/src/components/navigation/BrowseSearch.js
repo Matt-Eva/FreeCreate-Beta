@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from "react-bootstrap/Col"
 import Form from "react-bootstrap/Form"
 import Button from 'react-bootstrap/Button'
 import { useDispatch } from "react-redux"
@@ -154,20 +155,22 @@ function BrowseSearch({displayType}) {
     }
 
     return (
-        <Container style={{"borderBottom": "solid", "borderWidth": "1px", "margin": "0px 0px 10px 0px", "paddingBottom": "10px"}}>
+        <Container fluid className="mt-2 mb-2 p-2 border-bottom border-dark">
             <Row>
-                <Form onChange={(e) => setSearch(e.target.value)} onSubmit={searchQuery}>
-                    <Form.Group>
-                        <Form.Control type="text" placeholder={`Search ${displayType} by name...`} value={search}/>
+                <Col>
+                    <Form onChange={(e) => setSearch(e.target.value)} className="mb-3 d-flex" onSubmit={searchQuery}>
+                        <Form.Group className="mb-1 me-2 w-25">
+                            <Form.Control type="text" placeholder={`Search ${displayType} by name...`} value={search}/>
+                        </Form.Group>
                         <Button variant="success" type="submit">Search</Button>
-                    </Form.Group>
-                </Form>
-                <Form onChange={(e) => setTag(e.target.value)} onSubmit={filterQuery}>
-                    <Form.Group>
-                        <Form.Control type="text" placeholder={`Filter ${displayType} by tag...`} value={tag}/>
+                    </Form>
+                    <Form onChange={(e) => setTag(e.target.value)} className="mb-3 d-flex" onSubmit={filterQuery}>
+                        <Form.Group className="mb-1 me-2 w-25">
+                            <Form.Control type="text" placeholder={`Filter ${displayType} by tag...`} value={tag}/>
+                        </Form.Group>
                         <Button variant="success" type="submit">Filter</Button>
-                    </Form.Group>
-                </Form>
+                    </Form>
+                </Col>
             </Row>
         </Container>
     )
