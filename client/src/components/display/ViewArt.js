@@ -29,7 +29,7 @@ function ViewArt() {
     }
 
     useEffect(() => {
-        if (artLikes.length === 0){
+        if (artLikes.length === 0 && user !== null){
             fetch("/api/art_likes")
             .then(r => r.json())
             .then(data => {
@@ -96,14 +96,18 @@ function ViewArt() {
             </Row>
             <Row className="justify-content-center text-center">
                 <h1>{art.title}</h1>
-                <Image src={art.content} style={{"width": "800px"}}/>
+                <Image src={art.content} style={{"maxWidth": "600px", "maxHeight": "600px"}}/>
             </Row>
             <Row>
-                <Col>
-                    {isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button>}
-                    <Button variant="success" onClick={libAdd}>Add to Library</Button>
-                    <Button variant="success" onClick={listAdd}>Add to Reading List</Button>
-                </Col>
+            {user ? <Col>
+                    {isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button> }
+                    {/* <Button variant="success">Add to Library</Button>
+                    <Button variant="success">Add to Reading List</Button> */}
+                </Col> : <Col>
+                    <Button variant="success" disabled>Like</Button>
+                    {/* <Button variant="success" disabled>Add to Library</Button>
+                    <Button variant="success" disabled>Add to Reading List</Button> */}
+                </Col>}
             </Row>
         </Container>
     )

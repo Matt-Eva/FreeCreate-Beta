@@ -105,8 +105,8 @@ function ViewVid() {
                     <Button variant="success">Add to Reading List</Button> */}
                 </Col> : <Col>
                     <Button variant="success" disabled>Like</Button>
-                    {/* <Button variant="success">Add to Library</Button>
-                    <Button variant="success">Add to Reading List</Button> */}
+                    {/* <Button variant="success" disabled>Add to Library</Button>
+                    <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
             </Row>
         </Container>

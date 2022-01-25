@@ -27,6 +27,15 @@ def filter_all
     end
 end
 
+def all_liked_creations
+    user = current_user
+    writing = user.liked_writs
+    art = user.liked_arts
+    audio = user.liked_auds
+    video = user.liked_vids
+    render json: {writing: writing, art: art, audio: audio, video: video}
+end
+
 private
 
 def authorize

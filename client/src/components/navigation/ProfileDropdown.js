@@ -2,6 +2,7 @@ import Dropdown from "react-bootstrap/Dropdown"
 import {useDispatch} from "react-redux"
 import {removeUser} from "../userauth/userSlice"
 import {setCreators} from "../userauth/creatorsSlice"
+import { setWritLikes, setAudLikes, setVidLikes, setArtLikes} from "../libraries/likesSlice.js"
 import {useNavigate, Link} from "react-router-dom"
 
 function ProfileDropdown() {
@@ -13,6 +14,10 @@ const navigate = useNavigate()
         .then(() =>{
             dispatch(removeUser())
             dispatch(setCreators([]))
+            dispatch(setWritLikes([]))
+            dispatch(setAudLikes([]))
+            dispatch(setVidLikes([]))
+            dispatch(setArtLikes([]))
             navigate("/loggedout")
         })
     }

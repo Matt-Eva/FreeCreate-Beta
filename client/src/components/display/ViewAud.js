@@ -42,7 +42,7 @@ function ViewAud() {
     }, [])
 
     useEffect(() => {
-        if (audLikes.length === 0){
+        if (audLikes.length === 0 && user !== null){
             fetch("/api/aud_likes")
             .then(r => r.json())
             .then(data => {
@@ -103,11 +103,15 @@ function ViewAud() {
                 <audio controls src={audio.content} style={{"width": "800px"}}>Your browser does not support this audio player</audio>
             </Row>
             <Row>
-                <Col>
-                    {isLiked ? <Button variant="success" onClick={dislike}>Remove</Button> : <Button variant="success" onClick={like}>Like</Button>}
+            {user ? <Col>
+                    {isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button> }
                     {/* <Button variant="success">Add to Library</Button>
                     <Button variant="success">Add to Reading List</Button> */}
-                </Col>
+                </Col> : <Col>
+                    <Button variant="success" disabled>Like</Button>
+                    {/* <Button variant="success" disabled>Add to Library</Button>
+                    <Button variant="success" disabled>Add to Reading List</Button> */}
+                </Col>}
             </Row>
         </Container>
     )
