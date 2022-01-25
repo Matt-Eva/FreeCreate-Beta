@@ -114,12 +114,12 @@ function HomepageLoggedOut(){
     }, [displayType])
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>
             <Row>
-                <Col xs={6} sm={6}>
+                <Col xs={12} sm={12}>
                     <Row>
                         <BrowseSearch displayType={displayType}/>
                     </Row>

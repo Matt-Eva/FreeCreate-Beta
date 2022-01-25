@@ -13,16 +13,16 @@ import LoggedOutTopNavClick from "./LoggedOutTopNavClick"
 function TopNav() {
     const user = useSelector(state => state.user.user)
     return (
-        <Container>
+        <Container className="mt-2">
             <Row>
-            <Col>
+            <Col sm={2}>
                 <Icon />
             </Col>
-            <Col>
+            <Col sm={8}>
                 {user ? <LoggedInTopNavClick />: <LoggedOutTopNavClick />}
             </Col>
-            <Col>
-                {user ? <Link to="/newcreation">Create</Link> : null}
+            <Col className="align-middle">
+                {user ? <Link to="/newcreation" className="align-middle">Create</Link> : null}
             </Col>
             <Col>
                 {user === null ? <LoginButton/> : <ProfileDropdown />}

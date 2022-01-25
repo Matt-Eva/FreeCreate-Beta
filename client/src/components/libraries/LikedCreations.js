@@ -32,7 +32,7 @@ function LikedCreations() {
     }, [])
 
     return (
-        <Container style={{"margin": "0px"}}>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>

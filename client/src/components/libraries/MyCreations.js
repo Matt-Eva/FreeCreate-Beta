@@ -45,7 +45,7 @@ function MyCreations() {
     }, [creatorId])
 
     return (
-        <Container style={{"margin": "0px"}}>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>
@@ -54,13 +54,21 @@ function MyCreations() {
                     <Sidebar />
                 </Col>
                 <Col xs={10} sm={10}>
-                    <h1>My Creations</h1>
-                    <select onChange={(e) => setCreatorId(e.target.value)}>
-                        <option value="">Select Creator Profile</option>
-                        {creatorOptions}
-                    </select>
+                    <Row>
+                        <Col  className="text-center">
+                            <h1>My Creations</h1>
+                            <select onChange={(e) => setCreatorId(e.target.value)}>
+                                <option value="">Select Creator Profile</option>
+                                {creatorOptions}
+                            </select>
+                        </Col>
+                    </Row>
+                    <Row className="mt-5">
+                        <MyCreationsDisplayAllContainer writing={writing} audio={audio} video={video} art={art} />
+                    </Row>
+                    
                     <PersonalSearch />
-                    <MyCreationsDisplayAllContainer writing={writing} audio={audio} video={video} art={art} />
+                    
                 </Col>
             </Row>
            
