@@ -27,7 +27,7 @@ function CreateAudioForm({contentType, creator}) {
 
     console.log(publicAudioId)
 
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink.tag_text} </span>)
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -192,7 +192,7 @@ function CreateAudioForm({contentType, creator}) {
     function submitTag(e){
         e.preventDefault()
         for (const taglink of taglinks){
-            if (taglink === tag) {
+            if (taglink.tag_text === tag) {
                 setTag("")
                 console.log("no new")
                 return alert("you have already added that tag")
@@ -212,7 +212,7 @@ function CreateAudioForm({contentType, creator}) {
             if (r.ok){
                 r.json().then(data =>{
                     console.log(data)
-                    setTaglinks([...taglinks, data.tag.tag])
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {

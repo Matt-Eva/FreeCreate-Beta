@@ -28,7 +28,7 @@ function CreateWritingForm({creator}) {
     // console.log(uploadData)
     // console.log(thumbnailDisplay)
 
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink.tag_text} </span>)
 
 
     function picChangeHandler(e){
@@ -138,7 +138,7 @@ function CreateWritingForm({creator}) {
     function submitTag(e){
         e.preventDefault()
         for (const taglink of taglinks){
-            if (taglink === tag) {
+            if (taglink.tag_text === tag) {
                 setTag("")
                 return alert("you have already added that tag")
             }
@@ -157,7 +157,7 @@ function CreateWritingForm({creator}) {
             if (r.ok){
                 r.json().then(data =>{
                     console.log(data)
-                    setTaglinks([...taglinks, data.tag.tag])
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {

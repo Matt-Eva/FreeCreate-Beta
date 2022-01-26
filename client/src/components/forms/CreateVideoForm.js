@@ -25,7 +25,7 @@ function CreateVideoForm({contentType, creator}) {
     const [publicThumbnailId, setPublicThumbnailId] = useState(null)
     const [publicVideoId, setPublicVideoId] = useState(null)
 
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink}> {taglink.tag_text} </span>)
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]
@@ -190,7 +190,7 @@ function CreateVideoForm({contentType, creator}) {
     function submitTag(e){
         e.preventDefault()
         for (const taglink of taglinks){
-            if (taglink === tag) {
+            if (taglink.tag_text === tag) {
                 setTag("")
                 console.log("no new")
                 return alert("you have already added that tag")
@@ -209,7 +209,7 @@ function CreateVideoForm({contentType, creator}) {
         .then(r =>{
             if (r.ok){
                 r.json().then(data =>{
-                    setTaglinks([...taglinks, data.tag.tag])
+                    setTaglinks([...taglinks, data])
                     setTag("")
                 })
             } else {
