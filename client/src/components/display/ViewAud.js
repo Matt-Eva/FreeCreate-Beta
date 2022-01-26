@@ -99,22 +99,17 @@ function ViewAud() {
                 <TopNav />
             </Row>
             <Row>
-                <Image src={audio.thumbnail} style={{"width": "300px"}}/>
+                <Col sm={3}>
+                    <Image src={audio.thumbnail} style={{"width": "300px"}}/>
+                </Col>
+                <Col sm={6}>
+                    <h1 className="text-start">{audio.title}</h1>
+                    {user ? (isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button> )
+                    :  <Button variant="success" disabled>Like</Button>}
+                </Col>
             </Row>
-            <Row className="justify-content-center text-center">
-                <h1>{audio.title}</h1>
+            <Row className="justify-content-center">
                 <audio controls src={audio.content} style={{"width": "800px"}}>Your browser does not support this audio player</audio>
-            </Row>
-            <Row>
-            {user ? <Col>
-                    {isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button> }
-                    {/* <Button variant="success">Add to Library</Button>
-                    <Button variant="success">Add to Reading List</Button> */}
-                </Col> : <Col>
-                    <Button variant="success" disabled>Like</Button>
-                    {/* <Button variant="success" disabled>Add to Library</Button>
-                    <Button variant="success" disabled>Add to Reading List</Button> */}
-                </Col>}
             </Row>
         </Container>
     )
