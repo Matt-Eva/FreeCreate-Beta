@@ -1,5 +1,7 @@
 class Api::ArtsController < ApplicationController
 
+    before_action :authorize, only: [:create, :update, :destroy]
+
     def index
         art = Art.all.slice(0, 51)
         render json: art, include: ['creator', 'creator.user'], status: :ok

@@ -1,5 +1,7 @@
 class Api::VideosController < ApplicationController
 
+    before_action :authorize, only: [:create, :update, :destroy]
+
     def index
         videos = Video.all.slice(0, 51)
         render json: videos, include: ['creator', 'creator.user'], status: :ok

@@ -1,5 +1,7 @@
 class Api::WritLikesController < ApplicationController
 
+    before_action :authorize
+
     def index
         writ_likes = current_user.writ_likes
         render json: writ_likes, status: :ok

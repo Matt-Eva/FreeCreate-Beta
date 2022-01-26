@@ -4,6 +4,8 @@ class ApplicationController < ActionController::API
 rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
+before_action :authorize, only: [:all_liked_creations]
+
 def search_all
     writing = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
     audio = Audio.where(title: params[:search])

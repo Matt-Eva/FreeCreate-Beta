@@ -1,5 +1,7 @@
 class Api::ArtLikesController < ApplicationController
 
+    before_action :authorize
+
     def index
         art_likes = current_user.art_likes
         render json: art_likes, status: :ok

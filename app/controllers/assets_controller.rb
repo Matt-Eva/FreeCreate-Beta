@@ -2,6 +2,8 @@ require 'cloudinary'
 
 class AssetsController < ApplicationController
 
+    before_action :authorize
+
     def destroy_thumbnail
         public_id = params[:public_id]
         auth ={

@@ -1,5 +1,7 @@
 class Api::ArtTaglinksController < ApplicationController
 
+    before_action :authorize
+
     def create
         tag = Tag.find_by(tag: params[:tag])
         if tag

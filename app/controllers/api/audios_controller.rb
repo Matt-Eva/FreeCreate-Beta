@@ -1,5 +1,6 @@
 class Api::AudiosController < ApplicationController
 
+    before_action :authorize, only: [:create, :update, :destroy]
 
     def index
         audios = Audio.all.sort_by{|a| -(a.rank)}.slice(0, 51)

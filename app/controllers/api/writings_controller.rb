@@ -1,4 +1,6 @@
 class Api::WritingsController < ApplicationController
+
+    before_action :authorize, only: [:create, :update, :destroy]
     
     def index
         writings = Writing.all.slice(0, 51)
