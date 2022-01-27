@@ -185,7 +185,8 @@ function CreateWritingForm({creator}) {
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
                     {deletingThumbnail ? <p>Deleting thumbnail...</p> : null}
-                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "200px"}} className="rounded mb-2"/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    <br />
                     {thumbnailDisplay && creationId === 0 ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>

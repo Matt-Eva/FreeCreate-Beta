@@ -267,7 +267,7 @@ function CreateArtForm({contentType, creator}) {
                         <Button variant="success" type="submit">Upload Image</Button>
                     </Form.Group>
                 </Form>}
-                {artDisplay && creationId === 0 ? <Button variant="success" onClick={deleteArt}>Remove Art</Button> : null}
+                {artDisplay && creationId === 0 ? <div><Button variant="success" onClick={deleteArt}>Remove Art</Button></div> : null}
                 
             </Row>
             <Row>

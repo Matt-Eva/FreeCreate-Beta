@@ -240,7 +240,8 @@ function CreateAudioForm({contentType, creator}) {
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
                     {deletingThumbnail ? <p>Deleting thumbnail...</p> : null}
-                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "200px"}} className="rounded mb-2"/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    <br />
                     {thumbnailDisplay && creationId === 0 ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
@@ -254,7 +255,7 @@ function CreateAudioForm({contentType, creator}) {
                         <Button variant="success" type="submit">Upload Audio</Button>
                     </Form.Group>
                 </Form>}
-                {audioDisplay && creationId === 0 ? <Button variant="success" onClick={removeAudio}>Remove Audio</Button> : null}
+                {audioDisplay && creationId === 0 ? <div><Button variant="success" onClick={removeAudio}>Remove Audio</Button></div> : null}
             </Row>
             <Row>
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createAudio}>
