@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux"
 import {removeUser} from "../userauth/userSlice"
 import {setCreators} from "../userauth/creatorsSlice"
 import { setWritLikes, setAudLikes, setVidLikes, setArtLikes} from "../libraries/likesSlice.js"
+import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../libraries/likedCreationsSlice"
 import {useNavigate, Link} from "react-router-dom"
 
 function ProfileDropdown() {
@@ -27,7 +28,7 @@ const navigate = useNavigate()
                 My Profile
             </Dropdown.Toggle>
             <Dropdown.Menu>
-                <Dropdown.Item>View Profile</Dropdown.Item>
+                {/* <Dropdown.Item>View Profile</Dropdown.Item> */}
                 <Dropdown.Item onClick={() =>navigate("/creatorprofiles")}>Creator Profiles</Dropdown.Item>
                 <Dropdown.Item onClick={() =>{navigate("/newcreator")}}>Add Creator Profile</Dropdown.Item>
                 <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>

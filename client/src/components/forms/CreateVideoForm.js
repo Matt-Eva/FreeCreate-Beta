@@ -237,21 +237,22 @@ function CreateVideoForm({contentType, creator}) {
                 <Col>
                     {loading ? <p>Loading thumbnail...</p> : null}
                     {deletingThumbnail ? <p>Removing thumbnail...</p>: null}
-                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "100px"}}/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    {thumbnailDisplay ? <Image src={thumbnailDisplay} style={{"height": "200px"}} className="rounded mb-2"/> : <h4><em>Your Thumbnail Here</em></h4>}
+                    <br />
                     {thumbnailDisplay && creationId === 0 ? <Button variant="success" onClick={deleteThumbnail}>Remove Thumbnail</Button> : null}
                 </Col>
             </Row>
             <Row>
                 {videoLoading ? <p>Loading video...</p> : null}
                 {deletingVideo ? <p>Removing video...</p> : null}
-                {videoDisplay ? <video controls style={{"width": "300px"}}><source src={videoDisplay} type="video/mp4"/></video> : <Form onSubmit={uploadVideo}>
+                {videoDisplay ? <video controls style={{"width": "500px", "maxHeight": "600px"}} className="mb-2 mt-2"><source src={videoDisplay} type="video/mp4"/></video> : <Form onSubmit={uploadVideo}>
                     <Form.Group>
                         <Form.Label>Video:</Form.Label>
-                        <Form.Control type="file" ref={videoRef} onChange={videoChangeHandler}/>
+                        <Form.Control type="file" ref={videoRef} onChange={videoChangeHandler} className="mb-2"/>
                         <Button variant="success" type="submit">Upload Video</Button>
                     </Form.Group>
                 </Form>}
-                {videoDisplay && creationId === 0 ? <Button variant="success" onClick={deleteVideo}>Remove Video</Button>: null}
+                {videoDisplay && creationId === 0 ? <div><Button variant="success" onClick={deleteVideo}>Remove Video</Button></div>: null}
             </Row>
             <Row>
                 <Form onChange={(e) => setTitle(e.target.value)} onSubmit={createVideo}>
@@ -259,7 +260,7 @@ function CreateVideoForm({contentType, creator}) {
                         <Form.Label>Title:</Form.Label>
                         {creationId === 0 ? <Form.Control type="text" value={title}/> : <Form.Control disabled type="text" value={title}/> }
                     </Form.Group>
-                    {(title === "" || creationId !== 0) || (videoDisplay === null || thumbnailDisplay === null) ? <Button variant="success" type="submit" disabled>Create</Button> : <Button type="submit">Create</Button>}
+                    {(title === "" || creationId !== 0) || (videoDisplay === null || thumbnailDisplay === null) ? <Button variant="success" type="submit" disabled>Create</Button> : <Button variant="success" type="submit">Create</Button>}
                 </Form>
             </Row>
             <Form onChange={(e) => setTag(e.target.value.toLowerCase())} onSubmit={submitTag}>

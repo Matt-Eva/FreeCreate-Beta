@@ -21,7 +21,7 @@ function CreatorProfile() {
     const creatorCards = creators?.map(creator => <CreatorProfileCard key={creator.id} creator={creator}/>)
 
     return (
-        <Container>
+        <Container fluid className="p-0">
             <Row>
                 <TopNav />
             </Row>

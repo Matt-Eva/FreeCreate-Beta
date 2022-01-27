@@ -144,7 +144,8 @@ function CreateCreatorProfile() {
                 <Col>
                     {loading ? <p>Loading profile pic...</p> : null}
                     {deleting ? <p>Removing profile pic...</p> : null}
-                    {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "100px"}}/>}
+                    {thumbnailDisplay === null ? null : <Image src={thumbnailDisplay} style={{"height": "200px"}} className="rounded mb-2"/>}
+                    <br />
                     {thumbnailDisplay === null ? null : <Button variant="success" onClick={removeThumbnail}>Remove Photo</Button>}
                 </Col>
             </Row>

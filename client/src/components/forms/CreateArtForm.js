@@ -27,15 +27,15 @@ function CreateArtForm({contentType, creator}) {
     const [publicArtId, setPublicArtId] = useState(null)
 
     console.log(taglinks)
-    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id} onClick={() => deleteTagLink(taglink.id)}> {taglink.tag_text} </span>)
+    const displayTaglinks = taglinks?.map(taglink => <span key={taglink.id}> {taglink.tag_text} </span>)
 
-    function deleteTagLink(id){
-        fetch(`/api/art_taglinks/${id}`, {method: "DELETE"})
-        .then(() =>{
-            const oneLess = taglinks.filter(taglink => taglink.id !== id)
-            setTaglinks(...oneLess)
-        })
-    }
+    // function deleteTagLink(id){
+    //     fetch(`/api/art_taglinks/${id}`, {method: "DELETE"})
+    //     .then(() =>{
+    //         const oneLess = taglinks.filter(taglink => taglink.id !== id)
+    //         setTaglinks(...oneLess)
+    //     })
+    // }
 
     function picChangeHandler(e){
         const thumbnail = e.target.files[0]

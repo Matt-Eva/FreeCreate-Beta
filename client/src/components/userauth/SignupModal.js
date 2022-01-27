@@ -93,14 +93,14 @@ const formik = useFormik({
                         <Form.Label>Confirm Password:</Form.Label>
                         <Form.Control type="password" name="password_confirmation" placeholder="Confirm password..." value={formik.values.password_confirmation}/>
                     </Form.Group>
-                    <Form.Group>
+                    {/* <Form.Group>
                         <Form.Label>Email:</Form.Label>
                         <Form.Control type="email" name="email" placeholder="Enter your email address" value={formik.values.email}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Nickname:</Form.Label>
                         <Form.Control type="text" name="nickname" placeholder="What name would you like to be called? (optional)" value={formik.values.nickname}/>
-                    </Form.Group>
+                    </Form.Group> */}
                     {/* <Form.Group>
                         <Form.Label>Profile Pic:</Form.Label>
                         <Form.Control type="file" name="password" placeholder="Enter password..." value={formik.values.password}/>

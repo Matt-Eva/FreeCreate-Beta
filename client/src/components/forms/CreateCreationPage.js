@@ -26,7 +26,7 @@ function CreateCreationPage() {
 
     if (creators.length === 0){
         return(
-            <Container>
+            <Container fluid className="p-0">
                 <Row>
                     <TopNav />
                 </Row>
@@ -42,7 +42,7 @@ function CreateCreationPage() {
     }
 
     return (
-        <Container fluid className="me-0 ms-0 p-0">
+        <Container fluid className="p-0">
             <Row>
                 <TopNav />
             </Row>
@@ -58,7 +58,7 @@ function CreateCreationPage() {
                 </Col>
                 <Col>
                 {displayCreator !== undefined ? <div>
-                    <Image src={displayCreator.prof_pic} style={{"height": "100px"}}/>
+                    <Image src={displayCreator.prof_pic} style={{"height": "200px"}} className="rounded mb-2"/>
                     {displayCreator.prof_pic ? null : <p><em>(No profile picture associated with this creator)</em></p>}
                     <h4>{displayCreator.name}</h4>
                 </div> : null}
