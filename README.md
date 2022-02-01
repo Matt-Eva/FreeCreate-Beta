@@ -20,7 +20,7 @@ This app using the following technologies:
 ### Deployment
 - FreeCreate is currently <a href="https://freecreate.herokuapp.com/loggedout">deployed</a> on <a href="https://www.heroku.com/about">Heroku</a>.
 
-## Browse
+## Walkthrough
 
 Here's a walkthrough of FreeCreate's different pages, features, and views.
 
@@ -31,12 +31,15 @@ This is the homepage for users who are logged out or don't have an account:
 
 <img width="1344" alt="Screen Shot 2022-02-01 at 11 32 45 AM" src="https://user-images.githubusercontent.com/89106805/152038232-2481e2f0-7b3e-43bf-a6c8-744c983195dc.png">
 
+### Browse
+
 Users can browse specific type of media rather than browsing all types at once, if they so choose:
 
 Example, writing: 
 
 <img width="1344" alt="Screen Shot 2022-02-01 at 11 40 58 AM" src="https://user-images.githubusercontent.com/89106805/152039351-9f91d355-6578-4a1d-90b9-a6e8baef70f6.png">
 
+### View
 
 Users can view any piece of media without having to log in, although interactions such as "like" are disabled:
 
