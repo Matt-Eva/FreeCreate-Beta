@@ -38,11 +38,23 @@ Example, writing:
 <img width="1344" alt="Screen Shot 2022-02-01 at 11 40 58 AM" src="https://user-images.githubusercontent.com/89106805/152039351-9f91d355-6578-4a1d-90b9-a6e8baef70f6.png">
 
 
-Users can view any piece of media without having to log in, although interactions such as "like" will be disabled:
+Users can view any piece of media without having to log in, although interactions such as "like" are be disabled:
 
 Writing:
 
 <img width="1344" alt="Screen Shot 2022-02-01 at 11 38 15 AM" src="https://user-images.githubusercontent.com/89106805/152038949-f993b770-d07f-417e-851f-b2f82af6c4be.png">
+
+Audio: 
+
+<img width="1344" alt="Screen Shot 2022-02-01 at 11 53 13 AM" src="https://user-images.githubusercontent.com/89106805/152041181-64ed298f-7805-4971-87f0-001112db4d6d.png">
+
+Images: 
+
+<img width="1344" alt="Screen Shot 2022-02-01 at 11 54 58 AM" src="https://user-images.githubusercontent.com/89106805/152041458-0c47ad44-3bfd-4275-9a93-ad2d56918ace.png">
+
+Video:
+
+<img width="1344" alt="Screen Shot 2022-02-01 at 11 55 41 AM" src="https://user-images.githubusercontent.com/89106805/152041559-365489e8-19a6-4bf5-92c8-39f27eb99345.png">
 
 ## Created By
 
