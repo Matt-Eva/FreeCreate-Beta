@@ -26,9 +26,11 @@ Here's a walkthrough of FreeCreate's different pages, features, and views.
 
 ### Logged Out
 
-The homepage for users who are logged out and for people who don't have an account:
+This is the homepage for users who are logged out or don't have an account:
 
-<img width="1344" alt="Screen Shot 2022-02-01 at 11 32 45 AM" src="https://user-images.githubusercontent.com/89106805/152038232-2481e2f0-7b3e-43bf-a6c8-744c983195dc.png">## Created By
+<img width="1344" alt="Screen Shot 2022-02-01 at 11 32 45 AM" src="https://user-images.githubusercontent.com/89106805/152038232-2481e2f0-7b3e-43bf-a6c8-744c983195dc.png">
+
+## Created By
 
 ### Matt Eva
 
