@@ -2,7 +2,23 @@
 
 FreeCreate is a content-sharing platform that hosts video, audio, writing, and visual art (images).
 
-FreeCreate was written with a Ruby on Rails backend and a React frontend.
+## Technologies
+
+This app using the following technologies:
+
+### Frontend
+- React.js 
+- React-Router
+- React-Redux
+- Bootstrap v5
+- Custom CSS
+
+### Backend
+- Ruby on Rails
+- PostgreSQL
+
+### Deployment
+- FreeCreate is currently <a href="https://freecreate.herokuapp.com/loggedout">deployed</a> on <a href="https://www.heroku.com/about">Heroku</a>.
 
 ## Created By
 
