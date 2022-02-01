@@ -38,7 +38,7 @@ Example, writing:
 <img width="1344" alt="Screen Shot 2022-02-01 at 11 40 58 AM" src="https://user-images.githubusercontent.com/89106805/152039351-9f91d355-6578-4a1d-90b9-a6e8baef70f6.png">
 
 
-Users can view any piece of media without having to log in, although interactions such as "like" are be disabled:
+Users can view any piece of media without having to log in, although interactions such as "like" are disabled:
 
 Writing:
 
