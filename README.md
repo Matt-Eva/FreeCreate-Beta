@@ -6,7 +6,7 @@ FreeCreate was written with a Ruby on Rails backend and a React frontend.
 
 ## Created By
 
-# Matt Eva
+### Matt Eva
 
 Github: https://github.com/Matt-Eva
 LinkedIn: https://www.linkedin.com/in/mattheweva/
