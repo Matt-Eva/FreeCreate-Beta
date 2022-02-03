@@ -47,7 +47,7 @@ const dispatch = useDispatch()
   
 
   return (
-    <Container fluid>
+    <Container fluid className="p-0 m-0">
       <LoginModal />
       <SignupModal />
       <Routes>

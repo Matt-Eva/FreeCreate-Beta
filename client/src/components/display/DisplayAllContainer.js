@@ -11,8 +11,8 @@ function DisplayAllContainer({writing, audio, art, video}) {
     const vidDisplayCards = video?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={"video"}/>)
     
     return (
-        <Container >
-            <Row >
+        <Container fluid>
+            <Row xs ={4} sm={4} md={4} lg={4}>
                 <Col className="d-flex justify-content-center flex-wrap border-end border-dark">
                     {writDisplayCards}
                 </Col>

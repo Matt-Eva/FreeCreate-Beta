@@ -111,7 +111,7 @@ function HomepageLoggedIn() {
       }
 
     return (
-        <Container fluid className='p-0'>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>
@@ -119,7 +119,7 @@ function HomepageLoggedIn() {
                 <Col xs={2}>
                     <Sidebar />
                 </Col>
-                <Col xs={10} sm={10}>
+                <Col xs={5} sm={10}>
                     <Row>
                         <BrowseSearch displayType={displayType}/>
                     </Row>

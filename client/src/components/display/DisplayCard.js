@@ -10,8 +10,8 @@ function DisplayCard({creation, displayType}) {
     const title = creationTitle.replace(/[.,/#!$?%^&*;:{}=-_`~()]/g, "")
 
     return (
-        <Card style={{"width": "250px", "height": "340px"}} className="m-2">
-            <Link to={`/view/${displayType}/${title}/${creation.id}`} title={creation.title}><Card.Img src={thumbnail} style={{"height": "250px"}}/></Link>
+        <Card style={{"maxWidth": "400px"}} className="m-2">
+            <Link to={`/view/${displayType}/${title}/${creation.id}`} title={creation.title}><Card.Img src={thumbnail}/></Link>
             <Card.Body>  
                 <Card.Title className="text-truncate">
                     <Link to={`/view/${displayType}/${title}/${creation.id}`} title={creation.title}>{creation.title}</Link>
@@ -26,3 +26,6 @@ function DisplayCard({creation, displayType}) {
 }
 
 export default DisplayCard
+
+
+// style={{"minWidth": "80%", "maxWidth": "200px"}}

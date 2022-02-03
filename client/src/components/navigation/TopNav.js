@@ -13,7 +13,7 @@ import LoggedOutTopNavClick from "./LoggedOutTopNavClick"
 function TopNav() {
     const user = useSelector(state => state.user.user)
     return (
-        <Container className="mt-0 mb-2 p-0 pt-2 pb-2 bg-light" fluid>
+        <Container className="bg-info mb-2" fluid>
             <Row >
             <Col sm={2} className="d-flex align-items-center">
                 <Icon />
