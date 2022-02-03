@@ -155,7 +155,7 @@ function BrowseSearch({displayType}) {
     }
 
     return (
-        <Container fluid className="mt-2 mb-2 p-2 border-bottom border-dark">
+        <Container fluid className="mt-2 mb-2 border-bottom border-dark">
             <Row>
                 <Col>
                     <Form onChange={(e) => setSearch(e.target.value)} className="mb-3 d-flex" onSubmit={searchQuery}>

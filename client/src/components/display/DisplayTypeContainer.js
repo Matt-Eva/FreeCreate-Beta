@@ -7,10 +7,11 @@ function DisplayTypeContainer({display, displayType}) {
     const displayCards = display?.map(creation => <DisplayCard key={creation.id} creation={creation} displayType={displayType}/>)
     return (
         <Container>
-            <Row>
-                <Col className="d-flex justify-content-center flex-wrap">
+            <Row className="d-flex justify-content-center flex-wrap">
+            {displayCards}
+                {/* <Col className="d-flex justify-content-center flex-wrap">
                     {displayCards}
-                </Col>
+                </Col> */}
             </Row>
         </Container>
     )
