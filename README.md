@@ -14,14 +14,18 @@ This app using the following technologies:
 - Custom CSS
 
 ### Backend
-- Ruby on Rails
+- Ruby on Rails 7.0.0
 - PostgreSQL
+- Ruby 2.7.5
 
 ### Deployment
 - FreeCreate is currently <a href="https://freecreate.herokuapp.com/loggedout">deployed</a> on <a href="https://www.heroku.com/about">Heroku</a>.
 
 ## Launch
 
+Once you've cloned and pulled down with this repository, run `bundle install` within the main directory and `npm install` from within the client directory.
+
+Then, run `rails s` from the main directory and `npm start` from the client directory.
 
 
 ## Walkthrough
