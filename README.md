@@ -20,6 +20,10 @@ This app using the following technologies:
 ### Deployment
 - FreeCreate is currently <a href="https://freecreate.herokuapp.com/loggedout">deployed</a> on <a href="https://www.heroku.com/about">Heroku</a>.
 
+## Launch
+
+
+
 ## Walkthrough
 
 Here's a walkthrough of FreeCreate's different pages, features, and views.
