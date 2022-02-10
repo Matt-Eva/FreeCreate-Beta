@@ -2,18 +2,17 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import { Link } from "react-router-dom"
+import {useSelector, useDispatch} from "react-redux"
+import {setLibDisplayType} from "../../state/libDisplayTypeSlice"
 
 function Sidebar() {
+    const libDisplayType = useSelector(state => state.libDisplayType.libDisplayType)
+    const dispatch = useDispatch()
+    console.log(libDisplayType)
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <h5><Link to="/mycreations">My Creations</Link></h5>
-                {/* <ul>
-                    <li>Writing</li>
-                    <li>Audio</li>
-                    <li>Art</li>
-                    <li>Video</li>
-                </ul> */}
             </Row>
             {/* <Row>
                 <h5>Subscriptions</h5>
@@ -35,12 +34,12 @@ function Sidebar() {
             </Row>
             <Row>
                 <h5><Link to="/mylibrary">My Library</Link></h5>
-                {/* <ul>
-                    <li>Writing</li>
-                    <li>Audio</li>
-                    <li>Art</li>
-                    <li>Video</li>
-                </ul> */}
+                <ul>
+                    <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("writing"))}>Writing</Link></li>
+                    <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("audio"))}>Audio</Link></li>
+                    <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("art"))}>Art</Link></li>
+                    <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("video"))}>Video</Link></li>
+                </ul>
             </Row>
             <Row>
                 {/* <h5>Following</h5> */}
