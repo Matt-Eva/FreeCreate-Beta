@@ -11,6 +11,6 @@ a {
 }
 
 a:hover{
-  color: hsl(180, 50%, 40%);
+  color: hsl(0, 0%, 50%);
   transition: 500ms
 }
