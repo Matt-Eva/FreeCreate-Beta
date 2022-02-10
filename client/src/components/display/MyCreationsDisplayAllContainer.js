@@ -11,8 +11,8 @@ function MyCreationsDisplayAllContainer({writing, audio, art, video}) {
     const vidDisplayCards = video?.map(creation => <MyCreationDisplayCard key={creation.id} creation={creation} displayType={"video"}/>)
    
     return (
-        <Container>
-            <Row>
+        <Container fluid>
+            <Row xs ={4} sm={4} md={4} lg={4}>
                 <Col style={{"borderRight" : "solid", "borderWidth": "1px"}}>
                     {writDisplayCards === undefined || writDisplayCards.length === 0 ? <p>No writing to display</p> : writDisplayCards}
                 </Col>

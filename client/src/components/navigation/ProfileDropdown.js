@@ -1,9 +1,9 @@
 import Dropdown from "react-bootstrap/Dropdown"
 import {useDispatch} from "react-redux"
-import {removeUser} from "../userauth/userSlice"
-import {setCreators} from "../userauth/creatorsSlice"
-import { setWritLikes, setAudLikes, setVidLikes, setArtLikes} from "../libraries/likesSlice.js"
-import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../libraries/likedCreationsSlice"
+import {removeUser} from "../../state/userSlice"
+import {setCreators} from "../../state/creatorsSlice"
+import { setWritLikes, setAudLikes, setVidLikes, setArtLikes} from "../../state/likesSlice.js"
+import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../../state/likedCreationsSlice"
 import {useNavigate, Link} from "react-router-dom"
 
 function ProfileDropdown() {

@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
-import {setDisplayTypeAll} from "../display/displayTypeSlice"
+import {setDisplayTypeAll} from "../../state/displayTypeSlice"
 
 function Icon() {
     const user = useSelector(state => state.user.user)

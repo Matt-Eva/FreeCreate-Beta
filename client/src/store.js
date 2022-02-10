@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit"
-import userAuthModalReducer from "./components/userauth/userAuthModalSlice"
-import userReducer from "./components/userauth/userSlice"
-import displayTypeReducer from "./components/display/displayTypeSlice"
-import queryDisplayReducer from "./components/display/queryDisplaySlice"
-import editCreatorReducer from "./components/forms/editCreatorSlice"
-import creatorsReducer from "./components/userauth/creatorsSlice"
-import myWritingsReducer from "./components/libraries/myWritingsSlice"
-import editCreationsReducer from './components/forms/editCreationsSlice'
-import likesReducer from "./components/libraries/likesSlice"
-import likedCreationsReducer from "./components/libraries/likedCreationsSlice"
+import userAuthModalReducer from "./state/userAuthModalSlice"
+import userReducer from "./state/userSlice"
+import displayTypeReducer from "./state/displayTypeSlice"
+import queryDisplayReducer from "./state/queryDisplaySlice"
+import editCreatorReducer from "./state/editCreatorSlice"
+import creatorsReducer from "./state/creatorsSlice"
+import myWritingsReducer from "./state/myWritingsSlice"
+import editCreationsReducer from './state/editCreationsSlice'
+import likesReducer from "./state/likesSlice"
+import likedCreationsReducer from "./state/likedCreationsSlice"
+import myLibraryReducer from "./state/myLibrarySlice"
+import libDisplayTypeReducer from "./state/libDisplayTypeSlice"
 
 const store = configureStore({
     reducer: {
@@ -21,7 +23,9 @@ const store = configureStore({
         myWritings: myWritingsReducer,
         editCreations: editCreationsReducer,
         likes: likesReducer,
-        likedCreations: likedCreationsReducer
+        likedCreations: likedCreationsReducer,
+        myLibrary: myLibraryReducer,
+        libDisplayType: libDisplayTypeReducer
     }
 })
 

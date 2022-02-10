@@ -7,8 +7,8 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
-import { setArtLikes, addArtLike, removeArtLike } from "../libraries/likesSlice.js"
-import { addLikedArt, removeLikedArt} from "../libraries/likedCreationsSlice"
+import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.js"
+import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
 
 function ViewArt() {
     const [art, setArt] = useState(null)

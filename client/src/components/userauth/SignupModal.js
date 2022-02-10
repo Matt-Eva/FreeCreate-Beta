@@ -6,8 +6,8 @@ import * as Yup from "yup"
 import {useSelector, useDispatch} from "react-redux"
 import {useState} from 'react'
 import { useNavigate } from "react-router-dom"
-import {showLogin, hideSignup} from "./userAuthModalSlice"
-import { setUser } from "./userSlice"
+import {showLogin, hideSignup} from "../../state/userAuthModalSlice"
+import { setUser } from "../../state/userSlice"
 
 
 function SignupModal() {

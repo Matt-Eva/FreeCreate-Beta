@@ -3,8 +3,8 @@ import "../App.css"
 import { Container, Row, Col } from "react-bootstrap"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { setUser } from "./userauth/userSlice"
-import { setCreators } from "./userauth/creatorsSlice"
+import { setUser } from "../state/userSlice"
+import { setCreators } from "../state/creatorsSlice"
 import { useEffect } from "react"
 import HomepageLoggedIn from "./home/HomepageLoggedIn"
 import HomepageLoggedOut from './home/HomepageLoggedOut';
@@ -23,6 +23,7 @@ import EditVideoPage from './forms/EditVideoPage';
 import EditWritingPage from './forms/EditWritingPage';
 import EditAudioPage from './forms/EditAudioPage';
 import MyCreations from './libraries/MyCreations';
+import MyLibrary from './libraries/MyLibrary';
 import LikedCreations from './libraries/LikedCreations';
 
 function App() {
@@ -60,6 +61,7 @@ const dispatch = useDispatch()
         <Route path="/edit/art" element={<EditArtPage />}/>
         <Route path="/edit/video" element={<EditVideoPage />}/>
         <Route path="/mycreations" element={<MyCreations />}/>
+        <Route path="/mylibrary" element={<MyLibrary />} />
         <Route path="/likedcreations" element={<LikedCreations />} />
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>

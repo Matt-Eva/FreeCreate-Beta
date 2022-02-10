@@ -7,8 +7,8 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
-import { setVidLikes, addVidLike, removeVidLike } from "../libraries/likesSlice.js"
-import { addLikedVid, removeLikedVid} from "../libraries/likedCreationsSlice"
+import { setVidLikes, addVidLike, removeVidLike } from "../../state/likesSlice.js"
+import { addLikedVid, removeLikedVid} from "../../state/likedCreationsSlice"
 
 function ViewVid() {
     const [video, setVideo] = useState(null)

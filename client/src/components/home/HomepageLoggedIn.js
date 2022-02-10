@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import Button from "react-bootstrap/Button"
 import { useSelector, useDispatch } from "react-redux"
-import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../display/queryDisplaySlice"
+import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../../state/queryDisplaySlice"
 import { useEffect } from "react"
 import TopNav from "../navigation/TopNav"
 import Sidebar from "../navigation/Sidebar"
