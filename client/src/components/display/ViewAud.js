@@ -7,8 +7,8 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
-import { setAudLikes, addAudLike, removeAudLike } from "../libraries/likesSlice.js"
-import { addLikedAud, removeLikedAud} from "../libraries/likedCreationsSlice"
+import { setAudLikes, addAudLike, removeAudLike } from "../../state/likesSlice.js"
+import { addLikedAud, removeLikedAud} from "../../state/likedCreationsSlice"
 
 function ViewAud() {
     const [audio, setAudio] = useState(null)

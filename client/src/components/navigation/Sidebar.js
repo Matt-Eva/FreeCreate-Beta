@@ -34,7 +34,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                {/* <h5>My Library</h5> */}
+                <h5><Link to="/mylibrary">My Library</Link></h5>
                 {/* <ul>
                     <li>Writing</li>
                     <li>Audio</li>

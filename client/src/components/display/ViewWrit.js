@@ -7,8 +7,8 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
 import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
-import { setWritLikes, addWritLike, removeWritLike } from "../libraries/likesSlice.js"
-import { addLikedWrit, removeLikedWrit} from "../libraries/likedCreationsSlice"
+import { setWritLikes, addWritLike, removeWritLike } from "../../state/likesSlice.js"
+import { addLikedWrit, removeLikedWrit} from "../../state/likedCreationsSlice"
 
 function ViewWrit() {
     const [writing, setWriting] = useState(null)

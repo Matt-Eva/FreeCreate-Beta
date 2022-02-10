@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
 import {useSelector, useDispatch} from "react-redux"
-import { addCreator } from '../userauth/creatorsSlice'
+import { addCreator } from '../../state/creatorsSlice'
 import { useState, useRef } from "react"
 import { useNavigate } from 'react-router-dom'
 import TopNav from "../navigation/TopNav"

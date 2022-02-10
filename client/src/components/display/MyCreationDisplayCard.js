@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card"
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
-import {setEditWriting, setEditAudio, setEditArt, setEditVideo} from "../forms/editCreationsSlice"
+import {setEditWriting, setEditAudio, setEditArt, setEditVideo} from "../../state/editCreationsSlice"
 
 function MyCreationDisplayCard({creation, displayType}) {
     const {thumbnail} = creation

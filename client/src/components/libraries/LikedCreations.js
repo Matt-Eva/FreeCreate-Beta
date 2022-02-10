@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import {useSelector, useDispatch} from "react-redux"
-import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../libraries/likedCreationsSlice"
+import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../../state/likedCreationsSlice"
 import DisplayAllContainer from "../display/DisplayAllContainer"
 import TopNav from '../navigation/TopNav'
 import Sidebar from "../navigation/Sidebar"
@@ -32,7 +32,7 @@ function LikedCreations() {
     }, [])
 
     return (
-        <Container fluid className='p-0'>
+        <Container fluid>
             <Row>
                 <TopNav />
             </Row>

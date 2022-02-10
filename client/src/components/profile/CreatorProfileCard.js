@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "react-bootstrap/Button"
 import {Link} from "react-router-dom"
 import {useDispatch} from "react-redux"
-import {setEditCreator } from "../forms/editCreatorSlice"
+import {setEditCreator } from "../../state/editCreatorSlice"
 
 function CreatorProfileCard({creator}) {
     const dispatch = useDispatch()

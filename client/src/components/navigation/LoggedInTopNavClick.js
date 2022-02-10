@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import { Link, NavLink } from "react-router-dom"
 import {useSelector, useDispatch} from 'react-redux'
-import { setDisplayTypeWriting, setDisplayTypeAudio, setDisplayTypeArt, setDisplayTypeVideo, setDisplayTypeAll } from "../display/displayTypeSlice"
+import { setDisplayTypeWriting, setDisplayTypeAudio, setDisplayTypeArt, setDisplayTypeVideo, setDisplayTypeAll } from "../../state/displayTypeSlice"
 
 
 function LoggedInTopNavClick() {
