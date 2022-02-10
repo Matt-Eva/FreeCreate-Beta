@@ -26,8 +26,8 @@ function MyCreationDisplayCard({creation, displayType}) {
     }
 
     return (
-        <Card style={{"width": "250px", "height": "340px"}} className="m-2 text-">
-            <Link to={`/view/${displayType}/${title}/${creation.id}`} title={creation.title}><Card.Img src={thumbnail} style={{"height": "250px"}}/></Link>
+        <Card style={{"maxWidth": "400px"}} className="m-2 p-0">
+            <Link to={`/view/${displayType}/${title}/${creation.id}`} title={creation.title}><Card.Img src={thumbnail}/></Link>
             <Card.Body>  
             <Card.Title className="text-truncate">
                     <Link to={`/view/${displayType}/${title}/${creation.id}`} title={creation.title}>{creation.title}</Link>

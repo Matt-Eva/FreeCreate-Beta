@@ -14,7 +14,7 @@ import LoggedOutTopNavClick from "./LoggedOutTopNavClick"
 function TopNav() {
     const user = useSelector(state => state.user.user)
     return (
-        <Container className="bg-info mb-2 pe-1" fluid>
+        <Container className="bg-light mb-2 pe-1" fluid>
             <Row>
                 <Col xs={2} sm={2} md={2} lg={2} xl={2} xxl={2} className="d-flex align-items-center">
                     <Icon />

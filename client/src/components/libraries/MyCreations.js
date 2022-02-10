@@ -45,15 +45,15 @@ function MyCreations() {
     }, [creatorId])
 
     return (
-        <Container fluid className='p-0'>
+        <Container fluid >
             <Row>
                 <TopNav />
             </Row>
             <Row>
-                <Col>
+                <Col xs={2}>
                     <Sidebar />
                 </Col>
-                <Col xs={10} sm={10}>
+                <Col xs={5} sm={10}>
                     <Row>
                         <Col  className="text-center">
                             <h1>My Creations</h1>
