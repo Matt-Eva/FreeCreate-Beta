@@ -36,6 +36,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
+                dispatch(setLibWrit(data.writing))
             })
         } else if(libDisplayType === "video" && video.length === 0){
             console.log("fetching lib video")
@@ -43,6 +44,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
+                dispatch(setLibVid(data.video))
             })
         } else if(libDisplayType === "audio" && audio.length === 0){
             console.log("fetching lib audio")
@@ -50,6 +52,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
+                dispatch(setLibAud(data.audio))
             })
         } else if(libDisplayType === "art" && art.length === 0){
             console.log("fetching lib art")
@@ -57,6 +60,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
+                dispatch(setLibArt(data.art))
             })
         }
     },[libDisplayType])
@@ -95,7 +99,9 @@ const Display = styled.div`
     grid-template-columns: 1fr 4fr;
 
     .sidebar{
-        grid-column: 1
+        grid-column: 1; 
+        max-width: 20%;
+        background: gray;
     }
     
     .display{

@@ -9,6 +9,7 @@ import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.js"
 import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
+import LibraryButton from '../interaction/LibraryButton'
 
 function ViewArt() {
     const [art, setArt] = useState(null)
