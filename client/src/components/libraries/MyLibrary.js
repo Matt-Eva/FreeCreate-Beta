@@ -44,6 +44,20 @@ function MyLibrary() {
             .then(data =>{
                 console.log(data)
             })
+        } else if(libDisplayType === "audio" && audio.length === 0){
+            console.log("fetching lib audio")
+            fetch('/api/libaudio')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+            })
+        } else if(libDisplayType === "art" && art.length === 0){
+            console.log("fetching lib art")
+            fetch('/api/libart')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+            })
         }
     },[libDisplayType])
 

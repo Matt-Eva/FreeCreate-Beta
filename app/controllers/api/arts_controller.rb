@@ -1,6 +1,6 @@
 class Api::ArtsController < ApplicationController
 
-    before_action :authorize, only: [:create, :update, :destroy]
+    before_action :authorize, only: [:create, :update, :destroy, :lib_arts]
 
     def index
         art = Art.all.slice(0, 51)
@@ -42,6 +42,12 @@ class Api::ArtsController < ApplicationController
             arts = tag.arts
             render json: arts, status: :ok
         end
+    end
+
+    def lib_art
+        user = current_user
+        art = user.lib_arts
+        render json: {art: art}, status: :ok
     end
 
     private
