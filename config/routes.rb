@@ -23,19 +23,27 @@ Rails.application.routes.draw do
     post "/filter/audios", to: "audios#filter_query"
 
     resources :creators
+
     resources :writings
     resources :arts
     resources :videos
     resources :audios
+
     resources :tags
     resources :writ_taglinks
     resources :art_taglinks
     resources :vid_taglinks
     resources :aud_taglinks
+
     resources :writ_likes
     resources :art_likes
     resources :vid_likes
     resources :aud_likes
+    
+    resources :writ_lib_items
+    resources :art_lib_items
+    resources :vid_lib_items
+    resources :aud_lib_items
   end
   
   post "/login", to: "sessions#create"
