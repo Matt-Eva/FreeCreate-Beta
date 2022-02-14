@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
 rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
 rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-before_action :authorize, only: [:all_liked_creations]
+before_action :authorize, only: [:all_liked_creations, :all_lib_creations]
 
 def search_all
     writing = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
@@ -35,7 +35,16 @@ def all_liked_creations
     art = user.liked_arts
     audio = user.liked_auds
     video = user.liked_vids
-    render json: {writing: writing, art: art, audio: audio, video: video}
+    render json: {writing: writing, art: art, audio: audio, video: video}, status: :ok
+end
+
+def all_lib_creations
+    user = current_user
+    writing = user.lib_writs
+    audio = user.lib_auds
+    art = user.lib_arts
+    video = user.lib_vids
+    render json: {writing: writing, art: art, audio: audio, video: video}, status: :ok
 end
 
 private

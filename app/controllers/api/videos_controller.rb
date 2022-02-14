@@ -1,6 +1,6 @@
 class Api::VideosController < ApplicationController
 
-    before_action :authorize, only: [:create, :update, :destroy]
+    before_action :authorize, only: [:create, :update, :destroy, :lib_video]
 
     def index
         videos = Video.all.slice(0, 51)
@@ -42,6 +42,12 @@ class Api::VideosController < ApplicationController
             videos = tag.videos
             render json: videos, status: :ok
         end
+    end
+
+    def lib_video
+        user = current_user
+        video = user.lib_vids
+        render json: {video: video}, status: :ok
     end
 
     private

@@ -1,6 +1,6 @@
 class Api::WritingsController < ApplicationController
 
-    before_action :authorize, only: [:create, :update, :destroy]
+    before_action :authorize, only: [:create, :update, :destroy, :lib_writing]
     
     def index
         writings = Writing.all.slice(0, 51)
@@ -42,6 +42,12 @@ class Api::WritingsController < ApplicationController
             writings = tag.writings.sort_by{|a| -(a.ranking)}.slice(0, 51)
             render json: writings, status: :ok
         end
+    end
+
+    def lib_writing
+        user = current_user
+        writing = user.lib_writs
+        render json: {writing: writing}, status: :ok
     end
 
     private
