@@ -44,7 +44,11 @@ function LibraryButton({libType, user, inLib, libItemId, creation, addLibItemSta
     }
 
     function removeFromLibrary(){
-
+        fetch(`/api/${libType}_lib_items/${libItemId}`, {method: "DELETE"})
+        .then(()=>{
+            dispatch(removeLibItemState(libItemId))
+            dispatch(removeFromLibraryState(creation.id))
+        })
     }
 
   return (
