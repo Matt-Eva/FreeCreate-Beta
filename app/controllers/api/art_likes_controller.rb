@@ -11,7 +11,7 @@ class Api::ArtLikesController < ApplicationController
         like = current_user.art_likes.create!(art_id: params[:art_id])
         art = Art.find(params[:art_id])
         if !art.rank
-            art.update(rank: 0)
+            art.update(rank: 5)
         else
             art.update(rank: (art.rank + 5))
         end

@@ -8,7 +8,6 @@ import {setLibDisplayType} from "../../state/libDisplayTypeSlice"
 function Sidebar() {
     const libDisplayType = useSelector(state => state.libDisplayType.libDisplayType)
     const dispatch = useDispatch()
-    console.log(libDisplayType)
     return (
         <Container fluid>
             <Row>
@@ -33,7 +32,7 @@ function Sidebar() {
                 </ul> */}
             </Row>
             <Row>
-                <h5><Link to="/mylibrary">My Library</Link></h5>
+                <h5><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("all"))}>My Library</Link></h5>
                 <ul>
                     <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("writing"))}>Writing</Link></li>
                     <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("audio"))}>Audio</Link></li>

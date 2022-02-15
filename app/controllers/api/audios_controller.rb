@@ -1,6 +1,6 @@
 class Api::AudiosController < ApplicationController
 
-    before_action :authorize, only: [:create, :update, :destroy]
+    before_action :authorize, only: [:create, :update, :destroy, :lib_audio]
 
     def index
         audios = Audio.all.sort_by{|a| -(a.rank)}.slice(0, 51)
@@ -42,6 +42,12 @@ class Api::AudiosController < ApplicationController
             audios = tag.audios.sort_by{|a| -(a.rank)}.slice(0, 51)
             render json: audios, status: :ok
         end
+    end
+
+    def lib_audio
+        user = current_user
+        audio = user.lib_auds
+        render json: {audio: audio}, status: :ok
     end
 
     private

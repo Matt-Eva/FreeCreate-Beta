@@ -7,7 +7,6 @@ const slice = createSlice({
     },
     reducers: {
         setLibDisplayType: (state, action) =>{
-            console.log(action.payload)
             state.libDisplayType = action.payload
         }
     }

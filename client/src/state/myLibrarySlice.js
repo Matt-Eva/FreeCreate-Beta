@@ -9,6 +9,12 @@ const slice = createSlice({
         lib_aud: []
     },
     reducers: {
+        setLibAll: (state, action) =>{
+            state.lib_art = action.payload.art
+            state.lib_writ = action.payload.writing
+            state.lib_vid = action.payload.video
+            state.lib_aud = action.payload.audio
+        },
         setLibArt: (state, action) =>{
             state.lib_art = action.payload
         },
@@ -52,8 +58,8 @@ const slice = createSlice({
     }
 })
 
-const { setLibArt, addLibArt, removeLibArt, setLibWrit, addLibWrit, removeLibWrit, setLibVid, addLibVid, removeLibVid, setLibAud, addLibAud, removeLibAud } = slice.actions
+const { setLibAll, setLibArt, addLibArt, removeLibArt, setLibWrit, addLibWrit, removeLibWrit, setLibVid, addLibVid, removeLibVid, setLibAud, addLibAud, removeLibAud } = slice.actions
 
-export { setLibArt, addLibArt, removeLibArt, setLibWrit, addLibWrit, removeLibWrit, setLibVid, addLibVid, removeLibVid, setLibAud, addLibAud, removeLibAud }
+export { setLibAll, setLibArt, addLibArt, removeLibArt, setLibWrit, addLibWrit, removeLibWrit, setLibVid, addLibVid, removeLibVid, setLibAud, addLibAud, removeLibAud }
 
 export default slice.reducer

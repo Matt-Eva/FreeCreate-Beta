@@ -9,15 +9,21 @@ import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.js"
 import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
+import { setArtLibItems, addArtLibItem, removeArtLibItem } from '../../state/libItemsSlice'
+import { addLibArt, removeLibArt } from '../../state/myLibrarySlice'
+import LibraryButton from '../interaction/LibraryButton'
 
 function ViewArt() {
     const [art, setArt] = useState(null)
     const user = useSelector(state => state.user.user)
     const artLikes = useSelector(state => state.likes.art_likes)
+    const artLibItems = useSelector(state => state.libItems.artLibItems)
     const {id} = useParams()
     const dispatch = useDispatch()
-    console.log(artLikes)
-   
+    const libType = "art"
+    console.log("likes", artLikes)
+    console.log("library", artLibItems)
+
     let isLiked = false
     let artLikeId = null
     if (artLikes.length !== 0 && art !== null){
@@ -29,28 +35,54 @@ function ViewArt() {
         })
     }
 
-    useEffect(() => {
-        if (artLikes.length === 0 && user !== null){
-            fetch("/api/art_likes")
-            .then(r => r.json())
-            .then(data => {
-                console.log(data)
-                dispatch(setArtLikes(data))
-            })
-        }
-    }, [])
+    let inLib = false;
+    let artLibItemId = null;
+    if (artLibItems.length !== 0 && art !== null){
+        artLibItems.forEach(libItem =>{
+            if (libItem.art_id === art.id){
+                inLib = true
+                artLibItemId = libItem.id
+            }
+        })
+    }
 
     useEffect(()=>{
         fetch(`/api/arts/${id}`)
         .then(r => {
             if(r.ok){
                 r.json().then(data =>{
-                    console.log(data)
                     setArt(data)
                 })
             }
         })
     }, [])
+
+    useEffect(()=>{
+        if (artLibItems.length === 0 && user !== null){
+            console.log("fetching library")
+            fetch("/api/art_lib_items")
+            .then(r =>{
+                if(r.ok){
+                    r.json().then(data =>{
+                        console.log("library", data)
+                        dispatch(setArtLibItems(data))
+                    })
+                }
+            })
+        }
+    }, [user])
+
+    useEffect(() => {
+        if (artLikes.length === 0 && user !== null){
+            console.log("fetching likes")
+            fetch("/api/art_likes")
+            .then(r => r.json())
+            .then(data => {
+                console.log("likes", data)
+                dispatch(setArtLikes(data))
+            })
+        }
+    }, [user])
 
     function like(){
         const newLike ={
@@ -80,14 +112,6 @@ function ViewArt() {
         })
     }
 
-    function listAdd(){
-
-    }
-
-    function libAdd(){
-        
-    }
-
     if (art === null){
         return <h1>Loading...</h1>
     }
@@ -111,6 +135,9 @@ function ViewArt() {
                     {/* <Button variant="success" disabled>Add to Library</Button>
                     <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
+                <Col>
+                    <LibraryButton user={user} libType={libType} inLib={inLib} libItemId={artLibItemId} creation={art} addLibItemState={addArtLibItem} removeLibItemState={removeArtLibItem} addToLibraryState={addLibArt} removeFromLibraryState={removeLibArt}/>
+                </Col>
             </Row>
         </Container>
     )
