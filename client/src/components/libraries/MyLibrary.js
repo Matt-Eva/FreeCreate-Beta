@@ -102,6 +102,7 @@ const Display = styled.div`
         grid-column: 1; 
         max-width: 20%;
         background: gray;
+        float: left;
     }
     
     .display{
