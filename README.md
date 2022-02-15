@@ -11,7 +11,7 @@ This app using the following technologies:
 - React-Router
 - React-Redux
 - Bootstrap v5
-- Custom CSS
+- Custom CSS (Styled Components)
 
 ### Backend
 - Ruby on Rails 7.0.0
