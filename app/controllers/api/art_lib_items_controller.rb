@@ -15,7 +15,7 @@ class Api::ArtLibItemsController < ApplicationController
         else
             art.update(rank: (art.rank + 10))
         end
-        render json: like, status: :created
+        render json: lib_item, status: :created
     end
 
     def destroy
@@ -29,5 +29,5 @@ class Api::ArtLibItemsController < ApplicationController
         lib_item.destroy()
         head :no_content
     end
-    
+
 end

@@ -9,17 +9,20 @@ import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.js"
 import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
+import { setArtLibItems, addArtLibItem, removeArtLibItem } from '../../state/libItemsSlice'
+import { addLibArt, removeLibArt } from '../../state/myLibrarySlice'
 import LibraryButton from '../interaction/LibraryButton'
 
 function ViewArt() {
     const [art, setArt] = useState(null)
     const user = useSelector(state => state.user.user)
     const artLikes = useSelector(state => state.likes.art_likes)
-    const artLibItems = useSelector(state => state.myLibrary.lib_art)
+    const artLibItems = useSelector(state => state.libItems.artLibItems)
     const {id} = useParams()
     const dispatch = useDispatch()
-    const libType = "art_lib_items"
+    const libType = "art"
     console.log("likes", artLikes)
+    console.log("library", artLibItems)
 
     let isLiked = false
     let artLikeId = null
@@ -62,6 +65,7 @@ function ViewArt() {
                 if(r.ok){
                     r.json().then(data =>{
                         console.log("library", data)
+                        dispatch(setArtLibItems(data))
                     })
                 }
             })
@@ -132,7 +136,7 @@ function ViewArt() {
                     <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
                 <Col>
-                    <LibraryButton user={user} libType={libType} inLib={inLib} libItemId={artLibItemId} creationId={art.id}/>
+                    <LibraryButton user={user} libType={libType} inLib={inLib} libItemId={artLibItemId} creation={art} addLibItemState={addArtLibItem} removeLibItemState={removeArtLibItem} addToLibraryState={addLibArt} removeFromLibraryState={removeLibArt}/>
                 </Col>
             </Row>
         </Container>
