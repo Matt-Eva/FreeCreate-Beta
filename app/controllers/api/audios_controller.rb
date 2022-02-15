@@ -30,7 +30,7 @@ class Api::AudiosController < ApplicationController
     end
 
     def search_query
-        audios = Audio.where(title: params[:search])
+        audios = Audio.where("title LIKE ?", "%#{params[:search]}%")
         render json: audios, status: :ok
     end
 

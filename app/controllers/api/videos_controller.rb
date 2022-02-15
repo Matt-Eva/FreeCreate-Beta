@@ -30,7 +30,7 @@ class Api::VideosController < ApplicationController
     end
 
     def search_query
-        videos = Video.where(title: params[:search])
+        videos = Video.where("title LIKE ?", "%#{params[:search]}%")
         render json: videos, status: :ok
     end
 

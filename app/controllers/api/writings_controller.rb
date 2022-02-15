@@ -30,7 +30,7 @@ class Api::WritingsController < ApplicationController
     end
 
     def search_query
-        writings = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
+        writings = Writing.where("title LIKE ?", "%#{params[:search]}%").sort_by{|a| -(a.ranking)}.slice(0, 51)
         render json: writings, status: :ok
     end
 
