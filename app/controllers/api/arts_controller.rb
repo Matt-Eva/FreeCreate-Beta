@@ -30,7 +30,7 @@ class Api::ArtsController < ApplicationController
     end
 
     def search_query
-        arts = Art.where(title: params[:search])
+        arts = Art.where("title LIKE ?", "%#{params[:search]}%")
         render json: arts, status: :ok
     end
 

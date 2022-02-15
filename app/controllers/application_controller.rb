@@ -7,10 +7,10 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
 before_action :authorize, only: [:all_liked_creations, :all_lib_creations]
 
 def search_all
-    writing = Writing.where(title: params[:search]).sort_by{|a| -(a.ranking)}.slice(0, 51)
-    audio = Audio.where(title: params[:search])
-    art = Art.where(title: params[:search])
-    video = Video.where(title: params[:search])
+    writing = Writing.where("title LIKE ?", "%#{params[:search]}%")
+    audio = Audio.where("title LIKE ?", "%#{params[:search]}%")
+    art = Art.where("title LIKE ?", "%#{params[:search]}%")
+    video = Video.where("title LIKE ?", "%#{params[:search]}%")
     creations = {video: video, art: art, audio: audio, writing: writing}
     render json: creations, status: :ok
 end
