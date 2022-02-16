@@ -43,7 +43,8 @@ function LibraryButton({libType, user, inLib, libItemId, creation, creationLib, 
                 fetch(`/api/lib${libType}`)
                 .then(r => r.json())
                 .then(data =>{
-                    dispatch(setLibraryState(data.audio))
+                    console.log(data[`${libType}`])
+                    dispatch(setLibraryState(data[`${libType}`]))
                 })
             } else {
                 dispatch(addToLibraryState(creation))

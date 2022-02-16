@@ -47,7 +47,7 @@ class Api::WritingsController < ApplicationController
     def lib_writing
         user = current_user
         writing = user.lib_writs
-        render json: {writing: writing}, status: :ok
+        render json: {writ: writing}, status: :ok
     end
 
     private

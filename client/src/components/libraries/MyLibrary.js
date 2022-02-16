@@ -36,7 +36,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setLibWrit(data.writing))
+                dispatch(setLibWrit(data.writ))
             })
         } else if(libDisplayType === "video" && video.length === 0){
             console.log("fetching lib video")
@@ -44,7 +44,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setLibVid(data.video))
+                dispatch(setLibVid(data.vid))
             })
         } else if(libDisplayType === "audio" && audio.length === 0){
             console.log("fetching lib audio")
@@ -52,7 +52,7 @@ function MyLibrary() {
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setLibAud(data.audio))
+                dispatch(setLibAud(data.aud))
             })
         } else if(libDisplayType === "art" && art.length === 0){
             console.log("fetching lib art")

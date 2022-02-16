@@ -10,14 +10,17 @@ import {useSelector, useDispatch} from "react-redux"
 import { setVidLikes, addVidLike, removeVidLike } from "../../state/likesSlice.js"
 import { addLikedVid, removeLikedVid} from "../../state/likedCreationsSlice"
 import { setVidLibItems, addVidLibItem, removeVidLibItem } from "../../state/libItemsSlice"
-import { addLibVid, removeLibVid } from "../../state/myLibrarySlice"
+import { setLibVid, addLibVid, removeLibVid } from "../../state/myLibrarySlice"
+import LibraryButton from '../interaction/LibraryButton'
 
 function ViewVid() {
     const [video, setVideo] = useState(null)
     const user = useSelector(state => state.user.user)
     const vidLikes = useSelector(state => state.likes.vid_likes)
     const vidLibItems = useSelector(state => state.libItems.vidLibItems)
+    const libVid = useSelector(state => state.myLibrary.libVid)
     const dispatch = useDispatch()
+    const libType = "vid"
     const {id} = useParams()
 
     let isLiked = false
@@ -28,6 +31,17 @@ function ViewVid() {
                 console.log(video)
                 isLiked = true
                 vidLikeId = like.id
+            }
+        })
+    }
+
+    let inLib = false;
+    let vidLibItemId = null;
+    if (vidLibItems.length !== 0 && video !== null){
+        vidLibItems.forEach(libItem =>{
+            if (libItem.video_id === video.id){
+                inLib = true
+                vidLibItemId = libItem.id
             }
         })
     }
@@ -121,6 +135,9 @@ function ViewVid() {
                     {/* <Button variant="success" disabled>Add to Library</Button>
                     <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
+                <Col>
+                    <LibraryButton  inLib={inLib} user={user} creation={video} libItemId={vidLibItemId} libType={libType} creationLib={libVid} addLibItemState={addVidLibItem} removeLibItemState={removeVidLibItem} setLibraryState={setLibVid} addToLibraryState={addLibVid} removeFromLibraryState={removeLibVid}/>
+                </Col>
             </Row>
         </Container>
     )

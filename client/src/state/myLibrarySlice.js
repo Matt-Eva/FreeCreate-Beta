@@ -36,6 +36,7 @@ const slice = createSlice({
             state.libWrit = LibWrit.filter(like => like.id !== action.payload)
         },
         setLibVid: (state, action) => {
+            console.log(action.payload)
             state.libVid = action.payload
         },
         addLibVid: (state, action) =>{
