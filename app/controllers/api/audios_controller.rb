@@ -47,7 +47,7 @@ class Api::AudiosController < ApplicationController
     def lib_audio
         user = current_user
         audio = user.lib_auds
-        render json: {audio: audio}, status: :ok
+        render json: {aud: audio}, status: :ok
     end
 
     private

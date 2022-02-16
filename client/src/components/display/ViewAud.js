@@ -10,7 +10,7 @@ import {useSelector, useDispatch} from "react-redux"
 import { setAudLikes, addAudLike, removeAudLike } from "../../state/likesSlice.js"
 import { addLikedAud, removeLikedAud} from "../../state/likedCreationsSlice"
 import { setAudLibItems, addAudLibItem, removeAudLibItem } from "../../state/libItemsSlice"
-import { addLibAud, removeLibAud } from '../../state/myLibrarySlice'
+import { setLibAud, addLibAud, removeLibAud } from '../../state/myLibrarySlice'
 import LibraryButton from '../interaction/LibraryButton'
 
 function ViewAud() {
@@ -18,6 +18,7 @@ function ViewAud() {
     const user = useSelector(state => state.user.user)
     const audLikes = useSelector(state => state.likes.aud_likes)
     const audLibItems = useSelector(state => state.libItems.audLibItems)
+    const libAud = useSelector(state => state.myLibrary.libAud)
     const {id} = useParams()
     const dispatch = useDispatch()
     const libType = "aud"
@@ -131,7 +132,7 @@ function ViewAud() {
                     :  <Button variant="success" disabled>Like</Button>}
                 </Col>
                 <Col>
-                    <LibraryButton libType={libType} user={user} inLib={inLib} libItemId={audLibItemId} creation={audio} addLibItemState={addAudLibItem} removeLibItemState={removeAudLibItem} addToLibraryState={addLibAud} removeFromLibraryState={removeLibAud}/>
+                    <LibraryButton libType={libType} setLibraryState={setLibAud} user={user} inLib={inLib} creationLib={libAud} libItemId={audLibItemId} creation={audio} addLibItemState={addAudLibItem} removeLibItemState={removeAudLibItem} addToLibraryState={addLibAud} removeFromLibraryState={removeLibAud}/>
                 </Col>
             </Row>
             <Row className="justify-content-center">

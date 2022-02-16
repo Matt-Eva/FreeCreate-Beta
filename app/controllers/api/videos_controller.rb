@@ -47,7 +47,7 @@ class Api::VideosController < ApplicationController
     def lib_video
         user = current_user
         video = user.lib_vids
-        render json: {video: video}, status: :ok
+        render json: {vid: video}, status: :ok
     end
 
     private

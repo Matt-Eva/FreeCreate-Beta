@@ -11,10 +11,10 @@ import Sidebar from "../navigation/Sidebar"
 import styled from 'styled-components'
 
 function MyLibrary() {
-    const writing = useSelector(state => state.myLibrary.lib_writ)
-    const art = useSelector(state => state.myLibrary.lib_art)
-    const video = useSelector(state => state.myLibrary.lib_vid)
-    const audio = useSelector(state => state.myLibrary.lib_aud)
+    const writing = useSelector(state => state.myLibrary.libWrit)
+    const art = useSelector(state => state.myLibrary.libArt)
+    const video = useSelector(state => state.myLibrary.libVid)
+    const audio = useSelector(state => state.myLibrary.libAud)
     const libDisplayType = useSelector(state => state.libDisplayType.libDisplayType)
     const dispatch = useDispatch()
 
@@ -32,27 +32,27 @@ function MyLibrary() {
             })
         } else if(libDisplayType === "writing" && writing.length === 0){
             console.log("fetching lib writing")
-            fetch('/api/libwriting')
+            fetch('/api/libwrit')
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setLibWrit(data.writing))
+                dispatch(setLibWrit(data.writ))
             })
         } else if(libDisplayType === "video" && video.length === 0){
             console.log("fetching lib video")
-            fetch('/api/libvideo')
+            fetch('/api/libvid')
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setLibVid(data.video))
+                dispatch(setLibVid(data.vid))
             })
         } else if(libDisplayType === "audio" && audio.length === 0){
             console.log("fetching lib audio")
-            fetch('/api/libaudio')
+            fetch('/api/libaud')
             .then(r => r.json())
             .then(data =>{
                 console.log(data)
-                dispatch(setLibAud(data.audio))
+                dispatch(setLibAud(data.aud))
             })
         } else if(libDisplayType === "art" && art.length === 0){
             console.log("fetching lib art")

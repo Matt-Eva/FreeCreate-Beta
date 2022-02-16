@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
 
     get "/mycreations/:id", to: "creators#my_creations"
-    get "/libwriting", to: "writings#lib_writing"
-    get "/libaudio", to: "audios#lib_audio"
+    get "/libwrit", to: "writings#lib_writing"
+    get "/libaud", to: "audios#lib_audio"
     get "/libart", to: "arts#lib_art"
-    get "/libvideo", to: "videos#lib_video"
+    get "/libvid", to: "videos#lib_video"
 
     post "/search/writings", to: "writings#search_query"
     post "/search/audios", to: "audios#search_query"

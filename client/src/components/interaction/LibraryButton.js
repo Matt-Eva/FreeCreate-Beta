@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "react-bootstrap/Button"
 import {useDispatch} from "react-redux"
 
-function LibraryButton({libType, user, inLib, libItemId, creation, addLibItemState, removeLibItemState, addToLibraryState, removeFromLibraryState}) {
+function LibraryButton({libType, user, inLib, libItemId, creation, creationLib, addLibItemState, removeLibItemState, setLibraryState, addToLibraryState, removeFromLibraryState}) {
     const dispatch = useDispatch()
     console.log(libType, user, inLib, libItemId, creation)
 
@@ -39,7 +39,16 @@ function LibraryButton({libType, user, inLib, libItemId, creation, addLibItemSta
         .then(data =>{
             console.log(data)
             dispatch(addLibItemState(data))
-            dispatch(addToLibraryState(creation))
+            if (creationLib.length === 0) {
+                fetch(`/api/lib${libType}`)
+                .then(r => r.json())
+                .then(data =>{
+                    console.log(data[`${libType}`])
+                    dispatch(setLibraryState(data[`${libType}`]))
+                })
+            } else {
+                dispatch(addToLibraryState(creation))
+            }
         })
     }
 
