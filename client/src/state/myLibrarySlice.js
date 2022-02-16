@@ -3,57 +3,57 @@ import { createSlice } from "@reduxjs/toolkit"
 const slice = createSlice({
     name: "myLibrary",
     initialState: {
-        lib_art: [],
-        lib_writ: [],
-        lib_vid: [],
-        lib_aud: []
+        libArt: [],
+        libWrit: [],
+        libVid: [],
+        libAud: []
     },
     reducers: {
         setLibAll: (state, action) =>{
-            state.lib_art = action.payload.art
-            state.lib_writ = action.payload.writing
-            state.lib_vid = action.payload.video
-            state.lib_aud = action.payload.audio
+            state.libArt = action.payload.art
+            state.libWrit = action.payload.writing
+            state.libVid = action.payload.video
+            state.libAud = action.payload.audio
         },
         setLibArt: (state, action) =>{
-            state.lib_art = action.payload
+            state.libArt = action.payload
         },
         addLibArt: (state, action) =>{
-            state.lib_art = [...state.lib_art, action.payload]
+            state.libArt = [...state.libArt, action.payload]
         },
         removeLibArt: (state, action) =>{
-            const LibArt = state.lib_art
-            state.lib_art = LibArt.filter(like => like.id !== action.payload)
+            const LibArt = state.libArt
+            state.libArt = LibArt.filter(like => like.id !== action.payload)
         },
         setLibWrit: (state, action) =>{
-            state.lib_writ = action.payload
+            state.libWrit = action.payload
         },
         addLibWrit: (state, action) =>{
-            state.lib_writ = [...state.lib_writ, action.payload]
+            state.libWrit = [...state.libWrit, action.payload]
         },
         removeLibWrit: (state, action) =>{
-            const LibWrit = state.lib_writ
-            state.lib_writ = LibWrit.filter(like => like.id !== action.payload)
+            const LibWrit = state.libWrit
+            state.libWrit = LibWrit.filter(like => like.id !== action.payload)
         },
         setLibVid: (state, action) => {
-            state.lib_vid = action.payload
+            state.libVid = action.payload
         },
         addLibVid: (state, action) =>{
-            state.lib_vid = [...state.lib_vid, action.payload]
+            state.libVid = [...state.libVid, action.payload]
         },
         removeLibVid: (state, action) =>{
-            const LibVid = state.lib_vid
-            state.lib_vid = LibVid.filter(like => like.id !== action.payload)
+            const LibVid = state.libVid
+            state.libVid = LibVid.filter(like => like.id !== action.payload)
         },
         setLibAud: (state, action) => {
-            state.lib_aud = action.payload
+            state.libAud = action.payload
         },
         addLibAud: (state, action) =>{
-            state.lib_aud = [...state.lib_aud, action.payload]
+            state.libAud = [...state.libAud, action.payload]
         },
         removeLibAud: (state, action) =>{
-            const LibAud = state.lib_aud
-            state.lib_aud = LibAud.filter(like => like.id !== action.payload)
+            const LibAud = state.libAud
+            state.libAud = LibAud.filter(like => like.id !== action.payload)
         }
     }
 })

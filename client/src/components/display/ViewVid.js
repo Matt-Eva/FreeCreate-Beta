@@ -9,11 +9,14 @@ import TopNav from '../navigation/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setVidLikes, addVidLike, removeVidLike } from "../../state/likesSlice.js"
 import { addLikedVid, removeLikedVid} from "../../state/likedCreationsSlice"
+import { setVidLibItems, addVidLibItem, removeVidLibItem } from "../../state/libItemsSlice"
+import { addLibVid, removeLibVid } from "../../state/myLibrarySlice"
 
 function ViewVid() {
     const [video, setVideo] = useState(null)
     const user = useSelector(state => state.user.user)
     const vidLikes = useSelector(state => state.likes.vid_likes)
+    const vidLibItems = useSelector(state => state.libItems.vidLibItems)
     const dispatch = useDispatch()
     const {id} = useParams()
 
@@ -40,6 +43,21 @@ function ViewVid() {
             }
         })
     }, [])
+
+    useEffect(()=>{
+        if (vidLibItems.length === 0 && user !== null){
+            console.log("fetching library")
+            fetch("/api/vid_lib_items")
+            .then(r =>{
+                if(r.ok){
+                    r.json().then(data =>{
+                        console.log("library", data)
+                        dispatch(setVidLibItems(data))
+                    })
+                }
+            })
+        }
+    }, [user])
 
     useEffect(() => {
         if (vidLikes.length === 0 && user !== null){
@@ -78,14 +96,6 @@ function ViewVid() {
             dispatch(removeVidLike(vidLikeId))
             dispatch(removeLikedVid(video.id))
         })
-    }
-
-    function listAdd(){
-
-    }
-
-    function libAdd(){
-        
     }
 
     if (video === null){
