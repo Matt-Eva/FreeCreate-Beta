@@ -130,8 +130,6 @@ function ViewAud() {
                     <h1 className="text-start">{audio.title}</h1>
                     {user ? (isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button> )
                     :  <Button variant="success" disabled>Like</Button>}
-                </Col>
-                <Col>
                     <LibraryButton libType={libType} setLibraryState={setLibAud} user={user} inLib={inLib} creationLib={libAud} libItemId={audLibItemId} creation={audio} addLibItemState={addAudLibItem} removeLibItemState={removeAudLibItem} addToLibraryState={addLibAud} removeFromLibraryState={removeLibAud}/>
                 </Col>
             </Row>

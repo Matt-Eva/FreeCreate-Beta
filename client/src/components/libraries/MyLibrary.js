@@ -101,7 +101,7 @@ const Display = styled.div`
     .sidebar{
         grid-column: 1; 
         max-width: 20%;
-        background: gray;
+        background: hsl(180, 0%, 90%);
         float: left;
     }
     

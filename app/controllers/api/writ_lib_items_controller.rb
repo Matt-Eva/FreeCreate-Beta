@@ -14,7 +14,7 @@ class Api::WritLibItemsController < ApplicationController
         if !writing.rank
             writing.update(rank: 10)
         else
-            writing.update(rank: (art.rank + 10))
+            writing.update(rank: (writing.rank + 10))
         end
         render json: lib_item, status: :created
     end

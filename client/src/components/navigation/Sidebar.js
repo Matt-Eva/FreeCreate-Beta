@@ -33,7 +33,7 @@ function Sidebar() {
             </Row>
             <Row>
                 <h5><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("all"))}>My Library</Link></h5>
-                <ul>
+                <ul style={{"listStyle": "none"}}>
                     <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("writing"))}>Writing</Link></li>
                     <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("audio"))}>Audio</Link></li>
                     <li><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("art"))}>Art</Link></li>
