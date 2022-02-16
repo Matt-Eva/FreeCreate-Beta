@@ -10,7 +10,7 @@ import {useSelector, useDispatch} from "react-redux"
 import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.js"
 import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
 import { setArtLibItems, addArtLibItem, removeArtLibItem } from '../../state/libItemsSlice'
-import { addLibArt, removeLibArt } from '../../state/myLibrarySlice'
+import { setLibArt, addLibArt, removeLibArt } from '../../state/myLibrarySlice'
 import LibraryButton from '../interaction/LibraryButton'
 
 function ViewArt() {
@@ -18,6 +18,7 @@ function ViewArt() {
     const user = useSelector(state => state.user.user)
     const artLikes = useSelector(state => state.likes.art_likes)
     const artLibItems = useSelector(state => state.libItems.artLibItems)
+    const libArt = useSelector(state => state.myLibrary.libArt)
     const {id} = useParams()
     const dispatch = useDispatch()
     const libType = "art"
@@ -136,7 +137,7 @@ function ViewArt() {
                     <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
                 <Col>
-                    <LibraryButton user={user} libType={libType} inLib={inLib} libItemId={artLibItemId} creation={art} addLibItemState={addArtLibItem} removeLibItemState={removeArtLibItem} addToLibraryState={addLibArt} removeFromLibraryState={removeLibArt}/>
+                    <LibraryButton user={user} libType={libType} inLib={inLib} libItemId={artLibItemId} creation={art} creationLib={libArt} addLibItemState={addArtLibItem} removeLibItemState={removeArtLibItem} setLibraryState={setLibArt} addToLibraryState={addLibArt} removeFromLibraryState={removeLibArt}/>
                 </Col>
             </Row>
         </Container>
