@@ -50,6 +50,12 @@ class Api::VideosController < ApplicationController
         render json: {vid: video}, status: :ok
     end
 
+    def list_video
+        user = current_user
+        video = user.list_vids
+        render json: {vid: video}, status: :ok
+    end
+
     private
     
     def video_params
