@@ -26,10 +26,10 @@ function Sidebar() {
             <Row>
                 <h5><Link to='/mylist' onClick={() => dispatch(setListDisplayType("all"))}>My List</Link></h5>
                 <ul style={{"listStyle": "none"}}>
-                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("writing"))}></Link>Writing</li>
-                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("audio"))}></Link>Audio</li>
-                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("art"))}></Link>Art</li>
-                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("video"))} ></Link>Video</li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("writing"))}>Writing</Link></li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("audio"))}>Audio</Link></li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("art"))}>Art</Link></li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("video"))} >Video</Link></li>
                 </ul>
             </Row>
             <Row>
