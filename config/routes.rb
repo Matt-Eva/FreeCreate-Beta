@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get "/libaud", to: "audios#lib_audio"
     get "/libart", to: "arts#lib_art"
     get "/libvid", to: "videos#lib_video"
+    get "/listwrit", to: "writings#list_writing"
+    get "/listaud", to: "audios#list_audio"
+    get "/listart", to: "arts#list_art"
+    get "/listvid", to: "videos#list_video"
 
     post "/search/writings", to: "writings#search_query"
     post "/search/audios", to: "audios#search_query"
@@ -44,6 +48,11 @@ Rails.application.routes.draw do
     resources :art_lib_items
     resources :vid_lib_items
     resources :aud_lib_items
+
+    resources :writ_list_items
+    resources :art_list_items
+    resources :vid_list_items
+    resources :aud_list_items
   end
   
   post "/login", to: "sessions#create"
