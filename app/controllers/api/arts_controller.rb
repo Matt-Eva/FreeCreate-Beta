@@ -50,6 +50,12 @@ class Api::ArtsController < ApplicationController
         render json: {art: art}, status: :ok
     end
 
+    def list_art
+        user = current_user
+        art = user.list_arts
+        render json: {art: art}, status: :ok
+    end
+
     private
     
     def art_params

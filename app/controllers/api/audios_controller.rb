@@ -50,6 +50,12 @@ class Api::AudiosController < ApplicationController
         render json: {aud: audio}, status: :ok
     end
 
+    def list_audio
+        user = current_user
+        audio = user.list_auds
+        render json: {aud: audio}, status: :ok
+    end
+
     private
     
     def audio_params

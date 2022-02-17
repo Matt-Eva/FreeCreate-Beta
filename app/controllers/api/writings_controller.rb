@@ -50,6 +50,12 @@ class Api::WritingsController < ApplicationController
         render json: {writ: writing}, status: :ok
     end
 
+    def list_writing
+        user = current_user
+        writing = user.list_writs
+        render json: {writ: writing}, status: :ok
+    end
+
     private
     
     def writing_params
