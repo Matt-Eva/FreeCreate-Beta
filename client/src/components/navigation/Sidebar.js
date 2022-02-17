@@ -23,13 +23,13 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                {/* <h5>My List</h5> */}
-                {/* <ul>
+                <h5>My List</h5>
+                <ul style={{"listStyle": "none"}}>
                     <li>Writing</li>
                     <li>Audio</li>
                     <li>Art</li>
                     <li>Video</li>
-                </ul> */}
+                </ul>
             </Row>
             <Row>
                 <h5><Link to="/mylibrary" onClick={() => dispatch(setLibDisplayType("all"))}>My Library</Link></h5>
