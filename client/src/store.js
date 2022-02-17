@@ -14,6 +14,7 @@ import libDisplayTypeReducer from "./state/libDisplayTypeSlice"
 import libItemsReducer from "./state/libItemsSlice"
 import listItemsReducer from "./state/listItemsSlice"
 import myListReducer from "./state/myListSlice"
+import listDisplayTypeReducer from "./state/listDisplayTypeSlice"
 
 const store = configureStore({
     reducer: {
@@ -31,7 +32,8 @@ const store = configureStore({
         libDisplayType: libDisplayTypeReducer,
         libItems: libItemsReducer,
         listItems: listItemsReducer,
-        myList: myListReducer
+        myList: myListReducer,
+        listDisplayType: listDisplayTypeReducer
     }
 })
 
