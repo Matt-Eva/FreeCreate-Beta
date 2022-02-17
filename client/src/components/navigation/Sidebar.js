@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col"
 import { Link } from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
 import {setLibDisplayType} from "../../state/libDisplayTypeSlice"
+import {setListDisplayType} from "../../state/listDisplayTypeSlice"
 
 function Sidebar() {
     const libDisplayType = useSelector(state => state.libDisplayType.libDisplayType)
@@ -23,12 +24,12 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                <h5><Link to='/mylist'>My List</Link></h5>
+                <h5><Link to='/mylist' onClick={() => dispatch(setListDisplayType("all"))}>My List</Link></h5>
                 <ul style={{"listStyle": "none"}}>
-                    <li>Writing</li>
-                    <li>Audio</li>
-                    <li>Art</li>
-                    <li>Video</li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("writing"))}></Link>Writing</li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("audio"))}></Link>Audio</li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("art"))}></Link>Art</li>
+                    <li><Link to="/mylist" onClick={() => dispatch(setListDisplayType("video"))} ></Link>Video</li>
                 </ul>
             </Row>
             <Row>
