@@ -25,7 +25,7 @@ class Api::ArtListItemsController < ApplicationController
         if !art.rank
             art.update(rank: 0)
         else
-            art.update(rank: (art.rank - 10))
+            art.update(rank: (art.rank - 1))
         end
         list_item.destroy()
         head :no_content
