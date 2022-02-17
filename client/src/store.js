@@ -12,6 +12,7 @@ import likedCreationsReducer from "./state/likedCreationsSlice"
 import myLibraryReducer from "./state/myLibrarySlice"
 import libDisplayTypeReducer from "./state/libDisplayTypeSlice"
 import libItemsReducer from "./state/libItemsSlice"
+import listItemsReducer from "./state/listItemsSlice"
 
 const store = configureStore({
     reducer: {
@@ -27,7 +28,8 @@ const store = configureStore({
         likedCreations: likedCreationsReducer,
         myLibrary: myLibraryReducer,
         libDisplayType: libDisplayTypeReducer,
-        libItems: libItemsReducer
+        libItems: libItemsReducer,
+        listItems: listItemsReducer
     }
 })
 
