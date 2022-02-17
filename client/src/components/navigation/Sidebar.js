@@ -23,7 +23,7 @@ function Sidebar() {
                 </ul>
             </Row> */}
             <Row>
-                <h5>My List</h5>
+                <h5><Link to='/mylist'>My List</Link></h5>
                 <ul style={{"listStyle": "none"}}>
                     <li>Writing</li>
                     <li>Audio</li>

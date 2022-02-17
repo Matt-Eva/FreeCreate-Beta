@@ -25,6 +25,7 @@ import EditAudioPage from './forms/EditAudioPage';
 import MyCreations from './libraries/MyCreations';
 import MyLibrary from './libraries/MyLibrary';
 import LikedCreations from './libraries/LikedCreations';
+import MyList from './libraries/MyList'
 
 function App() {
 const navigate = useNavigate()
@@ -61,6 +62,7 @@ const dispatch = useDispatch()
         <Route path="/edit/art" element={<EditArtPage />}/>
         <Route path="/edit/video" element={<EditVideoPage />}/>
         <Route path="/mycreations" element={<MyCreations />}/>
+        <Route path="/mylist" element={<MyList />} />
         <Route path="/mylibrary" element={<MyLibrary />} />
         <Route path="/likedcreations" element={<LikedCreations />} />
         <Route path="/creatorprofiles" element={<CreatorProfiles />}/>
