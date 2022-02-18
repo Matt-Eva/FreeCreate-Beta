@@ -47,6 +47,15 @@ def all_lib_creations
     render json: {writing: writing, art: art, audio: audio, video: video}, status: :ok
 end
 
+def all_list_creations
+    user = current_user
+    writing = user.list_writs
+    audio = user.list_auds
+    art = user.list_arts
+    video = user.list_vids
+    render json: {writing: writing, art: art, audio: audio, video: video}, status: :ok
+end
+
 private
 
 def authorize

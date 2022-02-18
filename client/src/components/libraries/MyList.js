@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {setListAll, setListArt, setListWrit, setlistAud, setListVid} from "../../state/myListSlice"
 import TopNav from "../navigation/TopNav"
@@ -25,6 +25,50 @@ let display;
     } else if (listDisplayType === "video"){
         display = video
     }
+
+    useEffect(()=>{
+        if(libDisplayType === "all" && ((writing.length === 0 || art.length === 0) || (video.length === 0 || audio.length === 0))){
+            console.log("fetching all lib items")
+            fetch("/alllibcreations")
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setLibAll({art: data.art, writing: data.writing, audio: data.audio, video: data.video}))
+            })
+        } else if(libDisplayType === "writing" && writing.length === 0){
+            console.log("fetching lib writing")
+            fetch('/api/libwrit')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setLibWrit(data.writ))
+            })
+        } else if(libDisplayType === "video" && video.length === 0){
+            console.log("fetching lib video")
+            fetch('/api/libvid')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setLibVid(data.vid))
+            })
+        } else if(libDisplayType === "audio" && audio.length === 0){
+            console.log("fetching lib audio")
+            fetch('/api/libaud')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setLibAud(data.aud))
+            })
+        } else if(libDisplayType === "art" && art.length === 0){
+            console.log("fetching lib art")
+            fetch('/api/libart')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setLibArt(data.art))
+            })
+        }
+    },[libDisplayType])
 
 
     return (

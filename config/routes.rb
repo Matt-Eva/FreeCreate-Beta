@@ -65,6 +65,7 @@ Rails.application.routes.draw do
 
   get "/alllikedcreations", to: "application#all_liked_creations"
   get "/alllibcreations", to: "application#all_lib_creations"
+  get "/alllistcreations", to: "application#all_list_creations"
 
   post "/allcreations/search", to: "application#search_all"
   post "/allcreations/filter", to: "application#filter_all"
