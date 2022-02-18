@@ -1,6 +1,6 @@
-import React from 'react'
+import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {setListAll, setListArt, setListWrit, setlistAud, setListVid} from "../../state/myListSlice"
+import {setListAll, setListArt, setListWrit, setListAud, setListVid} from "../../state/myListSlice"
 import TopNav from "../navigation/TopNav"
 import DisplayAllContainer from '../display/DisplayAllContainer'
 import DisplayTypeContainer from '../display/DisplayTypeContainer'
@@ -25,6 +25,50 @@ let display;
     } else if (listDisplayType === "video"){
         display = video
     }
+
+    useEffect(()=>{
+        if(listDisplayType === "all" && ((writing.length === 0 || art.length === 0) || (video.length === 0 || audio.length === 0))){
+            console.log("fetching all list items")
+            fetch("/alllistcreations")
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setListAll({art: data.art, writing: data.writing, audio: data.audio, video: data.video}))
+            })
+        } else if(listDisplayType === "writing" && writing.length === 0){
+            console.log("fetching list writing")
+            fetch('/api/listwrit')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setListWrit(data.writ))
+            })
+        } else if(listDisplayType === "video" && video.length === 0){
+            console.log("fetching list video")
+            fetch('/api/listvid')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setListVid(data.vid))
+            })
+        } else if(listDisplayType === "audio" && audio.length === 0){
+            console.log("fetching list audio")
+            fetch('/api/listaud')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setListAud(data.aud))
+            })
+        } else if(listDisplayType === "art" && art.length === 0){
+            console.log("fetching list art")
+            fetch('/api/listart')
+            .then(r => r.json())
+            .then(data =>{
+                console.log(data)
+                dispatch(setListArt(data.art))
+            })
+        }
+    },[listDisplayType])
 
 
     return (
