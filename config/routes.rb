@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
 
     get "/mycreations/:id", to: "creators#my_creations"
+
     get "/libwrit", to: "writings#lib_writing"
     get "/libaud", to: "audios#lib_audio"
     get "/libart", to: "arts#lib_art"
     get "/libvid", to: "videos#lib_video"
+    
     get "/listwrit", to: "writings#list_writing"
     get "/listaud", to: "audios#list_audio"
     get "/listart", to: "arts#list_art"
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
     post "/search/audios", to: "audios#search_query"
     post "/search/arts", to: "arts#search_query"
     post "/search/videos", to: "videos#search_query"
+
     post "/filter/videos", to: "videos#filter_query"
     post "/filter/arts", to: "arts#filter_query"
     post "/filter/writings", to: "writings#filter_query"
