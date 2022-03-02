@@ -34,7 +34,7 @@ function MyListButton({listType, user, inList, listItemId, creation, creationLis
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newListItem)
         }
-        fetch(`/api/${libType}_lib_items`, configObj)
+        fetch(`/api/${listType}_list_items`, configObj)
         .then(r => r.json())
         .then(data =>{
             console.log(data)
@@ -53,7 +53,7 @@ function MyListButton({listType, user, inList, listItemId, creation, creationLis
     }
 
     function removeFromList(){
-        fetch(`/api/${libType}_lib_items/${listItemId}`, {method: "DELETE"})
+        fetch(`/api/${listType}_list_items/${listItemId}`, {method: "DELETE"})
         .then(()=>{
             dispatch(removeListItemState(listItemId))
             dispatch(removeFromListState(creation.id))
