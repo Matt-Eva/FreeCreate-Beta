@@ -43,6 +43,7 @@ function ViewWrit() {
 
     let inLib = false;
     let writLibItemId = null;
+   
     if (writLibItems.length !== 0 && writing !== null){
         writLibItems.forEach(libItem =>{
             if (libItem.writing_id === writing.id){
@@ -57,7 +58,7 @@ function ViewWrit() {
     if (writListItems.length !== 0 && writing !== null){
         writListItems.forEach(listItem =>{
             if(listItem.writing_id === writing.id){
-                inLib = true
+                inList = true
                 writListItemId = listItem.id
             }
         })

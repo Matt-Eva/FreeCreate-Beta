@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux"
 
 function MyListButton({listType, user, inList, listItemId, creation, creationList, addListItemState, removeListItemState, setListState, addToListState, removeFromListState}) {
     const dispatch = useDispatch()
-    console.log(listType, user, inList, listItemId, creation)
+    console.log(inList)
 
     function addToList(){
         let newListItem;
