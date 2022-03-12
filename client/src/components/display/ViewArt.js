@@ -101,6 +101,21 @@ function ViewArt() {
         }
     }, [user])
 
+    useEffect(() =>{
+        if (artListItems.length === 0 && user !==null){
+            console.log("fetching list")
+            fetch("/api/art_list_items")
+            .then(r =>{
+                if(r.ok){
+                    r.json().then(data =>{
+                        console.log("list", data)
+                        dispatch(setArtListItems(data))
+                    })
+                }
+            })
+        }
+    }, [user])
+
     function like(){
         const newLike ={
             art_id: art.id,

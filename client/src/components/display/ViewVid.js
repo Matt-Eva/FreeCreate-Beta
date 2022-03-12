@@ -11,7 +11,11 @@ import { setVidLikes, addVidLike, removeVidLike } from "../../state/likesSlice.j
 import { addLikedVid, removeLikedVid} from "../../state/likedCreationsSlice"
 import { setVidLibItems, addVidLibItem, removeVidLibItem } from "../../state/libItemsSlice"
 import { setLibVid, addLibVid, removeLibVid } from "../../state/myLibrarySlice"
+import { setVidListItems, addVidListItem, removeVidListItem } from '../../state/listItemsSlice'
+import { setListVid, addListVid, removeListVid } from '../../state/myListSlice'
 import LibraryButton from '../interaction/LibraryButton'
+import MyListButton from '../interaction/MyListButton'
+
 
 function ViewVid() {
     const [video, setVideo] = useState(null)
@@ -19,8 +23,10 @@ function ViewVid() {
     const vidLikes = useSelector(state => state.likes.vid_likes)
     const vidLibItems = useSelector(state => state.libItems.vidLibItems)
     const libVid = useSelector(state => state.myLibrary.libVid)
+    const vidListItems = useSelector(state => state.listItems.vidListItems)
+    const listVid = useSelector(state => state.myList.listVid)
     const dispatch = useDispatch()
-    const libType = "vid"
+    const type = "vid"
     const {id} = useParams()
 
     let isLiked = false
@@ -42,6 +48,17 @@ function ViewVid() {
             if (libItem.video_id === video.id){
                 inLib = true
                 vidLibItemId = libItem.id
+            }
+        })
+    }
+
+    let inList = false;
+    let vidListItemId = null;
+    if (vidListItems.length !== 0 && video !== null){
+        vidListItems.forEach(listItem =>{
+            if(listItem.video_id === video.id){
+                inList = true
+                vidListItemId = listItem.id
             }
         })
     }
@@ -83,6 +100,21 @@ function ViewVid() {
             })
         }
     }, [])
+
+    useEffect(() =>{
+        if (vidListItems.length === 0 && user !==null){
+            console.log("fetching list")
+            fetch("/api/vid_list_items")
+            .then(r =>{
+                if(r.ok){
+                    r.json().then(data =>{
+                        console.log("list", data)
+                        dispatch(setVidListItems(data))
+                    })
+                }
+            })
+        }
+    }, [user])
 
     function like(){
         const newLike ={
@@ -136,7 +168,8 @@ function ViewVid() {
                     <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
                 <Col>
-                    <LibraryButton  inLib={inLib} user={user} creation={video} libItemId={vidLibItemId} libType={libType} creationLib={libVid} addLibItemState={addVidLibItem} removeLibItemState={removeVidLibItem} setLibraryState={setLibVid} addToLibraryState={addLibVid} removeFromLibraryState={removeLibVid}/>
+                    <LibraryButton  inLib={inLib} user={user} creation={video} libItemId={vidLibItemId} libType={type} creationLib={libVid} addLibItemState={addVidLibItem} removeLibItemState={removeVidLibItem} setLibraryState={setLibVid} addToLibraryState={addLibVid} removeFromLibraryState={removeLibVid}/>
+                    <MyListButton user={user} listType={type} inList={inList} listItemId={vidListItemId} creation={video} creationList={listVid} addListItemState={addVidListItem} removeListItemState={removeVidListItem} setListState={setListVid} addToListState={addListVid} removeFromListState={removeListVid}/>
                 </Col>
             </Row>
         </Container>
