@@ -20,7 +20,7 @@ class Api::AudListItemsController < ApplicationController
     end
 
     def destroy
-        list_item = AudioListItem.find(params[:id])
+        list_item = AudListItem.find(params[:id])
         audio = list_item.audio
         if !audio.rank
             audio.update(rank: 0)

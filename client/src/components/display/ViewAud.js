@@ -11,7 +11,10 @@ import { setAudLikes, addAudLike, removeAudLike } from "../../state/likesSlice.j
 import { addLikedAud, removeLikedAud} from "../../state/likedCreationsSlice"
 import { setAudLibItems, addAudLibItem, removeAudLibItem } from "../../state/libItemsSlice"
 import { setLibAud, addLibAud, removeLibAud } from '../../state/myLibrarySlice'
+import { setAudListItems, addAudListItem, removeAudListItem } from '../../state/listItemsSlice'
+import { setListAud, addListAud, removeListAud } from '../../state/myListSlice'
 import LibraryButton from '../interaction/LibraryButton'
+import MyListButton from '../interaction/MyListButton'
 
 function ViewAud() {
     const [audio, setAudio] = useState(null)
@@ -19,9 +22,11 @@ function ViewAud() {
     const audLikes = useSelector(state => state.likes.aud_likes)
     const audLibItems = useSelector(state => state.libItems.audLibItems)
     const libAud = useSelector(state => state.myLibrary.libAud)
+    const audListItems = useSelector(state => state.listItems.audListItems)
+    const listAud = useSelector(state => state.myList.listAud)
     const {id} = useParams()
     const dispatch = useDispatch()
-    const libType = "aud"
+    const type = "aud"
     console.log(audLikes)
 
     let isLiked = false
@@ -43,6 +48,17 @@ function ViewAud() {
             if (libItem.audio_id === audio.id){
                 inLib = true
                 audLibItemId = libItem.id
+            }
+        })
+    }
+
+    let inList = false;
+    let audListItemId = null;
+    if (audListItems.length !== 0 && audio !== null){
+        audListItems.forEach(listItem =>{
+            if(listItem.audio_id === audio.id){
+                inList = true
+                audListItemId = listItem.id
             }
         })
     }
@@ -84,6 +100,21 @@ function ViewAud() {
             })
         }
     }, [])
+
+    useEffect(() =>{
+        if (audListItems.length === 0 && user !==null){
+            console.log("fetching list")
+            fetch("/api/aud_list_items")
+            .then(r =>{
+                if(r.ok){
+                    r.json().then(data =>{
+                        console.log("list", data)
+                        dispatch(setAudListItems(data))
+                    })
+                }
+            })
+        }
+    }, [user])
 
     function like(){
         const newLike ={
@@ -130,7 +161,8 @@ function ViewAud() {
                     <h1 className="text-start">{audio.title}</h1>
                     {user ? (isLiked ? <Button variant="success" onClick={dislike}>Remove Like</Button> : <Button variant="success" onClick={like}>Like</Button> )
                     :  <Button variant="success" disabled>Like</Button>}
-                    <LibraryButton libType={libType} setLibraryState={setLibAud} user={user} inLib={inLib} creationLib={libAud} libItemId={audLibItemId} creation={audio} addLibItemState={addAudLibItem} removeLibItemState={removeAudLibItem} addToLibraryState={addLibAud} removeFromLibraryState={removeLibAud}/>
+                    <LibraryButton libType={type} setLibraryState={setLibAud} user={user} inLib={inLib} creationLib={libAud} libItemId={audLibItemId} creation={audio} addLibItemState={addAudLibItem} removeLibItemState={removeAudLibItem} addToLibraryState={addLibAud} removeFromLibraryState={removeLibAud}/>
+                    <MyListButton user={user} listType={type} inList={inList} listItemId={audListItemId} creation={audio} creationList={listAud} addListItemState={addAudListItem} removeListItemState={removeAudListItem} setListState={setListAud} addToListState={addListAud} removeFromListState={removeListAud}/>
                 </Col>
             </Row>
             <Row className="justify-content-center">
