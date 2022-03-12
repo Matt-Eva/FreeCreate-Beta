@@ -11,7 +11,10 @@ import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.j
 import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
 import { setArtLibItems, addArtLibItem, removeArtLibItem } from '../../state/libItemsSlice'
 import { setLibArt, addLibArt, removeLibArt } from '../../state/myLibrarySlice'
+import { setArtListItems, addArtListItem, removeArtListItem } from '../../state/listItemsSlice'
+import { setListArt, addListArt, removeListArt } from '../../state/myListSlice'
 import LibraryButton from '../interaction/LibraryButton'
+import MyListButton from '../interaction/MyListButton'
 
 function ViewArt() {
     const [art, setArt] = useState(null)
@@ -19,9 +22,11 @@ function ViewArt() {
     const artLikes = useSelector(state => state.likes.art_likes)
     const artLibItems = useSelector(state => state.libItems.artLibItems)
     const libArt = useSelector(state => state.myLibrary.libArt)
+    const artListItems = useSelector(state => state.listItems.artListItems)
+    const listArt = useSelector(state => state.myList.listArt)
     const {id} = useParams()
     const dispatch = useDispatch()
-    const libType = "art"
+    const type = "art"
     console.log("likes", artLikes)
     console.log("library", artLibItems)
 
@@ -43,6 +48,17 @@ function ViewArt() {
             if (libItem.art_id === art.id){
                 inLib = true
                 artLibItemId = libItem.id
+            }
+        })
+    }
+
+    let inList = false;
+    let artListItemId = null;
+    if (artListItems.length !== 0 && art !== null){
+        artListItems.forEach(listItem =>{
+            if(listItem.art_id === art.id){
+                inList = true
+                artListItemId = listItem.id
             }
         })
     }
@@ -137,7 +153,8 @@ function ViewArt() {
                     <Button variant="success" disabled>Add to Reading List</Button> */}
                 </Col>}
                 <Col>
-                    <LibraryButton user={user} libType={libType} inLib={inLib} libItemId={artLibItemId} creation={art} creationLib={libArt} addLibItemState={addArtLibItem} removeLibItemState={removeArtLibItem} setLibraryState={setLibArt} addToLibraryState={addLibArt} removeFromLibraryState={removeLibArt}/>
+                    <LibraryButton user={user} libType={type} inLib={inLib} libItemId={artLibItemId} creation={art} creationLib={libArt} addLibItemState={addArtLibItem} removeLibItemState={removeArtLibItem} setLibraryState={setLibArt} addToLibraryState={addLibArt} removeFromLibraryState={removeLibArt}/>
+                    <MyListButton user={user} listType={type} inList={inList} listItemId={artListItemId} creation={art} creationList={listArt} addListItemState={addArtListItem} removeListItemState={removeArtListItem} setListState={setListArt} addToListState={addListArt} removeFromListState={removeListArt}/>
                 </Col>
             </Row>
         </Container>
