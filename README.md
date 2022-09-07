@@ -2,6 +2,8 @@
 
 <a href="https://freecreate.herokuapp.com/loggedout">FreeCreate</a> is a content-sharing platform that hosts video, audio, writing, and visual art (images).
 
+<em>Testing</em>
+
 ## Technologies
 
 This app using the following technologies:
