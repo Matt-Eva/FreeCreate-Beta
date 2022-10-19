@@ -6,10 +6,10 @@ import Button from "react-bootstrap/Button"
 import Image from "react-bootstrap/Image"
 import Modal from 'react-bootstrap/Modal'
 import {useSelector, useDispatch} from "react-redux"
-import {updateCreators, removeCreator} from "../../state/creatorsSlice"
+import {updateCreators, removeCreator} from "../state/creatorsSlice"
 import { useState, useRef, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
-import TopNav from "../navigation/TopNav"
+import TopNav from "../components/navigation/TopNav"
 
 function EditCreatorProfile() {
     const user = useSelector(state => state.user.user)

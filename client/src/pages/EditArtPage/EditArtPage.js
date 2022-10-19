@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal'
 import {useSelector} from "react-redux"
 import {useNavigate} from 'react-router-dom'
 import {useEffect, useState} from "react"
-import TopNav from "../navigation/TopNav"
+import TopNav from "../../components/TopNav/TopNav"
 
 function EditArt() {
     const art = useSelector(state => state.editCreations.editArt)

@@ -4,8 +4,8 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import {Link} from "react-router-dom"
-import TopNav from "../navigation/TopNav"
-import CreatorProfileCard from './CreatorProfileCard'
+import TopNav from "../../components/TopNav/TopNav"
+import CreatorProfileCard from '../../components/CreatorProfileCard/CreatorProfileCard'
 
 
 function CreatorProfile() {

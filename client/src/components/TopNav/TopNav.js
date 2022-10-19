@@ -4,11 +4,11 @@ import Col from "react-bootstrap/Col"
 import Navbar from "react-bootstrap/Navbar"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import LoginButton from "../userauth/LoginButton"
-import ProfileDropdown from "./ProfileDropdown"
-import Icon from "./Icon"
-import LoggedInTopNavClick from "./LoggedInTopNavClick"
-import LoggedOutTopNavClick from "./LoggedOutTopNavClick"
+import LoginButton from "../LoginButton/LoginButton"
+import ProfileDropdown from "../ProfileDropdown/ProfileDropdown"
+import Icon from "../Icon/Icon"
+import LoggedInTopNavClick from "../LoggedInTopNavClick/LoggedInTopNavClick"
+import LoggedOutTopNavClick from "../LoggedOutTopNavClick/LoggedOutTopNavClick"
 
 
 function TopNav() {

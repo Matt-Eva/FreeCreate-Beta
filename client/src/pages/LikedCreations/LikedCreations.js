@@ -4,9 +4,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import {useSelector, useDispatch} from "react-redux"
 import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../../state/likedCreationsSlice"
-import DisplayAllContainer from "../display/DisplayAllContainer"
-import TopNav from '../navigation/TopNav'
-import Sidebar from "../navigation/Sidebar"
+import DisplayAllContainer from "../../components/display/DisplayAllContainer"
+import TopNav from '../../components/TopNav/TopNav'
+import Sidebar from "../../components/Sidebar/Sidebar"
 
 
 function LikedCreations() {

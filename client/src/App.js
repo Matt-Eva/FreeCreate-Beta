@@ -1,31 +1,31 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../App.css"
+import "./App.css"
 import { Container, Row, Col } from "react-bootstrap"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { setUser } from "../state/userSlice"
-import { setCreators } from "../state/creatorsSlice"
+import { setUser } from "./state/userSlice"
+import { setCreators } from "./state/creatorsSlice"
 import { useEffect } from "react"
-import HomepageLoggedIn from "./home/HomepageLoggedIn"
-import HomepageLoggedOut from './home/HomepageLoggedOut';
-import LoginModal from "./userauth/LoginModal"
-import SignupModal from "./userauth/SignupModal"
-import CreateCreationPage from "./forms/CreateCreationPage"
-import CreateCreatorProfile from "./forms/CreateCreatorProfile"
-import CreatorProfiles from "./profile/CreatorProfiles"
-import EditCreatorProfile from './forms/EditCreatorProfile';
-import ViewWrit from "./display/ViewWrit"
-import ViewArt from "./display/ViewArt"
-import ViewAud from "./display/ViewAud"
-import ViewVid from "./display/ViewVid"
-import EditArtPage from "./forms/EditArtPage"
-import EditVideoPage from './forms/EditVideoPage';
-import EditWritingPage from './forms/EditWritingPage';
-import EditAudioPage from './forms/EditAudioPage';
-import MyCreations from './libraries/MyCreations';
-import MyLibrary from './libraries/MyLibrary';
-import LikedCreations from './libraries/LikedCreations';
-import MyList from './libraries/MyList'
+import HomepageLoggedIn from "./pages/HomepageLoggedIn/HomepageLoggedIn"
+import HomepageLoggedOut from './pages/HomepageLoggedOut/HomepageLoggedOut';
+import LoginModal from "./components/LoginModal/LoginModal"
+import SignupModal from "./components/SignupModal/SignupModal"
+import CreateCreationPage from "./pages/CreateCreationPage/CreateCreationPage"
+import CreateCreatorProfile from "./pages/CreateCreatorProfile/CreateCreatorProfile"
+import CreatorProfiles from "./pages/CreatorProfiles/CreatorProfiles"
+import EditCreatorProfile from './pages/EditCreatorProfile/EditCreatorProfile';
+import ViewWrit from "./pages/ViewWrit/ViewWrit"
+import ViewArt from "./pages/ViewArt/ViewArt"
+import ViewAud from "./pages/ViewAud/ViewAud"
+import ViewVid from "./pages/ViewVid/ViewVid"
+import EditArtPage from "./pages/EditArtPage/EditArtPage"
+import EditVideoPage from './pages/EditVideoPage/EditVideoPage';
+import EditWritingPage from './pages/EditWritingPage/EditWritingPage';
+import EditAudioPage from './pages/EditAudioPage/EditAudioPage';
+import MyCreations from './pages/MyCreations/MyCreations';
+import MyLibrary from './pages/MyLibrary/MyLibrary';
+import LikedCreations from './pages/LikedCreations/LikedCreations';
+import MyList from './pages/MyList/MyList'
 
 function App() {
 const navigate = useNavigate()
