@@ -1,4 +1,5 @@
-import { Container, Row, Col } from "react-bootstrap"
+import {  Row, Col } from "react-bootstrap"
+import "./HomepageLoggedOut.css"
 import Button from "react-bootstrap/Button"
 import { useSelector, useDispatch } from "react-redux"
 import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../../state/queryDisplaySlice"
@@ -114,21 +115,13 @@ function HomepageLoggedOut(){
     }, [displayType])
 
     return (
-        <Container fluid>
-            <Row>
-                <TopNav />
-            </Row>
-            <Row>
-                <Col xs={12} sm={12}>
-                    <Row>
-                        <BrowseSearch displayType={displayType}/>
-                    </Row>
-                    <Row>
-                        {displayType === "all" ? <DisplayAllContainer writing={queryDisplayWriting} audio={queryDisplayAudio} art={queryDisplayArt} video={queryDisplayVideo} /> : <DisplayTypeContainer displayType={displayType} display={singleTypeDisplay} />}
-                    </Row>
-                </Col>
-            </Row>
-        </Container>
+        <div className="homepage-logged-out">
+             <TopNav />
+            <div className="homepage-logged-out__main">
+                <BrowseSearch displayType={displayType}/>
+                {displayType === "all" ? <DisplayAllContainer writing={queryDisplayWriting} audio={queryDisplayAudio} art={queryDisplayArt} video={queryDisplayVideo} /> : <DisplayTypeContainer displayType={displayType} display={singleTypeDisplay} />}
+            </div>
+        </div>
     )
 }
 

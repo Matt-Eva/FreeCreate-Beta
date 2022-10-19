@@ -49,7 +49,7 @@ const dispatch = useDispatch()
   
 
   return (
-    <Container fluid className="p-0 m-0">
+    <div className="app">
       <LoginModal />
       <SignupModal />
       <Routes>
@@ -72,7 +72,7 @@ const dispatch = useDispatch()
         <Route path="/loggedout" element={<HomepageLoggedOut/>}/>
         <Route exact path="/" element={<HomepageLoggedIn/>}/>
       </Routes>
-    </Container>
+    </div>
   );
 }
 
