@@ -1,10 +1,10 @@
 import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {setListAll, setListArt, setListWrit, setListAud, setListVid} from "../../state/myListSlice"
-import TopNav from "../navigation/TopNav"
-import DisplayAllContainer from '../display/DisplayAllContainer'
-import DisplayTypeContainer from '../display/DisplayTypeContainer'
-import Sidebar from "../navigation/Sidebar"
+import TopNav from "../../components/TopNav/TopNav"
+import DisplayAllContainer from '../../components/DisplayAllContainer/DisplayAllContainer'
+import DisplayTypeContainer from '../../components/DisplayTypeContainer/DisplayTypeContainer'
+import Sidebar from "../../components/Sidebar/Sidebar"
 import styled from 'styled-components'
 
 function MyList() {

@@ -2,13 +2,13 @@ import {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import TopNav from '../navigation/TopNav'
-import Sidebar from '../navigation/Sidebar'
+import TopNav from '../../components/TopNav/TopNav'
+import Sidebar from '../../components/Sidebar/Sidebar'
 import {useSelector, useDispatch} from "react-redux"
-import DisplayAllContainer from '../display/DisplayAllContainer'
-import DisplayTypeContainer from '../display/DisplayTypeContainer'
-import MyCreationsDisplayAllContainer from '../display/MyCreationsDisplayAllContainer'
-import PersonalSearch from '../navigation/PersonalSearch'
+import DisplayAllContainer from '../../components/DisplayAllContainer/DisplayAllContainer'
+import DisplayTypeContainer from '../../components/DisplayTypeContainer/DisplayTypeContainer'
+import MyCreationsDisplayAllContainer from '../../components/MyCreationsDisplayAllContainer/MyCreationsDisplayAllContainer'
+import PersonalSearch from '../../components/PersonalSearch/PersonalSearch'
 
 function MyCreations() {
     const user = useSelector(state => state.user.user)

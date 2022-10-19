@@ -3,11 +3,11 @@ import Button from "react-bootstrap/Button"
 import { useSelector, useDispatch } from "react-redux"
 import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../../state/queryDisplaySlice"
 import { useEffect } from "react"
-import TopNav from "../navigation/TopNav"
-import Sidebar from "../navigation/Sidebar"
-import BrowseSearch from "../navigation/BrowseSearch"
-import DisplayAllContainer from "../display/DisplayAllContainer"
-import DisplayTypeContainer from "../display/DisplayTypeContainer"
+import TopNav from "../../components/TopNav/TopNav"
+import Sidebar from "../../components/Sidebar/Sidebar"
+import BrowseSearch from "../../components/BrowseSearch/BrowseSearch"
+import DisplayAllContainer from "../../components/DisplayAllContainer/DisplayAllContainer"
+import DisplayTypeContainer from "../../components/DisplayTypeContainer/DisplayTypeContainer"
 
 function HomepageLoggedIn() {
     const user = useSelector(state => state.user.user)

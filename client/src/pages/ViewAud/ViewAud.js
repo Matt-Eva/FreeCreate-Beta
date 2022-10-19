@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
-import TopNav from '../navigation/TopNav'
+import TopNav from '../../components/TopNav/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setAudLikes, addAudLike, removeAudLike } from "../../state/likesSlice.js"
 import { addLikedAud, removeLikedAud} from "../../state/likedCreationsSlice"
@@ -13,8 +13,8 @@ import { setAudLibItems, addAudLibItem, removeAudLibItem } from "../../state/lib
 import { setLibAud, addLibAud, removeLibAud } from '../../state/myLibrarySlice'
 import { setAudListItems, addAudListItem, removeAudListItem } from '../../state/listItemsSlice'
 import { setListAud, addListAud, removeListAud } from '../../state/myListSlice'
-import LibraryButton from '../interaction/LibraryButton'
-import MyListButton from '../interaction/MyListButton'
+import LibraryButton from '../../components/LibraryButton/LibraryButton'
+import MyListButton from '../../components/MyListButton/MyListButton'
 
 function ViewAud() {
     const [audio, setAudio] = useState(null)

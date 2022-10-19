@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
-import MyCreationDisplayCard from "./MyCreationDisplayCard"
+import MyCreationDisplayCard from "../MyCreationDisplayCard/MyCreationDisplayCard"
 
 function MyCreationsDisplayAllContainer({writing, audio, art, video}) {
     // console.log(writing, audio, art, video)

@@ -7,11 +7,11 @@ import Form from "react-bootstrap/Form"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import CreateArtForm from "./CreateArtForm"
-import CreateWritingForm from "./CreateWritingForm"
-import CreateAudioForm from "./CreateAudioForm"
-import CreateVideoForm from "./CreateVideoForm"
-import TopNav from "../navigation/TopNav"
+import CreateArtForm from "../../components/CreateArtForm/CreateArtForm"
+import CreateWritingForm from "../../components/CreateWritingForm/CreateWritingForm"
+import CreateAudioForm from "../../components/CreateAudioForm/CreateAudioForm"
+import CreateVideoForm from "../../components/CreateVideoForm/CreateVideoForm"
+import TopNav from "../../components/TopNav/TopNav"
 
 function CreateCreationPage() {
     const user = useSelector(state => state.user.user)

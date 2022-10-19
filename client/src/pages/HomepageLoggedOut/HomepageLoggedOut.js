@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux"
 import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../../state/queryDisplaySlice"
 import { useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
-import TopNav from "../navigation/TopNav"
-import BrowseSearch from "../navigation/BrowseSearch"
-import DisplayAllContainer from "../display/DisplayAllContainer"
-import DisplayTypeContainer from "../display/DisplayTypeContainer"
+import TopNav from "../../components/TopNav/TopNav"
+import BrowseSearch from "../../components/BrowseSearch/BrowseSearch"
+import DisplayAllContainer from "../../components/DisplayAllContainer/DisplayAllContainer"
+import DisplayTypeContainer from "../../components/DisplayTypeContainer/DisplayTypeContainer"
 
 function HomepageLoggedOut(){
     const user = useSelector(state => state.user.user)

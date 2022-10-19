@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from "react-redux"
 import { addCreator } from '../../state/creatorsSlice'
 import { useState, useRef } from "react"
 import { useNavigate } from 'react-router-dom'
-import TopNav from "../navigation/TopNav"
+import TopNav from "../../components/TopNav/TopNav"
 
 function CreateCreatorProfile() {
     const user = useSelector(state => state.user.user)

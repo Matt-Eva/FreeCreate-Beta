@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
-import TopNav from '../navigation/TopNav'
+import TopNav from '../../components/TopNav/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setWritLikes, addWritLike, removeWritLike } from "../../state/likesSlice.js"
 import { addLikedWrit, removeLikedWrit} from "../../state/likedCreationsSlice"
@@ -13,8 +13,8 @@ import { setWritLibItems, addWritLibItem, removeWritLibItem } from "../../state/
 import { setLibWrit, addLibWrit, removeLibWrit } from '../../state/myLibrarySlice'
 import { setWritListItems, addWritListItem, removeWritListItem } from '../../state/listItemsSlice'
 import { setListWrit, addListWrit, removeListWrit } from '../../state/myListSlice'
-import LibraryButton from '../interaction/LibraryButton'
-import MyListButton from '../interaction/MyListButton'
+import LibraryButton from '../../components/LibraryButton/LibraryButton'
+import MyListButton from '../../components/MyListButton/MyListButton'
 
 function ViewWrit() {
     const [writing, setWriting] = useState(null)

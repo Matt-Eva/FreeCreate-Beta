@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
-import TopNav from '../navigation/TopNav'
+import TopNav from '../../components/TopNav/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setArtLikes, addArtLike, removeArtLike } from "../../state/likesSlice.js"
 import { addLikedArt, removeLikedArt} from "../../state/likedCreationsSlice"
@@ -13,8 +13,8 @@ import { setArtLibItems, addArtLibItem, removeArtLibItem } from '../../state/lib
 import { setLibArt, addLibArt, removeLibArt } from '../../state/myLibrarySlice'
 import { setArtListItems, addArtListItem, removeArtListItem } from '../../state/listItemsSlice'
 import { setListArt, addListArt, removeListArt } from '../../state/myListSlice'
-import LibraryButton from '../interaction/LibraryButton'
-import MyListButton from '../interaction/MyListButton'
+import LibraryButton from '../../components/LibraryButton/LibraryButton'
+import MyListButton from '../../components/MyListButton/MyListButton'
 
 function ViewArt() {
     const [art, setArt] = useState(null)

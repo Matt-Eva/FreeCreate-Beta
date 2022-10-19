@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import {useSelector, useDispatch} from "react-redux"
 import {setLikedArt, setLikedVid, setLikedAud, setLikedWrit} from "../../state/likedCreationsSlice"
-import DisplayAllContainer from "../../components/display/DisplayAllContainer"
+import DisplayAllContainer from "../../components/DisplayAllContainer/DisplayAllContainer"
 import TopNav from '../../components/TopNav/TopNav'
 import Sidebar from "../../components/Sidebar/Sidebar"
 

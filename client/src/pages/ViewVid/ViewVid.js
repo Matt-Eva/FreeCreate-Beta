@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
-import TopNav from '../navigation/TopNav'
+import TopNav from '../../components/TopNav/TopNav'
 import {useSelector, useDispatch} from "react-redux"
 import { setVidLikes, addVidLike, removeVidLike } from "../../state/likesSlice.js"
 import { addLikedVid, removeLikedVid} from "../../state/likedCreationsSlice"
@@ -13,8 +13,8 @@ import { setVidLibItems, addVidLibItem, removeVidLibItem } from "../../state/lib
 import { setLibVid, addLibVid, removeLibVid } from "../../state/myLibrarySlice"
 import { setVidListItems, addVidListItem, removeVidListItem } from '../../state/listItemsSlice'
 import { setListVid, addListVid, removeListVid } from '../../state/myListSlice'
-import LibraryButton from '../interaction/LibraryButton'
-import MyListButton from '../interaction/MyListButton'
+import LibraryButton from '../../components/LibraryButton/LibraryButton'
+import MyListButton from '../../components/MyListButton/MyListButton'
 
 
 function ViewVid() {
