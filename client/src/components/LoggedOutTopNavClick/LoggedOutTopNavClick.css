@@ -1,0 +1,16 @@
+.logged-out-topnav-click{
+    grid-row: 1;
+    grid-column: 2;
+    /* background-color: blue; */
+    display: flex;
+
+    /* align-items: center; */
+    justify-content: center;
+    gap: 8px;
+
+    padding-top: 8px;
+}
+
+.logged-out-topnav-click a{
+    font-size: 11px;
+}

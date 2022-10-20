@@ -1,0 +1,9 @@
+.icon{
+    grid-row: 1;
+    grid-column: 1;
+    padding-top: 2px;
+}
+
+.icon a{
+    font-size: 15px;
+}

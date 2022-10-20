@@ -1,0 +1,11 @@
+.homepage-logged-out {
+    display: grid;
+    grid-template-rows: 70px calc(100vh - 70px);
+}
+
+.homepage-logged-out__main {
+    grid-row: 2;
+
+    display: grid;
+    grid-template-rows: calc(100px + 5vh) calc(95vh - 170px);
+}

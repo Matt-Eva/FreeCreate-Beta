@@ -1,11 +1,11 @@
-import Button from 'react-bootstrap/Button'
+import "./LoginButton.css"
 import {showLogin} from "../../state/userAuthModalSlice"
 import {useDispatch} from "react-redux"
 
 function LoginButton() {
     const dispatch = useDispatch()
     return (
-        <Button variant="success" onClick={()=> dispatch(showLogin()) }>Login</Button>
+        <button variant="success" onClick={()=> dispatch(showLogin()) } className='login-button'>Login</button>
     )
 }
 

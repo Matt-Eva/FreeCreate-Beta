@@ -1,3 +1,4 @@
+import "./Icon.css"
 import {Link} from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
 import {setDisplayTypeAll} from "../../state/displayTypeSlice"
@@ -11,9 +12,9 @@ function Icon() {
     }
 
     return (
-        <>
-        {user ? <h2 onClick={displayAll}><Link to="/">FreeCreate</Link></h2> : <h2 onClick={displayAll}><Link to="/loggedout">FreeCreate</Link></h2>}
-        </>
+        <div className='icon'>
+        {user ? <Link to="/" onClick={displayAll}>FreeCreate</Link> : <Link to="/loggedout" onClick={displayAll}>FreeCreate</Link>}
+        </div>
     )
 }
 
