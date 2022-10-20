@@ -21,6 +21,13 @@ a:hover{
   transition: 500ms
 }
 
+button {
+  border: none;
+  border-radius: 3px;
+  background-color: hsl(110, 100%, 32%);
+  color: white;
+}
+
 /* .app {
 
 } */

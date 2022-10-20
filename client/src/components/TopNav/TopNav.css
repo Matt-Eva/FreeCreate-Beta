@@ -1,3 +1,7 @@
 .topnav {
     grid-row: 1;
+
+    display: grid;
+    grid-template-rows: 70px;
+    grid-template-columns: 85px calc(100vw - 160px) 75px;
 }

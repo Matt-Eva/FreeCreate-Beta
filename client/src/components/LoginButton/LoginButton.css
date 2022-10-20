@@ -1,0 +1,9 @@
+.login-button{
+    height: 30px;
+    margin: 2px;
+    width: 60px;
+    grid-row: 1;
+    grid-column: 3;
+    font-size: 12px;
+    justify-self: end;
+}
