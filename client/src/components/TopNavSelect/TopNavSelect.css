@@ -1,4 +1,4 @@
-.logged-out-topnav-click{
+.topnav-select{
     grid-row: 1;
     grid-column: 2;
     /* background-color: blue; */
@@ -11,6 +11,6 @@
     padding-top: 8px;
 }
 
-.logged-out-topnav-click a{
+.topnav-select a{
     font-size: 11px;
 }
