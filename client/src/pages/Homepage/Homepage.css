@@ -1,0 +1,24 @@
+.homepage {
+    display: grid;
+    grid-template-rows: 70px calc(100vh - 70px);
+    grid-template-columns: 100vw;
+}
+
+.homepage__main {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: 130px calc(100vh - 130px);
+    grid-template-columns: 100vw;
+}
+
+.homepage__main--logged-out {
+    grid-row: 2;
+    grid-template-rows: 130px calc(100vh - 130px);
+    grid-template-columns: 100vw;
+}
+
+@media (min-width: 600px){
+    .homepage__main {
+        grid-template-columns: 100px calc(100vw - 100px);
+    }
+}

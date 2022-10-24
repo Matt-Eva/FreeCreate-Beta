@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setUser } from "./state/userSlice"
 import { setCreators } from "./state/creatorsSlice"
 import { useEffect } from "react"
-import HomepageLoggedIn from "./pages/HomepageLoggedIn/HomepageLoggedIn"
+import Homepage from "./pages/Homepage/Homepage"
 import HomepageLoggedOut from './pages/HomepageLoggedOut/HomepageLoggedOut';
 import LoginModal from "./components/LoginModal/LoginModal"
 import SignupModal from "./components/SignupModal/SignupModal"
@@ -70,7 +70,7 @@ const dispatch = useDispatch()
         <Route path="/newcreator" element={<CreateCreatorProfile />} />
         <Route path="/newcreation" element={<CreateCreationPage />}/>
         <Route path="/loggedout" element={<HomepageLoggedOut/>}/>
-        <Route exact path="/" element={<HomepageLoggedIn/>}/>
+        <Route exact path="/" element={<Homepage/>}/>
       </Routes>
     </div>
   );

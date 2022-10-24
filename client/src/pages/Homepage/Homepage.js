@@ -1,5 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap"
-import Button from "react-bootstrap/Button"
+import "./Homepage.css"
 import { useSelector, useDispatch } from "react-redux"
 import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../../state/queryDisplaySlice"
 import { useEffect } from "react"
@@ -9,7 +8,7 @@ import BrowseSearch from "../../components/BrowseSearch/BrowseSearch"
 import DisplayAllContainer from "../../components/DisplayAllContainer/DisplayAllContainer"
 import DisplayTypeContainer from "../../components/DisplayTypeContainer/DisplayTypeContainer"
 
-function HomepageLoggedIn() {
+function Homepage() {
     const user = useSelector(state => state.user.user)
     const displayType = useSelector(state => state.displayType.displayType)
     const queryDisplayWriting = useSelector(state => state.queryDisplay.queryDisplayWriting)
@@ -111,25 +110,15 @@ function HomepageLoggedIn() {
       }
 
     return (
-        <Container fluid>
-            <Row>
-                <TopNav />
-            </Row>
-            <Row>
-                <Col xs={2}>
-                    <Sidebar />
-                </Col>
-                <Col xs={5} sm={10}>
-                    <Row>
-                        <BrowseSearch displayType={displayType}/>
-                    </Row>
-                    <Row>
-                        {displayType === "all" ? <DisplayAllContainer writing={queryDisplayWriting} audio={queryDisplayAudio} art={queryDisplayArt} video={queryDisplayVideo} /> : <DisplayTypeContainer displayType={displayType} display={singleTypeDisplay} />}
-                    </Row>
-                </Col>
-            </Row>
-        </Container>
+        <div className="homepage">
+            <TopNav />
+            <div className={user ? "homepage__main" : "homepage_main--logged-out"}>
+                {user ? <Sidebar /> : null}
+                <BrowseSearch displayType={displayType}/>
+                {displayType === "all" ? <DisplayAllContainer writing={queryDisplayWriting} audio={queryDisplayAudio} art={queryDisplayArt} video={queryDisplayVideo} /> : <DisplayTypeContainer displayType={displayType} display={singleTypeDisplay} />}
+            </div>
+        </div>
     )
 }
 
-export default HomepageLoggedIn
+export default Homepage
