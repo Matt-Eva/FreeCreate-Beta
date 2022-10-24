@@ -28,6 +28,6 @@ button {
   color: white;
 }
 
-/* .app {
-
-} */
+.app {
+  width: 100vw;
+}

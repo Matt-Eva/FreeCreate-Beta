@@ -9,8 +9,19 @@
     gap: 8px;
 
     padding-top: 8px;
+    font-size: 11px;
 }
 
-.topnav-select a{
+.topnav-select--logged-in{
+    grid-row: 1;
+    grid-column: 2;
+    /* background-color: blue; */
+    display: flex;
+
+    /* align-items: center; */
+    justify-content: center;
+    gap: 2px;
+
+    padding-top: 8px;
     font-size: 11px;
 }

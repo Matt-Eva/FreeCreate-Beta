@@ -9,11 +9,14 @@ import TopNavSelect from "../TopNavSelect/TopNavSelect"
 
 function TopNav() {
     const user = useSelector(state => state.user.user)
+
+    const topnavClass = user ? "topnav--logged-in" : "topnav"
+
     return (
-        <div className="topnav">
+        <div className={topnavClass}>
             <Icon />
             <TopNavSelect />
-            {user ? <Link to="/newcreation">Create</Link> : null}
+            {user ? <Link to="/newcreation" className="topnav__create">Create</Link> : null}
             {user === null ? <LoginButton/> : <ProfileDropdown />}
         </div>
     )

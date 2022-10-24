@@ -1,4 +1,6 @@
 .homepage-logged-out {
+    margin: 0;
+    width: 100vw;
     display: grid;
     grid-template-rows: 70px calc(100vh - 70px);
 }

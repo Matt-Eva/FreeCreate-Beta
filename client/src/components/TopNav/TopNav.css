@@ -3,5 +3,21 @@
 
     display: grid;
     grid-template-rows: 70px;
-    grid-template-columns: 85px calc(100vw - 160px) 75px;
+    grid-template-columns: 80px calc(100vw - 155px) 75px;
+}
+
+.topnav--logged-in{
+    grid-row: 1;
+
+    display: grid;
+    grid-template-rows: 70px;
+    grid-template-columns: 80px calc(100vw - 185px) 40px 65px;
+}
+
+.topnav__create {
+    grid-row: 1;
+    grid-column: 3;
+    font-size: 11px;
+    padding-top: 8px;
+    justify-self: center;
 }

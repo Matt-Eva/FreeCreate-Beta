@@ -12,6 +12,8 @@ function TopNavSelect() {
     
     const redirect = user ? "/" : "/loggedout"
 
+    const className = user ? "topnav-select--logged-in": "topnav-select"
+
     function setWriting(){
         dispatch(setDisplayTypeWriting())
     }
@@ -29,7 +31,7 @@ function TopNavSelect() {
     }
 
     return (
-        <div className="topnav-select">
+        <div className={className}>
             {displayType === "writing" ? <Link to={redirect}>Writing</Link> :<Link to={redirect}  onClick={setWriting}>Writing</Link>}
 
             {displayType === "audio" ? <Link to={redirect}>Audio</Link> :<Link to={redirect}  onClick={setAudio}>Audio</Link> }

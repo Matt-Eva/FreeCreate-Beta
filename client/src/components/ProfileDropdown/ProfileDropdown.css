@@ -1,0 +1,17 @@
+/* .profile-dropdown .profile-dropdown__dropdown {
+    width: 20px;
+} */
+
+.profile-dropdown{
+    grid-row: 1;
+    grid-column: 4;
+    padding-top: 3px;
+    justify-self: end;
+}
+
+.profile-dropdown__toggle{
+    width: 55px;
+    font-size: 12px;
+    padding: 5px 0px;
+    margin-right: 5px;
+}
