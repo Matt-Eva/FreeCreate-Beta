@@ -3,7 +3,7 @@
 
     display: grid;
     grid-template-rows: 70px;
-    grid-template-columns: 85px calc(100vw - 160px) 75px;
+    grid-template-columns: 80px calc(100vw - 155px) 75px;
 }
 
 .topnav--logged-in{
@@ -11,12 +11,13 @@
 
     display: grid;
     grid-template-rows: 70px;
-    grid-template-columns: 85px calc(100vw - 230px) 70px 75px;
+    grid-template-columns: 80px calc(100vw - 185px) 40px 65px;
 }
 
 .topnav__create {
     grid-row: 1;
     grid-column: 3;
-    font-size: 12px;
-    padding-top: 7.1px;
+    font-size: 11px;
+    padding-top: 8px;
+    justify-self: center;
 }

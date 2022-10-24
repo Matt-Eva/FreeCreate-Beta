@@ -1,3 +1,4 @@
+import "./ProfileDropdown.css"
 import Dropdown from "react-bootstrap/Dropdown"
 import {useDispatch} from "react-redux"
 import {removeUser} from "../../state/userSlice"
@@ -22,10 +23,10 @@ const navigate = useNavigate()
             navigate("/loggedout")
         })
     }
-    return (
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                My Profile
+    return (      
+        <Dropdown className="profile-dropdown">
+            <Dropdown.Toggle variant="success" className='profile-dropdown__toggle'>
+                Profile
             </Dropdown.Toggle>
             <Dropdown.Menu>
                 {/* <Dropdown.Item>View Profile</Dropdown.Item> */}
