@@ -15,6 +15,7 @@ import libItemsReducer from "./state/libItemsSlice"
 import listItemsReducer from "./state/listItemsSlice"
 import myListReducer from "./state/myListSlice"
 import listDisplayTypeReducer from "./state/listDisplayTypeSlice"
+import loggedOutStateReducer from './state/loggedOutSlice'
 
 const store = configureStore({
     reducer: {
@@ -33,7 +34,8 @@ const store = configureStore({
         libItems: libItemsReducer,
         listItems: listItemsReducer,
         myList: myListReducer,
-        listDisplayType: listDisplayTypeReducer
+        listDisplayType: listDisplayTypeReducer, 
+        loggedOutState: loggedOutStateReducer
     }
 })
 

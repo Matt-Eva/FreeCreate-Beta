@@ -1,3 +1,4 @@
+import "./Sidebar.css"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -10,7 +11,7 @@ function Sidebar() {
     const libDisplayType = useSelector(state => state.libDisplayType.libDisplayType)
     const dispatch = useDispatch()
     return (
-        <Container fluid>
+        <div className='sidebar'>
             <Row>
                 <h5><Link to="/mycreations">My Creations</Link></h5>
             </Row>
@@ -59,7 +60,7 @@ function Sidebar() {
                     <li>Video</li>
                 </ul> */}
             </Row>
-        </Container>
+        </div>
     )
 }
 

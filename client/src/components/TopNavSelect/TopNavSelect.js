@@ -9,8 +9,6 @@ function TopNavSelect() {
     const user = useSelector(state => state.user.user)
 
     const dispatch = useDispatch()
-    
-    const redirect = user ? "/" : "/loggedout"
 
     const className = user ? "topnav-select--logged-in": "topnav-select"
 
@@ -32,13 +30,13 @@ function TopNavSelect() {
 
     return (
         <div className={className}>
-            {displayType === "writing" ? <Link to={redirect}>Writing</Link> :<Link to={redirect}  onClick={setWriting}>Writing</Link>}
+            {displayType === "writing" ? <Link to="/writing">Writing</Link> :<Link to="/writing" onClick={setWriting}>Writing</Link>}
 
-            {displayType === "audio" ? <Link to={redirect}>Audio</Link> :<Link to={redirect}  onClick={setAudio}>Audio</Link> }
+            {displayType === "audio" ? <Link to="/audio">Audio</Link> :<Link to="/audio"  onClick={setAudio}>Audio</Link> }
 
-            {displayType === "art" ? <Link to={redirect}>Art</Link> :<Link to={redirect} onClick={setArt}>Art</Link> }
+            {displayType === "art" ? <Link to="/art">Art</Link> :<Link to="/art" onClick={setArt}>Art</Link> }
 
-            {displayType === "video" ? <Link to={redirect}>Video</Link> :<Link to={redirect} onClick={setVideo}>Video</Link> }
+            {displayType === "video" ? <Link to="/video">Video</Link> :<Link to="/video" onClick={setVideo}>Video</Link> }
         </div>
     )
 }

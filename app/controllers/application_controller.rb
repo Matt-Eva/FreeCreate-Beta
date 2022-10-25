@@ -56,6 +56,15 @@ def all_list_creations
     render json: {writing: writing, art: art, audio: audio, video: video}, status: :ok
 end
 
+def all_creations
+    writing = Writing.all.limit(50)
+    audio = Audio.all.limit(50)
+    video = Video.all.limit(50)
+    art = Art.all.limit(50)
+    render json: {writing: writing, art: art, audio: audio, video: video}, status: :ok
+    # debugger
+end
+
 private
 
 def authorize

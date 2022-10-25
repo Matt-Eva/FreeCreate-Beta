@@ -20,7 +20,6 @@ const navigate = useNavigate()
             dispatch(setAudLikes([]))
             dispatch(setVidLikes([]))
             dispatch(setArtLikes([]))
-            navigate("/loggedout")
         })
     }
     return (      
