@@ -1,13 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
-import { Container, Row, Col } from "react-bootstrap"
-import { Routes, Route, useNavigate } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import { Routes, Route } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import { setUser } from "./state/userSlice"
+import { setLoggedOutState } from './state/loggedOutSlice';
 import { setCreators } from "./state/creatorsSlice"
 import { useEffect } from "react"
 import Homepage from "./pages/Homepage/Homepage"
-import HomepageLoggedOut from './pages/HomepageLoggedOut/HomepageLoggedOut';
 import LoginModal from "./components/LoginModal/LoginModal"
 import SignupModal from "./components/SignupModal/SignupModal"
 import CreateCreationPage from "./pages/CreateCreationPage/CreateCreationPage"
@@ -28,7 +27,6 @@ import LikedCreations from './pages/LikedCreations/LikedCreations';
 import MyList from './pages/MyList/MyList'
 
 function App() {
-const navigate = useNavigate()
 const dispatch = useDispatch()
 
   useEffect(()=>{
@@ -40,8 +38,7 @@ const dispatch = useDispatch()
           dispatch(setCreators(data.creators))
         })
       } else {
-        console.log("running")
-        navigate("/loggedout")
+        dispatch(setLoggedOutState(true))
       }
     })
   }, [])
@@ -69,7 +66,10 @@ const dispatch = useDispatch()
         <Route path="/editcreator" element={<EditCreatorProfile/>}/>
         <Route path="/newcreator" element={<CreateCreatorProfile />} />
         <Route path="/newcreation" element={<CreateCreationPage />}/>
-        <Route path="/loggedout" element={<HomepageLoggedOut/>}/>
+        <Route path="/audio" element={<Homepage />} />
+        <Route path="/art" element={<Homepage />} />
+        <Route path="/video" element={<Homepage />} />
+        <Route path="/writing" element={<Homepage />} />
         <Route exact path="/" element={<Homepage/>}/>
       </Routes>
     </div>

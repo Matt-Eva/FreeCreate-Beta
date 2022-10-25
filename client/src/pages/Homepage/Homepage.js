@@ -1,7 +1,9 @@
 import "./Homepage.css"
 import { useSelector, useDispatch } from "react-redux"
 import { setQueryDisplayWriting, setQueryDisplayAudio, setQueryDisplayArt, setQueryDisplayVideo, setQueryDisplayAll } from "../../state/queryDisplaySlice"
+import { setDisplayTypeArt, setDisplayTypeAudio, setDisplayTypeVideo, setDisplayTypeWriting, setDisplayTypeAll } from "../../state/displayTypeSlice"
 import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import TopNav from "../../components/TopNav/TopNav"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import BrowseSearch from "../../components/BrowseSearch/BrowseSearch"
@@ -15,9 +17,9 @@ function Homepage() {
     const queryDisplayAudio = useSelector(state => state.queryDisplay.queryDisplayAudio)
     const queryDisplayArt = useSelector(state => state.queryDisplay.queryDisplayArt)
     const queryDisplayVideo = useSelector(state => state.queryDisplay.queryDisplayVideo)
+    const loggedOut = useSelector(state => state.loggedOutState.loggedOutState)
     const dispatch = useDispatch()
-
-    // console.log(queryDisplayWriting, queryDisplayArt, queryDisplayAudio, queryDisplayVideo)
+    const pathname = useLocation().pathname
 
     let singleTypeDisplay = []
     if (displayType === "writing"){
@@ -31,81 +33,83 @@ function Homepage() {
     }
 
     useEffect(()=>{
-        if (displayType === "all"){
-            fetch("/api/writings")
-            .then(r => {
-                if(r.ok){
-                    r.json().then(data =>{
-                        dispatch(setQueryDisplayWriting(data))
-                    })
-                }else{
-                    r.json().then(data =>{
-                        console.log(data)
-                    })
-                }
-            })
-            fetch("/api/audios")
-            .then(r => {
-                if(r.ok){
-                    r.json().then(data =>{
-                        dispatch(setQueryDisplayAudio(data))
-                    })
-                }else{
-                    r.json().then(data =>{
-                        console.log(data)
-                    })
-                }
-            })
-            fetch("/api/arts")
-            .then(r => {
-                if(r.ok){
-                    r.json().then(data =>{
-                        dispatch(setQueryDisplayArt(data))
-                    })
-                }else{
-                    r.json().then(data =>{
-                        console.log(data)
-                    })
-                }
-            })
-            fetch("/api/videos")
-            .then(r => {
-                if(r.ok){
-                    r.json().then(data =>{
-                        dispatch(setQueryDisplayVideo(data))
-                    })
-                }else{
-                    r.json().then(data =>{
-                        console.log(data)
-                    })
-                }
-            })
-        } else{
-            fetch(`/api/${displayType}s`)
-            .then(r => {
-                if(r.ok){
-                    r.json().then(data =>{
-                        if (displayType === "writing"){
+            if (pathname === "/" && ((queryDisplayWriting.length === 0 || queryDisplayAudio.length === 0) || (queryDisplayArt.length === 0 || queryDisplayVideo.length === 0))){
+                fetch('/allcreations')
+                .then(r =>{
+                    if(r.ok){
+                        r.json().then(data =>{
+                            dispatch(setQueryDisplayWriting(data.writing))
+                            dispatch(setQueryDisplayAudio(data.audio))
+                            dispatch(setQueryDisplayArt(data.art))
+                            dispatch(setQueryDisplayVideo(data.video))
+                            dispatch(setDisplayTypeAll())
+                        })
+                    } else{
+                        r.json().then(data =>{
+                            console.log(data)
+                        })
+                    }
+                })
+            } else if(pathname === "/writing" && queryDisplayWriting.length === 0){
+                fetch(`/api/writings`)
+                .then(r => {
+                    if(r.ok){
+                        r.json().then(data =>{
                             dispatch(setQueryDisplayWriting(data))
-                        } else if (displayType === "audio"){
-                            dispatch(setQueryDisplayAudio(data))
-                        }else if (displayType === "art"){
+                            dispatch(setDisplayTypeWriting())
+                        })
+                    }else{
+                        r.json().then(data =>{
+                            console.log(data)
+                        })
+                    }
+                })
+            } else if(pathname === "/art" && queryDisplayArt.length === 0){
+                fetch(`/api/arts`)
+                .then(r => {
+                    if(r.ok){
+                        r.json().then(data =>{
                             dispatch(setQueryDisplayArt(data))
-                        }else if (displayType === "video"){
+                            dispatch(setDisplayTypeArt())
+                        })
+                    }else{
+                        r.json().then(data =>{
+                            console.log(data)
+                        })
+                    }
+                })
+            } else if(pathname === "/audio" && queryDisplayAudio.length === 0){
+                fetch(`/api/audios`)
+                .then(r => {
+                    if(r.ok){
+                        r.json().then(data =>{
+                            dispatch(setQueryDisplayAudio(data))
+                            dispatch(setDisplayTypeAudio())
+                        })
+                    }else{
+                        r.json().then(data =>{
+                            console.log(data)
+                        })
+                    }
+                })
+            }else if(pathname === "/video" && queryDisplayVideo.length === 0){
+                fetch(`/api/videos`)
+                .then(r => {
+                    if(r.ok){
+                        r.json().then(data =>{
                             dispatch(setQueryDisplayVideo(data))
-                        }
-                    })
-                }else{
-                    r.json().then(data =>{
-                        console.log(data)
-                    })
-                }
-            })
-        }
+                            dispatch(setDisplayTypeVideo())
+                        })
+                    }else{
+                        r.json().then(data =>{
+                            console.log(data)
+                        })
+                    }
+                })
+            }
+    }, [pathname])
 
-    }, [displayType])
-
-    if (user === null){
+    if (user === null && loggedOut === false){
         return(<h1>Loading...</h1>)
       }
 
