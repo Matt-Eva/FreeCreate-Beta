@@ -19,9 +19,6 @@ This app using the following technologies:
 - PostgreSQL
 - Ruby 2.7.5
 
-### Deployment
-- FreeCreate is currently <a href="https://freecreate.herokuapp.com/loggedout">deployed</a> on <a href="https://www.heroku.com/about">Heroku</a>.
-
 ## Launch
 
 Once you've cloned and pulled down with this repository, run `bundle install` within the main directory and `npm install` from within the client directory.
@@ -74,7 +71,6 @@ Video:
 
 - Github: https://github.com/Matt-Eva
 - LinkedIn: https://www.linkedin.com/in/mattheweva/
-- Twitter: https://twitter.com/MattEva11
 - Medium: https://matteweva.medium.com/
 - Email: matteweva@gmail.com
 
