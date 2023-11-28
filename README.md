@@ -5,7 +5,7 @@ FreeCreate is a content-sharing platform that hosts video, audio, writing, and v
 
 ## Technologies
 
-This app using the following technologies:
+This app uses the following technologies:
 
 ### Frontend
 - React.js 
