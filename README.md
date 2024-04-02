@@ -1,6 +1,6 @@
 # FreeCreate
 
-FreeCreate is a content-sharing platform that hosts video, audio, writing, and visual art (images).
+This is a prototype of FreeCreate, a content-sharing platform that hosts video, audio, writing, and visual art (images).
 
 
 ## Technologies
